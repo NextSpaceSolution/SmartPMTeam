@@ -27,13 +27,13 @@ namespace SmartPM.Views
 
             InitializeComponent();
             ulogged = authen.Username;
-
+            /*
             if (InternetCheckConnectivity() == true)
-                GetAccount();
+               // GetAccount();
             else
                 ConnectivityLabel.Text = "เนตหมดหรอ Kruf";
 
-
+    */
 
 
         }
@@ -56,7 +56,7 @@ namespace SmartPM.Views
             id = Accountlists.userId;
            
 
-            var page = new EditAccount(id,ulogged);
+            var page = new dummyView();
             await Navigation.PushAsync(page);
         }
         private async void ToolbarItem_Activated(object sender, EventArgs e)

@@ -15,32 +15,17 @@ namespace SmartPM.Views.Team
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GlobalTimelineScreen : ContentPage
     {
+
+      
+
         public GlobalTimelineScreen()
         {
             InitializeComponent();
-            ObservableCollection<TempTimelineModel> item = new ObservableCollection<TempTimelineModel>() { 
-            new TempTimelineModel
-            {
-                _date = "5/2/2018",
-                _header = "Project Start",
-                _descrips = "This Project has been started"
-
-            },
-                    new TempTimelineModel
-                    {
-                        _date = "6/2/2018",
-                        _header = "Project phase 1",
-                        _descrips = "phase 1 has been finished"
-                    },
-                    new TempTimelineModel
-                    {
-                        _date = "7/2/2018",
-                        _header = "Project phase 2",
-                        _descrips = "phase 2 has been finished"
-                    }
-                     };
-            listItems.ItemsSource = item;
+           
+ 
         }
+        
+      
 
         /*
         public event EventHandler Refreshing;
