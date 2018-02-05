@@ -25,6 +25,14 @@ namespace SmartPM.Models
         public string firstname { get; set; }
 
         public string lastname { get; set; }
+
+        public string tel { get; set; }
+
+        public string picture { get; set; }
+
+        public string email { get; set; }
+
+
     }
     public partial class AccountModles
     {

@@ -10,26 +10,84 @@
                     <RowDefinition Height="100"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <ScrollView Grid.Row="1" Margin="0,-10,0,0">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="180" />
-                            <RowDefinition Height="1" />
-                            <RowDefinition Height="180" />
-                            <RowDefinition Height="200" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="1" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <BoxView Grid.RowSpan="3" Grid.Column="1" BackgroundColor="#FFE0E0E0">
-                            <BoxView.Margin>
-                                <OnPlatform x:TypeArguments="Thickness" Android="0,16,0,16" iOS="0,15,0,15" WinPhone="0,16,0,16" />
-                            </BoxView.Margin>
-                        </BoxView>
-                    </Grid>
-                </ScrollView>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <BoxView Grid.RowSpan="3" Grid.Column="1" BackgroundColor="#FFE0E0E0">
+                        <BoxView.Margin>
+                            <OnPlatform x:TypeArguments="Thickness" Android="0,16,0,16" iOS="0,15,0,15" WinPhone="0,16,0,16" />
+                        </BoxView.Margin>
+                    </BoxView>
+
+                    <StackLayout Padding=" 10" Orientation="Horizontal" Grid.Row="0"
+                                     Grid.Column="0">
+                        <Label Text="USER ID"/>
+                        <Label Text="{Binding userId}"/>
+                    </StackLayout>
+
+                    <StackLayout Padding=" 10" Orientation="Horizontal" Grid.Row="0"
+                                     Grid.Column="2">
+                        <Label Text="USER NAME :"/>
+                        <Label Text="{Binding username}"/>
+                    </StackLayout>
+
+
+                    <StackLayout Padding=" 10" Orientation="Horizontal" Grid.Row="1"
+                                     Grid.Column="0">
+                        <Label Text="FirstName :"/>
+                        <Label Text="{Binding firstname} "/>
+                    </StackLayout>
+
+                    <StackLayout Padding=" 10" Orientation="Horizontal" Grid.Row="1"
+             Grid.Column="2">
+                        <Label Text="LastName :"/>
+                        <Label Text="{Binding lastname}"/>
+                    </StackLayout>
+
+                    <StackLayout Padding=" 10" Orientation="Horizontal" Grid.Row="2"
+                                     Grid.ColumnSpan="3">
+                        <Label Text="Job Responsible :"/>
+                        <Label Text="{Binding jobResponsible}"/>
+                    </StackLayout>
+
+                    <StackLayout Padding=" 10" Orientation="Horizontal" Grid.Row="3"
+                                     Grid.Column="0">
+                        <Label Text="Group ID :"/>
+                        <Label Text="{Binding groupId}"/>
+                    </StackLayout>
+
+                    <StackLayout Padding=" 10" Orientation="Horizontal" Grid.Row="3"
+                                     Grid.Column="2">
+                        <Label Text="Group Name :"/>
+                        <Label Text="{Binding groupName}"/>
+                    </StackLayout>
+
+                    <StackLayout Padding=" 10" Orientation="Horizontal" Grid.Row="4"
+                                     Grid.Column="0">
+                        <Label Text="Status  :"/>
+                        <Label Text="{Binding status}"/>
+                    </StackLayout>
+
+                    <Image Source="{Binding picture}" Grid.Row="5" Grid.ColumnSpan="3" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center"/>
+
+                    <Button Clicked="Button_click" Text="Edit Profile" BackgroundColor="#F4F4F4" Grid.Row="6" Grid.ColumnSpan="3"/>
+
+                </Grid>
                 <Grid Grid.Row="0" BackgroundColor="#E91E63">
                     <Grid HorizontalOptions="Center">
                         <Grid.ColumnDefinitions>
