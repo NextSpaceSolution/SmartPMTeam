@@ -32,7 +32,9 @@ namespace SmartPM.Views.Team
                     projectManager = "Elon Maskie",
                     projectStart = "32 มกราคม 2561 - 32 มกราคม 2580",
                     projectEnd = "0 Days",
-                    projectCost = "10,000,000,000 Baht"
+                    projectCost = "10,000,000,000 Baht",
+                   backclr = "#4CAF50",
+                     picture = "thumTime"
                 },
                
                   new AProjectList
@@ -41,7 +43,20 @@ namespace SmartPM.Views.Team
                     projectManager = "Elon Maskie",
                     projectStart = "30 กุมภาพันธ์ 2561 - 32 มกราคม 2580",
                     projectEnd = "0 Days",
-                    projectCost = "100,000,000,000,000,000 Baht"
+                    projectCost = "100,000,000,000,000,000 Baht",
+                    backclr = "#c8cd20",
+                     picture = "thumTime"
+                },
+
+                                    new AProjectList
+                {
+                    projectName = "โปรเจค TheEndOfEarth",
+                    projectManager = "Cloee Aisas",
+                    projectStart = "25 ตุลาคม 2561 - 32 มกราคม 2580",
+                    projectEnd = "0 Days",
+                    projectCost = "100,000,000,000,000,000 Baht",
+                    backclr = "#e83030",
+                     picture = "thumTime"
                 }
             };
             projectlist.ItemsSource = list;

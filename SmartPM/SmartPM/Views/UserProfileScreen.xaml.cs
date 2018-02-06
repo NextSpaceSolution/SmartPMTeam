@@ -27,21 +27,22 @@ namespace SmartPM.Views
             AccountModel acc = new AccountModel();
             acc.userId = "ABC123";
             acc.username = "XYZ456";
-            acc.firstname = "Monk";
+            acc.firstname = "Monkey";
             acc.lastname = "D Luffy";
             acc.jobResponsible = "Analisys and Develop and Testing";
             acc.groupId = "99";
             acc.groupName = "TeamDevelop";
             acc.status = "working";
             acc.picture = "userTemp";
-
+            acc.email = "momon@sadaharu.com";
+            acc.tel = "085-555-5555";
             BindingContext = acc;
         }
 
 
         public async void Button_click(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new dummyView());
+            await Navigation.PushAsync(new Edidprofile());
         }
 
 
