@@ -27,13 +27,13 @@ namespace SmartPM.Views
 
             InitializeComponent();
             ulogged = authen.Username;
-
+            /*
             if (InternetCheckConnectivity() == true)
-                GetAccount();
+               // GetAccount();
             else
                 ConnectivityLabel.Text = "เนตหมดหรอ Kruf";
 
-
+    */
 
 
         }
