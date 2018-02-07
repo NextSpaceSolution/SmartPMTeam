@@ -28,7 +28,11 @@ namespace SmartPM.Models
             public object variant { get; set; }
             public object projectStatus { get; set; }
 
-        }
+        public string picture { get; set; }
+
+        public string backclr { get; set; }
+
+    }
 
         public  class AProjectLists
         {

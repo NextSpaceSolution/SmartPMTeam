@@ -17,6 +17,10 @@ namespace SmartPM.Models
         public string variant { get; set; }
         public string projectNumber { get; set; }
         public string team { get; set; }
+
+        public string picture { get; set; }
+
+        public string backclr { get; set; }
     }
 
     public class TaskFunctions

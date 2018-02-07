@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SmartPM.Views.EditAccount"
-             Title="Edit Profile">
+             x:Class="SmartPM.Views.Edidprofile">
     <ContentPage.Content>
         <ScrollView>
 
@@ -30,7 +29,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Source="userTemp" Grid.Row="0" Grid.ColumnSpan="2" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center"/>
+                    <Image Source="{Binding picture}" Grid.Row="0" Grid.ColumnSpan="2" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center"/>
                     <Button Clicked="changepic" Text="Change Picture" BackgroundColor="#F4F4F4" Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="Center" />
 
                     <StackLayout Grid.Row="2" Grid.ColumnSpan="2"  Padding="8">
@@ -45,13 +44,26 @@
 
                     <StackLayout Grid.Row="4" Grid.ColumnSpan="2" Padding="8">
                         <Label Text="FirstName"/>
-                        <Entry x:Name="editfirstname" Text="Monkey" />
+                        <Entry x:Name="editfirstname" Text="{Binding firstname}" FontSize="Micro" />
                     </StackLayout>
 
                     <StackLayout Grid.Row="5" Grid.ColumnSpan="2" Padding="8">
                         <Label Text="LastName"/>
-                        <Entry x:Name="editlastname" Text="D Luffy" />
+                        <Entry x:Name="editlastname" Text="{Binding lastname}"  FontSize="Micro"/>
                     </StackLayout>
+
+                    <StackLayout Grid.Row="6" Grid.ColumnSpan="2" Padding="8">
+                        <Label Text="Telephone"/>
+                        <Entry x:Name="edittel" Text="{Binding tel}" FontSize="Micro" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="7" Grid.ColumnSpan="2" Padding="8">
+                        <Label Text="Email"/>
+                        <Entry x:Name="editEmail" Text="{Binding email}" FontSize="Micro" />
+                    </StackLayout>
+
+
+
                 </Grid>
             </StackLayout>
         </ScrollView>

@@ -28,7 +28,9 @@ namespace SmartPM.Views.Team
                     actualstart = "N/A",
                     actualend = "N/A",
                     variant = "N/A",
-                    team = "employ1"
+                    team = "employ1",
+                    backclr = "#4CAF50",
+                     picture = "thumTime"
 
                 },
                 new TaskFunctionModel
@@ -42,7 +44,9 @@ namespace SmartPM.Views.Team
                     actualstart = "N/A",
                     actualend = "N/A",
                     variant = "N/A",
-                     team = "employ2"
+                     team = "employ2",
+                    backclr = "#4CAF50",
+                     picture = "thumTime"
 
                 },
                 new TaskFunctionModel
@@ -56,7 +60,10 @@ namespace SmartPM.Views.Team
                     actualstart = "N/A",
                     actualend = "N/A",
                     variant = "N/A",
-                     team = "employ3"
+                     team = "employ3",
+                     backclr = "#4CAF50",
+                     picture = "thumTime"
+
 
                 },
                   new TaskFunctionModel
@@ -70,7 +77,9 @@ namespace SmartPM.Views.Team
                     actualstart = "N/A",
                     actualend = "N/A",
                     variant = "N/A",
-                     team = "employ4"
+                     team = "employ4",
+                     backclr = "#4CAF50",
+                     picture = "thumTime"
 
                 },
                     new TaskFunctionModel
@@ -84,7 +93,9 @@ namespace SmartPM.Views.Team
                     actualstart = "N/A",
                     actualend = "N/A",
                     variant = "N/A",
-                     team = "employ5"
+                     team = "employ5",
+                     backclr = "#4CAF50",
+                     picture = "thumTime"
 
                 },
             };

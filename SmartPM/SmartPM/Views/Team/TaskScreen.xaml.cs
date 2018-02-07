@@ -28,8 +28,9 @@ namespace SmartPM.Views
                     actualstart = "01/02/2018",
                     actualend = "01/02/2018",
                     variant = "0",
-                     team = "Employee1,dummyEmployee"
-
+                     team = "Employee1,dummyEmployee",
+                     backclr = "#4CAF50",
+                     picture = "thumTime"
                 },
                 new TaskModel
                 {
@@ -41,7 +42,9 @@ namespace SmartPM.Views
                     actualstart = "03/02/2018",
                     actualend = "05/02/2018",
                     variant = "2",
-                    team = "Employee2,dummyEmployee"
+                    team = "Employee2,dummyEmployee",
+                     backclr = "#4CAF50",
+                     picture = "thumTime"
                 },
                 new TaskModel
                 {
@@ -53,7 +56,9 @@ namespace SmartPM.Views
                     actualstart = "03/02/2018",
                     actualend = "05/02/2018",
                     variant = "2",
-                    team = "Employee3,dummyEmployee"
+                    team = "Employee3,dummyEmployee",
+                    backclr = "#4CAF50",
+                     picture = "thumTime"
                 },
                   new TaskModel
                 {
@@ -65,7 +70,9 @@ namespace SmartPM.Views
                     actualstart = "03/02/2018",
                     actualend = "05/02/2018",
                     variant = "2",
-                    team = "Employee4,dummyEmployee"
+                    team = "Employee4,dummyEmployee",
+                    backclr = "#4CAF50",
+                     picture = "thumTime"
                 },
                     new TaskModel
                 {
@@ -77,7 +84,9 @@ namespace SmartPM.Views
                     actualstart = "03/02/2018",
                     actualend = "05/02/2018",
                     variant = "2",
-                    team = "Employee5,dummyEmployee"
+                    team = "Employee5,dummyEmployee",
+                    backclr = "#c8cd20",
+                    picture = "thumTime"
                 },
             };
             Tasklist.ItemsSource = task;
