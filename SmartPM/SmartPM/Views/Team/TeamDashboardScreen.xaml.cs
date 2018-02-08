@@ -21,6 +21,9 @@ namespace SmartPM.Views.Team
 	public partial class TeamDashboardScreen : ContentPage
 	{
         private AuthenModel userAccount = new AuthenModel();
+        string a;
+        string b;
+        string c;
 		public TeamDashboardScreen ()
 		{
             
@@ -55,7 +58,14 @@ namespace SmartPM.Views.Team
 
         private async void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GlobalTimelineScreen());
+            await Navigation.PushAsync(new TempPage(a,b,c));
+        }
+
+        private async void logout(object sender, EventArgs e)
+        {
+
+            userAccount = null;
+            App.Current.MainPage = new LoginScreen();
         }
     }
 }

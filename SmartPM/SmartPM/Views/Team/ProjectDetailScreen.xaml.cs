@@ -21,7 +21,8 @@ namespace SmartPM.Views.Team
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProjectDetailScreen : ContentPage
 	{
-		public ProjectDetailScreen ()
+        private AuthenModel userAccount = new AuthenModel();
+        public ProjectDetailScreen ()
 		{
 			InitializeComponent ();
 
@@ -47,5 +48,12 @@ namespace SmartPM.Views.Team
             };
             projectlist.ItemsSource = list;
         }
-	}
+
+        private async void logout(object sender, EventArgs e)
+        {
+
+            userAccount = null;
+            App.Current.MainPage = new LoginScreen();
+        }
+    }
 }

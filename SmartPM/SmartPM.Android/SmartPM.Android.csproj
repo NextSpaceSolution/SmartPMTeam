@@ -53,6 +53,15 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>11.0.1-beta3</Version>
     </PackageReference>
+    <PackageReference Include="Prism.Core">
+      <Version>7.0.0.396</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Forms">
+      <Version>7.0.0.396</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Unity.Forms">
+      <Version>7.0.0.396</Version>
+    </PackageReference>
     <PackageReference Include="Xam.Plugin.Connectivity">
       <Version>4.0.0.171-beta</Version>
     </PackageReference>
@@ -167,6 +176,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\addItem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\luffy.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

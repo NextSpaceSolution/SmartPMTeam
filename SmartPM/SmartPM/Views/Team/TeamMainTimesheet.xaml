@@ -4,6 +4,11 @@
              x:Class="SmartPM.Views.Team.TeamMainTimesheet"
              Title="TimesheetOfThisUser"
              BackgroundColor="#F4F4F4">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout" Activated="logout" Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <StackLayout Padding="5"
                      BackgroundColor="White">

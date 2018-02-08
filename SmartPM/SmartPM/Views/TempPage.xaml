@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartPM.Views.TempPage"
+             Title="TotoList">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <ListView 
+            x:Name="listItems"
+            RowHeight="75"
+            Opacity="1"
+            SeparatorVisibility="None">
+                    <ListView.Header>
+                        <StackLayout Padding="20,20,0,20">
+                            <Label Text="NextSpace Pro" FontSize="20" TextColor="Black"></Label>
+                            <Label Text="Timeline" FontSize="15" TextColor="Gray"></Label>
+                        </StackLayout>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnSpacing="0" RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label HorizontalOptions="Center" Text="{Binding _date}" Margin="0,5,0,0" TextColor="#880E4F"/>
+                                    <Label
+                             Grid.Column="2"
+                             Margin="20,2,0,0"
+                             TextColor="#212121"
+                             FontSize="18"
+                             Text="{Binding _header}" />
+                                    <Label
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Margin="20,0,0,0"
+                            TextColor="#607D8B"
+                            FontSize="14"
+                            VerticalOptions="StartAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{Binding _descrips}" />
+
+                                    <BoxView
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            BackgroundColor="#E4B6C3"
+                            HorizontalOptions="Center"       
+                            VerticalOptions="Fill"
+                            WidthRequest="3" />
+                                    <Image Grid.Column="1" Source="Bullet.png" VerticalOptions="Start"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Clicked="Addtodo" Text="Add TempItem" Style="Small" TextColor="Green" BackgroundColor="White" BorderColor="Green"></Button>
+                <Button Clicked="Nexttodo" Text="Add NewItem" Style="Small" TextColor="Green" BackgroundColor="White" BorderColor="Green"></Button>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

@@ -13,7 +13,10 @@ namespace SmartPM.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TaskScreen : ContentPage
 	{
-		public TaskScreen ()
+
+        private AuthenModel userAccount = new AuthenModel();
+
+        public TaskScreen ()
 		{
 			InitializeComponent ();
             List<TaskModel> task = new List<TaskModel>
@@ -95,6 +98,13 @@ namespace SmartPM.Views
         private async void tasklist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             await Navigation.PushAsync(new TaskFunctionScreen());
+        }
+
+        private async void logout(object sender, EventArgs e)
+        {
+
+            userAccount = null;
+            App.Current.MainPage = new LoginScreen();
         }
     }
 }

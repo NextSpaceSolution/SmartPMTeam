@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartPM.Views.PM.PMTeamdetailScreen"
+             Title="Team Member">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit Team"  Activated="Edit_Team" Order="Secondary" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            
+            <StackLayout Orientation="Vertical" Grid.Row="0" Grid.ColumnSpan="2" Padding="8">
+                    <Image Source="{Binding picturemanager}" HorizontalOptions="CenterAndExpand" HeightRequest="100" WidthRequest="100"/>
+                    <Label Text="{Binding managername}" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <StackLayout Grid.Column="0" Grid.Row="1" >
+                    <Image Source="{Binding pictureteam1}" HorizontalOptions="CenterAndExpand" HeightRequest="100" WidthRequest="100"/>
+                    <Label Text="{Binding employeename1}" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+                
+            <StackLayout Grid.Column="1" Grid.Row="1">
+                    <Image Source="{Binding pictureteam2}" HorizontalOptions="CenterAndExpand" HeightRequest="100" WidthRequest="100"/>
+                    <Label Text="{Binding employeename2}" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+
+                <StackLayout Grid.Column="0" Grid.Row="2">
+                    <Image Source="{Binding pictureteam3}" HorizontalOptions="CenterAndExpand" HeightRequest="100" WidthRequest="100"/>
+                    <Label Text="{Binding employeename3}" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1" Grid.Row="2">
+                    <Image Source="{Binding pictureteam4}" HorizontalOptions="CenterAndExpand" HeightRequest="100" WidthRequest="100"/>
+                    <Label Text="{Binding employeename4}" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <StackLayout Grid.Column="0" Grid.Row="3">
+                    <Image Source="{Binding pictureteam5}" HorizontalOptions="CenterAndExpand" HeightRequest="100" WidthRequest="100"/>
+                    <Label Text="{Binding employeename5}" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+
+
+            </Grid>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

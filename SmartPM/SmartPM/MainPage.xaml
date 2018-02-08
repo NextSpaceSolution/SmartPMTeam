@@ -4,12 +4,7 @@
              x:Class="SmartPM.MainPage">
 
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
-
-        <TimePicker x:Name="MaintimePicker"
-                    >
-        </TimePicker>
-
-        <Label x:Name="MainLabel" Text=""></Label>
+        <Button Clicked="next" Text=" next "></Button>
     </StackLayout>
 
 </ContentPage>

@@ -3,12 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartPM.Views.Team.TeamScreen"
              Title="The Dream Team Of Project XXX">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add New Team"  Activated="Add_Newteam" Order="Secondary" />
+        <ToolbarItem Text="Logout" Activated="logout" Order="Secondary"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Padding="5">
             <ListView
                 x:Name="projectlist"
                 SeparatorVisibility="None"
                 HasUnevenRows="True"     
+                ItemTapped="teamlist_ItemTapped"
                 IsPullToRefreshEnabled="True"
                 IsRefreshing="False">
                 <ListView.ItemTemplate>
@@ -29,63 +34,79 @@
                                 </StackLayout>
 
                                 <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
+                                             Margin="15,8,0,5">
                                     <Label 
                                         FontSize="Micro"
-                                        Text="Project Manager : "/>
+                                        Text="Project Manager : " VerticalOptions="Center"/>
+                                    
+                                    <Image Source="{Binding picturemanager}" HeightRequest="50" HorizontalOptions="Center"/>
+
                                     <Label 
                                         FontSize="Micro"
-                                        Text="{Binding managername}"/>
+                                        Text="{Binding managername}" VerticalOptions="Center"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
+                                             Margin="15,8,0,5">
                                     <Label 
                                         FontSize="Micro"
-                                        Text="Person 1 : "/>
+                                        Text="Team Person 1 : " VerticalOptions="Center"/>
+                                    
+                                    <Image Source="{Binding pictureteam1}" HeightRequest="50" HorizontalOptions="Center"/>
+                                    
                                     <Label 
                                         FontSize="Micro"
-                                        Text="{Binding employeename1}"/>
+                                        Text="{Binding employeename1}" VerticalOptions="Center"/>
                                 </StackLayout>
 
                                 <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
+                                             Margin="15,8,0,5">
                                     <Label 
                                         FontSize="Micro"
-                                        Text="Person 2 : "/>
+                                        Text="Team Person 2 : " VerticalOptions="Center"/>
+
+                                    <Image Source="{Binding pictureteam2}" HeightRequest="50" HorizontalOptions="Center"/>
+                                    
                                     <Label 
                                         FontSize="Micro"
-                                        Text="{Binding employeename2}"/>
+                                        Text="{Binding employeename2}" VerticalOptions="Center"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
+                                             Margin="15,8,0,5">
                                     <Label 
                                         FontSize="Micro"
-                                        Text="Person 3 : "/>
+                                        Text="Team Person 3 : " VerticalOptions="Center"/>
+
+                                    <Image Source="{Binding pictureteam3}" HeightRequest="50" HorizontalOptions="Center"/>
+                                    
                                     <Label 
                                         FontSize="Micro"
-                                        Text="{Binding employeename3}"/>
+                                        Text="{Binding employeename3}" VerticalOptions="Center"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
+                                             Margin="15,8,0,5">
                                     <Label 
                                         FontSize="Micro"
-                                        Text="Person 4 : "/>
+                                        Text="Team Person 4 : " VerticalOptions="Center"/>
+
+                                    <Image Source="{Binding pictureteam4}" HeightRequest="50" HorizontalOptions="Center"/>
+                                    
                                     <Label 
                                         FontSize="Micro"
-                                        Text="{Binding employeename4}"/>
+                                        Text="{Binding employeename4}" VerticalOptions="Center"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
+                                             Margin="15,8,0,5">
                                     <Label 
                                         FontSize="Micro"
-                                        Text="Person 5 : "/>
+                                        Text="Team Person 5 : " VerticalOptions="Center"/>
+
+                                    <Image Source="{Binding pictureteam5}" HeightRequest="50" HorizontalOptions="Center"/>
+                                    
                                     <Label 
                                         FontSize="Micro"
-                                        Text="{Binding employeename5}"/>
+                                        Text="{Binding employeename5}" VerticalOptions="Center"/>
                                 </StackLayout>
                                
-
-
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

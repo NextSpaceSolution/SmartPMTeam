@@ -2,6 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartPM.Views.Edidprofile">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout" Activated="logout" Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <ScrollView>
 
@@ -62,7 +67,9 @@
                         <Entry x:Name="editEmail" Text="{Binding email}" FontSize="Micro" />
                     </StackLayout>
 
-
+                    <StackLayout Grid.Row="8" Grid.ColumnSpan="2" Padding="8">
+                        <Button Clicked="submit" Text="Submit" BackgroundColor="#F4F4F4"/>
+                    </StackLayout>
 
                 </Grid>
             </StackLayout>

@@ -16,17 +16,28 @@ namespace SmartPM
 		{
 			InitializeComponent();
             //MainPage = new UserProfileScreen();
-            /*
+            
            MainPage = new NavigationPage(new TeamDashboardScreen())
             {
                 BarBackgroundColor = Color.FromHex("#E91E63"),
                 BarTextColor = Color.White
-            };*/
+            };
+<<<<<<< HEAD
+           
+=======
+>>>>>>> 5ee1fdb56e909cee428a7c90df0d79abdabc275c
             //var page = new PMDashboardScreen();
-            ///NavigationPage.SetHasBackButton(page, false);
+            //NavigationPage.SetHasBackButton(page, false);
             //MainPage = new LoginScreen();
-            MainPage = new GlobalTimelineScreen();
+<<<<<<< HEAD
+            //MainPage = new TeamDashboardScreen();
+            // MainPage = new MainPage();
+=======
+           
+                
+            //MainPage = new NavigationPage( new MainPage());
            // MainPage = new MainPage();
+>>>>>>> 5ee1fdb56e909cee428a7c90df0d79abdabc275c
         }
 
 		protected override void OnStart ()

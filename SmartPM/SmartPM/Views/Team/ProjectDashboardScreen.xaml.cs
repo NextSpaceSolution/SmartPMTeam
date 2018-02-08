@@ -15,12 +15,14 @@ using SmartPM.Views.Admin;
 using Plugin.Connectivity;
 using SmartPM.Views.Team;
 
+
 namespace SmartPM.Views.Team
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProjectDashboardScreen : ContentPage
 	{
-		public ProjectDashboardScreen ()
+        private AuthenModel userAccount = new AuthenModel();
+        public ProjectDashboardScreen ()
 		{
 			InitializeComponent ();
          
@@ -48,7 +50,14 @@ namespace SmartPM.Views.Team
 
         private async void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GlobalTimelineScreen());
+            await Navigation.PushAsync(new TodoTimeline());
+        }
+
+        private async void logout(object sender, EventArgs e)
+        {
+
+            userAccount = null;
+            App.Current.MainPage = new LoginScreen();
         }
     }
 }
