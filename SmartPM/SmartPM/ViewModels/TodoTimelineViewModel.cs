@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Text;
 using SmartPM.Models;
@@ -7,10 +8,12 @@ using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
+using Prism.Mvvm;
+using Prism.Commands;
 
 namespace SmartPM.ViewModels
 {
-    public class GTimelineViewModel : INotifyPropertyChanged
+    class TodoTimelineViewModel : BindableBase
     {
         private ObservableCollection<TempTimelineModel> _items = new ObservableCollection<TempTimelineModel>()
         {
@@ -25,16 +28,17 @@ namespace SmartPM.ViewModels
             {
                 _date = "7/2/2018",
                 _header = "ไปพบลูกค้า",
-                _descrips = "คุยกับขี้"
+                _descrips = "คุยกับใคร"
             }
         };
 
-        public ObservableCollection<TempTimelineModel> items
+        public ObservableCollection<TempTimelineModel> Items
         {
             get { return _items; }
-            set {
+            set
+            {
                 _items = value;
-               // OnPropertyChanged("_items");
+                // OnPropertyChanged("_items");
             }
         }
 
@@ -47,32 +51,17 @@ namespace SmartPM.ViewModels
                     _items.Add(new TempTimelineModel
                     {
                         _date = "7/2/2018",
-                        _header = "ยสตน",
-                        _descrips = "ยิ้มสด"
+                        _header = "นัดประชุม",
+                        _descrips = "เวลา 11.00 เรื่อง เพิ่มเงินเดือน + 1000k"
                     }
                    );
                 });
             }
         }
 
-        public event ProgressChangedEventHandler PropertyChanged;
-
-        event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged
+        public TodoTimelineViewModel()
         {
-            add
-            {
-                ((INotifyPropertyChanged)_items).PropertyChanged += value;
-            }
-
-            remove
-            {
-                ((INotifyPropertyChanged)_items).PropertyChanged -= value;
-            }
         }
-        /*
-protected void OnPropertyChanged(string propertyName)
-{
-   PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-}*/
+
     }
 }

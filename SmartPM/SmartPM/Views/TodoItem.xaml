@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartPM.Views.TodoItem"
+             >
+
+    <ContentPage.Content>
+        <StackLayout Margin="20" VerticalOptions="StartAndExpand">
+            <Label Text="date" />
+            <Entry Text="" x:Name="date" Placeholder="Enter todo item" />
+            <Label Text="header" />
+            <Entry Text="" x:Name="header" Placeholder="Enter todo item" />
+            <Label Text="Notes" />
+            <Entry Text=""  x:Name="descrips" Placeholder="Enter todo item"/>
+     
+            <!--       <Label Text="Done" />
+            <Switch IsToggled="{Binding Path=Done}" /> 
+   
+            
+            <Button Text="Delete" Clicked="OnDeleteActivated" />
+            <Button Text="Cancel" Clicked="OnCancelActivated" />"/>-->
+
+            <Button Text="Save" Clicked="OnSaveActivated" BackgroundColor="Wheat" TextColor="Blue"></Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
