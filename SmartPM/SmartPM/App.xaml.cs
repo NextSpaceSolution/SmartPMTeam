@@ -22,7 +22,7 @@ namespace SmartPM
                 BarBackgroundColor = Color.FromHex("#E91E63"),
                 BarTextColor = Color.White
             };
-<<<<<<< HEAD
+/*<<<<<<< HEAD
            
 =======
 >>>>>>> 5ee1fdb56e909cee428a7c90df0d79abdabc275c
@@ -37,7 +37,7 @@ namespace SmartPM
                 
             //MainPage = new NavigationPage( new MainPage());
            // MainPage = new MainPage();
->>>>>>> 5ee1fdb56e909cee428a7c90df0d79abdabc275c
+>>>>>>> 5ee1fdb56e909cee428a7c90df0d79abdabc275c*/
         }
 
 		protected override void OnStart ()

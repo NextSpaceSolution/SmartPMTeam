@@ -19,6 +19,7 @@ namespace SmartPM.Views.Team
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TeamMainTimesheet : ContentPage
     {
+        private AuthenModel userAccount = new AuthenModel();
         public TeamMainTimesheet()
         {
             InitializeComponent();
@@ -71,6 +72,13 @@ namespace SmartPM.Views.Team
         private async void Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new TeamTimesheetScreen());
+        }
+
+        private async void logout(object sender, EventArgs e)
+        {
+
+            userAccount = null;
+            App.Current.MainPage = new LoginScreen();
         }
     }
     }

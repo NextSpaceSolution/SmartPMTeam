@@ -40,7 +40,7 @@ namespace SmartPM.Views.Team
 
         private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new TaskScreen());
+            await Navigation.PushAsync(new TaskScreen("100021","10","100001"));
         }
 
         private async void TapGestureRecognizer_Tapped_2(object sender, EventArgs e)

@@ -14,19 +14,28 @@ using System.Windows.Input;
 using SmartPM.Views.Admin;
 using Plugin.Connectivity;
 using SmartPM.Views;
-
+using System.IO;
 
 namespace SmartPM.Views.Team
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ProjectList : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ProjectList : ContentPage
+    {
 
         private AuthenModel userAccount = new AuthenModel();
-        public ProjectList ()
-		{
-			InitializeComponent ();
-            List<AProjectList> list = new List<AProjectList>
+
+        public   AProjectList pdata =  new AProjectList();
+        public string uid { get; set; }
+        public string gid { get; set; }
+        public ProjectList(string id ,string groupid)
+        {
+            InitializeComponent();
+
+            uid = id;
+            gid = groupid;
+            RenderAPI(uid,gid);
+
+           /* List<AProjectList> list = new List<AProjectList>
             {
                 new AProjectList
                 {
@@ -38,7 +47,7 @@ namespace SmartPM.Views.Team
                    backclr = "#4CAF50",
                      picture = "thumTime"
                 },
-               
+
                   new AProjectList
                 {
                     projectName = "โปรเจค NextEarth",
@@ -61,8 +70,60 @@ namespace SmartPM.Views.Team
                      picture = "thumTime"
                 }
             };
-            projectlist.ItemsSource = list;
+            projectlist.ItemsSource = list;*/
         }
+
+        public async void RenderAPI(string id, string gid)
+        {
+            string jsonResult = await FilterProject(id, gid);
+            JObject prodata = JObject.Parse(jsonResult);
+
+            pdata.projectName = (string)prodata["projectName"];
+            pdata.projectManager = (string)prodata["projectManager"];
+            pdata.projectStart = (string)prodata["projectStart"];
+            pdata.projectEnd = (string)prodata["projectEnd"];
+            pdata.projectCost = (string)prodata["projectCost"];
+            BindingContext = pdata;
+        }
+
+        public async Task<string> FilterProject(string uid , string gid )
+        {
+            try
+            {
+                // This is the postdata
+                var postData = new List<KeyValuePair<string, string>>(2);
+                postData.Add(new KeyValuePair<string, string>("id", uid));
+                postData.Add(new KeyValuePair<string, string>("groupid", gid));
+
+                HttpContent content = new FormUrlEncodedContent(postData);
+
+                using (var client = new HttpClient())
+                {
+                    client.Timeout = new TimeSpan(0, 0, 15);
+                    using (var response = await client.PostAsync("http://localhost:56086/APIRest2/FilterProject", content))
+                    {
+                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
+                        {
+                            using (var responseContent = response.Content)
+                            {
+                                string result = await responseContent.ReadAsStringAsync();
+                                Console.WriteLine(result);
+                                return result;
+                            }
+                        }
+                        else
+                        {
+                            return "error" + Convert.ToString(response.StatusCode);
+                        }
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                return Convert.ToString(ex);
+            }
+        }
+
 
         private async void projectlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -82,5 +143,6 @@ namespace SmartPM.Views.Team
             userAccount = null;
             App.Current.MainPage = new LoginScreen();
         }
+
     }
 }

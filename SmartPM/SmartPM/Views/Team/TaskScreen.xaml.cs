@@ -1,12 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using SmartPM.Models;
+using System.Net.Http;
 using Xamarin.Forms;
-using SmartPM.Views.Team;
 using Xamarin.Forms.Xaml;
+using System.Net;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using SmartPM.Models;
+using System.Linq;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using SmartPM.Views.Admin;
+using Plugin.Connectivity;
+using SmartPM.Views;
+using SmartPM.Views.Team;
 
 namespace SmartPM.Views
 {
@@ -16,10 +24,21 @@ namespace SmartPM.Views
 
         private AuthenModel userAccount = new AuthenModel();
 
-        public TaskScreen ()
+        public TaskModel tdata = new TaskModel();
+        public string uid { get; set; }
+        public string gid { get; set; }
+
+        public string pid { get; set; }
+        public TaskScreen (string user, string group, string project)
 		{
 			InitializeComponent ();
-            List<TaskModel> task = new List<TaskModel>
+            uid = user;
+            gid = group;
+            pid = project;
+
+            RenderAPI(uid, gid, pid);
+
+            /*List<TaskModel> task = new List<TaskModel>
             {
                 new TaskModel
                 {
@@ -91,10 +110,74 @@ namespace SmartPM.Views
                     backclr = "#c8cd20",
                     picture = "thumTime"
                 },
-            };
-            Tasklist.ItemsSource = task;
+            };*/
+
+           
+            //Tasklist.ItemsSource = task;
 
 		}
+
+        public async void RenderAPI(string uid, string gid, string pid)
+        {
+            string jsonResult = await FilterTask(uid, gid,pid);
+            JObject taskdata = JObject.Parse(jsonResult);
+
+            tdata.taskId = (string)taskdata["taskId"];
+            tdata.projectnumber = (string)taskdata["projectnumber"];
+            tdata.taskname = (string)taskdata["taskname"];
+            tdata.taskstart = (string)taskdata["taskstart"];
+            tdata.taskend = (string)taskdata["taskend"];
+            tdata.actualstart = (string)taskdata["actualstart"];
+            tdata.actualend = (string)taskdata["actualend"];
+            tdata.variant = (string)taskdata["variant"];
+            tdata.team = (string)taskdata["team"];
+            tdata.backclr = (string)taskdata["backclr"];
+            tdata.picture = (string)taskdata["picture"];
+            BindingContext = taskdata;
+        }
+        
+
+        public async Task<string> FilterTask(string uid , string gid,string pid)
+        {
+            try
+            {
+                // This is the Postdata
+                var postData = new List<KeyValuePair<string, string>>(2);
+                postData.Add(new KeyValuePair<string , string>("id",uid));
+                postData.Add(new KeyValuePair<string, string>("group", gid));
+                postData.Add(new KeyValuePair<string, string>("project", pid));
+
+                HttpContent content = new FormUrlEncodedContent(postData);
+
+                using (var client = new HttpClient())
+                {
+                    client.Timeout = new TimeSpan(0, 0, 15);
+                    using (var response = await client.PostAsync("http://localhost:56086/APIRest2/FilterTask", content))
+                    {
+                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
+                        {
+                            using (var responseContent = response.Content)
+                            {
+                                string result = await responseContent.ReadAsStringAsync();
+                                Console.WriteLine(result);
+                                return result;
+                            }
+                        }
+                        else
+                        {
+                            return "error" + Convert.ToString(response.StatusCode);
+                        }
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                return Convert.ToString(ex);
+            }
+        }
+
+
+
         private async void tasklist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             await Navigation.PushAsync(new TaskFunctionScreen());
