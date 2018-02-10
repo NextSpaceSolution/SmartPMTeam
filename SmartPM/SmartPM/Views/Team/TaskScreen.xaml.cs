@@ -180,7 +180,7 @@ namespace SmartPM.Views
 
         private async void tasklist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            await Navigation.PushAsync(new TaskFunctionScreen());
+            await Navigation.PushAsync(new TaskFunctionScreen("100019","10","100002","100004"));
         }
 
         private async void logout(object sender, EventArgs e)
