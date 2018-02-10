@@ -16,6 +16,7 @@ namespace SmartPM.Views
 		public TaskScreen ()
 		{
 			InitializeComponent ();
+            /*
             List<TaskModel> task = new List<TaskModel>
             {
                 new TaskModel
@@ -88,8 +89,8 @@ namespace SmartPM.Views
                     backclr = "#c8cd20",
                     picture = "thumTime"
                 },
-            };
-            Tasklist.ItemsSource = task;
+            };*/
+           
 
 		}
         private async void tasklist_ItemTapped(object sender, ItemTappedEventArgs e)

@@ -21,7 +21,7 @@ namespace SmartPM
 
         async void next(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new TempPage(a,b,c));
+            await Navigation.PushAsync(new TempPage());
         }
 
    

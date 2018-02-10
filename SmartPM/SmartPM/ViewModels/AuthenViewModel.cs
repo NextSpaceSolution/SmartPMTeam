@@ -112,7 +112,7 @@ namespace SmartPM.ViewModels
                 else if (groupid == "10")
                 {
 
-                    var page = new TeamDashboardScreen();
+                    var page = new TeamDashboardScreen(userid, groupid);
                     NavigationPage.SetHasBackButton(page, false);
                     App.Current.MainPage = new NavigationPage(page);
                     /*
@@ -154,7 +154,7 @@ namespace SmartPM.ViewModels
                 using (var client = new HttpClient())
                 {
                     client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIResponseAuthen/Authen", content))
+                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest/Authen", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {
@@ -193,7 +193,7 @@ namespace SmartPM.ViewModels
                 using (var client = new HttpClient())
                 {
                     client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/UserSspms/GetId", content))
+                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest/GetId", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {
@@ -231,7 +231,7 @@ namespace SmartPM.ViewModels
                 using (var client = new HttpClient())
                 {
                     client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/UserSspms/GetGroupId", content))
+                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest/GetGroupId", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {

@@ -7,7 +7,9 @@
     <ContentPage.Content>
         <StackLayout Margin="20" VerticalOptions="StartAndExpand">
             <Label Text="date" />
-            <Entry Text="" x:Name="date" Placeholder="Enter todo item" />
+            <DatePicker x:Name="date_pick">
+                <DatePicker.Format>dd-MM-yyyy</DatePicker.Format>
+            </DatePicker>
             <Label Text="header" />
             <Entry Text="" x:Name="header" Placeholder="Enter todo item" />
             <Label Text="Notes" />

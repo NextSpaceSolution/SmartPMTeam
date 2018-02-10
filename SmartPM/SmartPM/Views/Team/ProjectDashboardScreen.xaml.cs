@@ -13,13 +13,15 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using SmartPM.Views.Admin;
 using Plugin.Connectivity;
-using SmartPM.Views.Team;
+using SmartPM.Views;
 
 namespace SmartPM.Views.Team
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProjectDashboardScreen : ContentPage
 	{
+       
+
 		public ProjectDashboardScreen ()
 		{
 			InitializeComponent ();
@@ -48,7 +50,7 @@ namespace SmartPM.Views.Team
 
         private async void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new TodoTimeline());
+            await Navigation.PushAsync(new TempPage());
         }
     }
 }

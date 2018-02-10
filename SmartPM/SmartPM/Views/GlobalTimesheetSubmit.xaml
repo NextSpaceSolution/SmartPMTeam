@@ -2,139 +2,188 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartPM.Views.GlobalTimesheetSubmit"
-             Title="Confirm to Enroll">
+             Title="Confirm to Record">
     <ContentPage.Content>
+        <ScrollView>
+        <StackLayout>
+                <Label Text="Timesheet Detail" HorizontalOptions="CenterAndExpand" TextColor="#2F2A25" FontSize="Medium" Margin="0,10,0,5"></Label>
+                <StackLayout BackgroundColor="White">
+                    <Label Text="ข้อมูลพนักงาน" HorizontalOptions="StartAndExpand" TextColor="#2F2A25" FontSize="15" Margin="10,20,10,5"></Label>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Text="ชื่อ - สกุล :"  TextColor="#f35e20" FontSize="Small" Grid.Column="0" Grid.Row="0" Margin="10,0,10,0"></Label>
+                        <Label x:Name="Labelfullname" TextColor="#616161" FontSize="Small" Grid.Column="1" Grid.Row="0" Margin="10,0,10,0"></Label>
+                        <Label Text="ตำแหน่ง : " TextColor="#f35e20" FontSize="Small" Grid.Column="0" Grid.Row="1" Margin="10,0,10,0"></Label>
+                        <Label x:Name="Labeljob" TextColor="#616161" FontSize="Small" Grid.Column="1" Grid.Row="1" Margin="10,0,10,20"></Label>
+                    </Grid>
+                </StackLayout>
+                <StackLayout BackgroundColor="White">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-
-        <StackLayout Padding="20">
-            <Label Text="Step 4 Setting Datetime" HorizontalOptions="CenterAndExpand" TextColor="Gold" FontSize="Medium" Margin="0,0,0,20"></Label>
-            <Label Text="EmpName : Emp001" HorizontalOptions="StartAndExpand" TextColor="Green" FontSize="Small" ></Label>
-            <Label Text="EmpPosition : God" HorizontalOptions="StartAndExpand" TextColor="Green" FontSize="Small" ></Label>
-            <StackLayout Orientation="Vertical" Margin="0,0,0,10">
-                <Label Text="Date"  TextColor="Red" FontSize="Small" ></Label>
-                <DatePicker></DatePicker>
-            </StackLayout>
-           
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-
-
-
-                <Label Text="Timesheet Detail"
-                           TextColor="#44687b"
+                        <Label Text="Timesheet Detail"
+                           TextColor="#2F2A25"
+                           Margin="10,20,0,0"
                            Grid.Row="0"
                            Grid.Column="0"
                            Grid.ColumnSpan="2"
                            />
 
-                <Label Text="Project Name : "
-                           TextColor="#44687b"
+                        <Label Text="Project : "
+                           TextColor="#f35e20"
+                           Margin="10,0,10,0"
                            Grid.Row="1"
                            Grid.Column="0"
                            />
 
-                <Label Text="{Binding GprojectName}"
+                        <Label x:Name="LabelProname"
+                           TextColor="#616161"
+                           Margin="10,0,10,0"
                            Grid.Row="1"
                            Grid.Column="1"
                            />
-                <Label Text="Task name: "
-                           TextColor="#44687b"
+
+
+                        <Label Text="Phase : "
+                           TextColor="#f35e20"
+                           Margin="10,0,10,0"
                            Grid.Row="2"
                            Grid.Column="0"
                            />
-
-                <Label Text="{Binding GtaskName}"
+                        <Label    x:Name="Taskname"
+                           TextColor="#616161"
+                           Margin="10,0,10,0"
                            Grid.Row="2"
                            Grid.Column="1"
                            />
-                <Label Text="Job name: "
-                           TextColor="#44687b"
+
+
+                        <Label Text="Job name : "
+                           TextColor="#f35e20"
+                           Margin="10,0,10,0"
                            Grid.Row="3"
                            Grid.Column="0"
                            />
 
-                <Label Text="{Binding GjobName}"
+                        <Label x:Name="LableFunction"
+                            TextColor="#616161"
+                           Margin="10,0,10,20"
                            Grid.Row="3"
                            Grid.Column="1"
                            />
 
-                <Label Text="Launch start"
-                       TextColor="Black"
-                       Grid.Row="4"
+                    </Grid>
+                </StackLayout>
+                <StackLayout BackgroundColor="White">
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Date"
+                       Margin="10,20,10,0"
+                       TextColor="#f35e20"
+                       Grid.Row="0"
                        Grid.Column="0">
-                    
-                </Label>
+                        </Label>
 
-                <Label Text="Launch End"
-                       TextColor="Black"
-                       Grid.Row="4"
-                       Grid.Column="1">
+                        <DatePicker x:Name="DatePick"
+                                    Format="dd-MM-yyyy"
+                                 Margin="10,0,10,0"
+                                VerticalOptions="Center"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                                    Grid.ColumnSpan="2">
+                        </DatePicker>
 
-                </Label>
+                        <Label Text="Launch start"
+                               VerticalOptions="Center"
+                       Margin="10,0,10,0"
+                       TextColor="#f35e20"
+                       Grid.Row="1"
+                               
+                       Grid.Column="0">
 
-                <TimePicker x:Name="timeStart"
-                            Grid.Row="5"
-                            Grid.Column="0">
-                </TimePicker>
+                        </Label>
 
-                <TimePicker x:Name="timeEnd"
-                            Grid.Row="5"
+                        <Label Text="Launch End"
+                           Margin="10,0,10,0"
+                               VerticalOptions="Center"
+                       TextColor="#f35e20"
+                       Grid.Row="2"
+                       Grid.Column="0">
+
+                        </Label>
+
+                        <TimePicker x:Name="timeStart"
+                                    VerticalOptions="Center"
+                             Margin="10,0,10,0"
+                            Grid.Row="1"
+                                     Grid.ColumnSpan="2"
                             Grid.Column="1">
-                </TimePicker>
+                        </TimePicker>
 
+                        <TimePicker x:Name="timeEnd"
+                                 Margin="10,0,10,0"
+                                    VerticalOptions="Center"
+                            Grid.Row="2"
+                                     Grid.ColumnSpan="2"
+                            Grid.Column="1">
+                        </TimePicker>
 
-
-                <Button Clicked="Button_Clicked"
-                            Text="Back previous"
-                            TextColor="#3ABCC7"
-                            BackgroundColor="#FFFFFF"
+                        <Button Clicked="Button_Clicked"
+                            Text="Back "
+                         TextColor="White"
+                            BackgroundColor="#fa9727"
                             BorderColor="#3ABCC7"
                             BorderWidth="0.8"
                             BorderRadius="20"
-                            Grid.Row="6"
+                            Grid.Row="3"
                             Grid.Column="0"
                             StyleClass="Small"/>
 
-                <Button Clicked="Button_Clicked2"
+                        <Button Clicked="Button_Clicked2"
                             Text="Submit"
-                            TextColor="#3ABCC7"
-                            BackgroundColor="#FFFFFF"
+                            TextColor="White"
+                            BackgroundColor="#7ca75f"
                             BorderColor="#3ABCC7"
                             BorderWidth="0.8"
                             BorderRadius="20"
-                            Grid.Row="6"
+                            Grid.Row="3"
                             Grid.Column="1"
+                                 Grid.ColumnSpan="2"
                             StyleClass="Small"/>
-            </Grid>
-        </StackLayout>
-        <!--
-                <Button Clicked="Button_ClickedConfirm"
-                            Text="Submit"
-                            TextColor="#3ABCC7"
-                            BackgroundColor="#FFFFFF"
-                            BorderColor="#3ABCC7"
-                            BorderWidth="0.8"
-                            BorderRadius="20"
-                            Grid.Row="4"
-                            Grid.Column="1"             
-                            StyleClass="Small"/> -->
-     
 
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
+
