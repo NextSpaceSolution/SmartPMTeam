@@ -12,57 +12,41 @@ namespace SmartPM
 {
 	public partial class App : Application
 	{
-       
-        public App ()
-		{
-			InitializeComponent();
+
+        public App()
+        {
+            InitializeComponent();
             //MainPage = new UserProfileScreen();
             /*
            MainPage = new NavigationPage(new TeamDashboardScreen())
             {
                 BarBackgroundColor = Color.FromHex("#E91E63"),
                 BarTextColor = Color.White
-<<<<<<< HEAD
             };*/
             //var page = new PMDashboardScreen();
             ///NavigationPage.SetHasBackButton(page, false);
 
 
             MainPage = new NavigationPage(new GlobalTimesheet());
-=======
-            };
-/*<<<<<<< HEAD
-           
-=======
->>>>>>> 5ee1fdb56e909cee428a7c90df0d79abdabc275c
-            //var page = new PMDashboardScreen();
-            //NavigationPage.SetHasBackButton(page, false);
-            //MainPage = new LoginScreen();
-<<<<<<< HEAD
-            //MainPage = new TeamDashboardScreen();
-            // MainPage = new MainPage();
-=======
->>>>>>> b444f0d26c7f2629ac7b5d7aab7c14cd39b58ddb
-           
-                
+
+
             //MainPage = new NavigationPage( new MainPage());
-           // MainPage = new MainPage();
->>>>>>> 5ee1fdb56e909cee428a7c90df0d79abdabc275c*/
+            // MainPage = new MainPage();
         }
 
-		protected override void OnStart ()
-		{
-			// Handle when your app starts
-		}
+        protected override void OnStart()
+        {
+            // Handle when your app starts
+        }
 
-		protected override void OnSleep ()
-		{
-			// Handle when your app sleeps
-		}
+        protected override void OnSleep()
+        {
+            // Handle when your app sleeps
+        }
 
-		protected override void OnResume ()
-		{
-			// Handle when your app resumes
-		}
-	}
+        protected override void OnResume()
+        {
+            // Handle when your app resumes
+        }
+    }
 }

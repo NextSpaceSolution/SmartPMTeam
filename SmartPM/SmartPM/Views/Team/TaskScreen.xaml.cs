@@ -32,10 +32,10 @@ namespace SmartPM.Views
         public TaskScreen (string user, string group, string project)
 		{
 			InitializeComponent ();
-<<<<<<< HEAD
+
             /*
             List<TaskModel> task = new List<TaskModel>
-=======
+
             uid = user;
             gid = group;
             pid = project;
@@ -116,14 +116,9 @@ namespace SmartPM.Views
                     picture = "thumTime"
                 },
             };*/
-<<<<<<< HEAD
-           
-=======
 
            
             //Tasklist.ItemsSource = task;
->>>>>>> b444f0d26c7f2629ac7b5d7aab7c14cd39b58ddb
-
 		}
 
         public async void RenderAPI(string uid, string gid, string pid)

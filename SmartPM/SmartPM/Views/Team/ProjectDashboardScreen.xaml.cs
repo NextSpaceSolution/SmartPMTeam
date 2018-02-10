@@ -21,14 +21,13 @@ namespace SmartPM.Views.Team
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProjectDashboardScreen : ContentPage
 	{
-<<<<<<< HEAD
+
        
 
-		public ProjectDashboardScreen ()
-=======
+
         private AuthenModel userAccount = new AuthenModel();
         public ProjectDashboardScreen ()
->>>>>>> b444f0d26c7f2629ac7b5d7aab7c14cd39b58ddb
+
 		{
 			InitializeComponent ();
          

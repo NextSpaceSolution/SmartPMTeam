@@ -145,14 +145,12 @@ namespace SmartPM.Views.Team
 
         }
 
-<<<<<<< HEAD
-=======
+
         private async void logout(object sender, EventArgs e)
         {
 
             userAccount = null;
             App.Current.MainPage = new LoginScreen();
         }
->>>>>>> b444f0d26c7f2629ac7b5d7aab7c14cd39b58ddb
     }
 }
