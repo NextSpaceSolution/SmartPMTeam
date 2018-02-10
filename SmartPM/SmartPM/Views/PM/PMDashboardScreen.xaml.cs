@@ -49,5 +49,14 @@ namespace SmartPM.Views.PM
         {
             await Navigation.PushAsync(new dummyView());
         }
+
+        private async void logout(object sender, EventArgs e)
+        {
+
+            userAccount = null;
+            App.Current.MainPage = new LoginScreen();
+        }
+
+        
     }
 }

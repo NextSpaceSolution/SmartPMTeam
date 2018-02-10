@@ -3,6 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartPM.Views.Team.ProjectDashboardScreen"
              Title="PROJECT Dashboard">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout" Activated="logout" Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <StackLayout>
             <Grid>

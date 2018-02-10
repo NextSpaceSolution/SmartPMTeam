@@ -20,6 +20,8 @@ namespace SmartPM.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserProfileScreen : ContentPage
     {
+
+        private AuthenModel userAccount = new AuthenModel();
         public UserProfileScreen()
         {
             InitializeComponent();
@@ -45,6 +47,12 @@ namespace SmartPM.Views
             await Navigation.PushAsync(new Edidprofile());
         }
 
+        private async void logout(object sender, EventArgs e)
+        {
+
+            userAccount = null;
+            App.Current.MainPage = new LoginScreen();
+        }
 
     }
 }

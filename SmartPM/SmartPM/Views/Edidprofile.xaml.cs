@@ -19,7 +19,8 @@ namespace SmartPM.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Edidprofile : ContentPage
 	{
-		public Edidprofile ()
+        private AuthenModel userAccount = new AuthenModel();
+        public Edidprofile ()
 		{
 			InitializeComponent ();
 
@@ -44,6 +45,18 @@ namespace SmartPM.Views
         public async void changepic(object sender, EventArgs e)
         {
 
+        }
+
+        public async void submit(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void logout(object sender, EventArgs e)
+        {
+
+            userAccount = null;
+            App.Current.MainPage = new LoginScreen();
         }
     }
 }

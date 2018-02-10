@@ -8,10 +8,18 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Logout" Activated="ToolbarItem_Activated" Order="Secondary"/>
     </ContentPage.ToolbarItems>
+    
+    
     <ContentPage.Content>
-        <StackLayout Padding="10">
+        <StackLayout >
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -26,10 +34,10 @@
                              Grid.Row="0"
                              Grid.Column="0"
                              Padding="5,20,0,5"
-                             BackgroundColor="White">
+                             BackgroundColor="#546E7A">
                     <Image Source="addnew.png"/>
                     <Label 
-                        TextColor="#44687b"
+                        TextColor="White"
                         Text="สร้างผู้ใช้งานใหม่" HorizontalOptions="Center"/>
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
@@ -39,10 +47,10 @@
                              Grid.Row="0"
                              Grid.Column="1"
                              Padding="5,20,0,5"
-                             BackgroundColor="White">
+                             BackgroundColor="#6A1B9A">
                     <Image Source="editnew"/>
                     <Label 
-                        TextColor="#44687b"
+                        TextColor="White"
                         Text="แก้ไขข้อมูลผู้ใช้งาน" HorizontalOptions="Center"/>
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
@@ -53,9 +61,10 @@
                              Grid.Row="1"
                              Grid.Column="0"
                              Padding="5,20,0,5"
-                             BackgroundColor="White">
+                             BackgroundColor="#00695C">
                     <Image Source="list.png"/>
-                    <Label Text="ข้อมูลผู้ใช้งาน" HorizontalOptions="Center"/>
+                    <Label Text="ข้อมูลผู้ใช้งาน" HorizontalOptions="Center"
+                           TextColor="White"/>
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
                     </Grid.GestureRecognizers>
@@ -65,16 +74,29 @@
                              Grid.Row="1"
                              Grid.Column="1"       
                              Padding="5,20,0,5"
-                             BackgroundColor="White">
+                             BackgroundColor="#512DA8">
                     <Image Source="plist.png"/>
                     <Label 
-                        TextColor="#44687b"
+                        TextColor="White"
                         Text="รายการโครงการ" HorizontalOptions="Center"/>
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
                     </Grid.GestureRecognizers>
                 </StackLayout>
-
+                </Grid>
+                <Grid Grid.Row="0" BackgroundColor="#E91E63">
+                    <Grid HorizontalOptions="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="userTemp" HeightRequest="30" Aspect="AspectFit" Margin="0,10,0,10"></Image>
+                        <StackLayout Grid.Column="1" VerticalOptions="Center">
+                            <Label Text="Monkey D Grapp" FontSize="20" TextColor="White" Style="{DynamicResource LabelStyle}"></Label>
+                            <Label Text="พลโทรกองทัพเรือ" FontSize="10" Margin="0,-10,0,0" TextColor="#ffe6e9" Style="{DynamicResource LabelStyle}"></Label>
+                        </StackLayout>
+                    </Grid>
+                </Grid>
 
             </Grid>
         </StackLayout>

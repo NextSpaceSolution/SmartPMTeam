@@ -13,6 +13,12 @@ namespace SmartPM.Models
         public string employeename3 { get; set; }
         public string employeename4 { get; set; }
         public string employeename5 { get; set; }
+        public string picturemanager { get; set; }
+        public string pictureteam1 { get; set; }
+        public string pictureteam2 { get; set; }
+        public string pictureteam3 { get; set; }
+        public string pictureteam4 { get; set; }
+        public string pictureteam5 { get; set; }
 
     }
     public class TeamModelss
