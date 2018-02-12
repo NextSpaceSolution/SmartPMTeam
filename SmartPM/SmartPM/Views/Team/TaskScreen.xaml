@@ -46,11 +46,14 @@
                                         Text="{Binding taskname}"/>
 
                                         </StackLayout>
+                                        
+                                        
+                                        <StackLayout Orientation="Horizontal">
                                         <StackLayout Orientation="Horizontal"
                                              Margin="15,5,0,0">
                                             <Label
                                         FontSize="Micro"
-                                        Text="Task Start : "/>
+                                        Text="วันที่เริ่มต้นทาร์ค ถึง วันที่สิ้นสุดทาร์ค : "/>
                                             <Label 
                                      FontSize="Micro"
                                         Text="{Binding taskstart}"/>
@@ -60,17 +63,19 @@
                                              Margin="15,5,0,0">
                                             <Label
                                         FontSize="Micro"
-                                        Text="Task End : "/>
-                                            <Label 
-                                        FontSize="Micro"
+                                        
+                                        
                                         Text="{Binding taskend}"/>
 
                                         </StackLayout>
-                                        <StackLayout Orientation="Horizontal"
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal"
                                              Margin="15,5,0,0">
                                             <Label
                                         FontSize="Micro"
-                                        Text="Ac Start : "/>
+                                        Text="วันที่เริ่มต้นจริง ถึง วันที่สิ้นสุดจริง: "/>
                                             <Label 
                                         FontSize="Micro"
                                         Text="{Binding actualstart}"/>
@@ -78,15 +83,14 @@
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal"
                                              Margin="15,5,0,0">
-                                            <Label
-                                       FontSize="Micro"
-                                        Text="Ac End : "/>
                                             <Label 
                                        FontSize="Micro"
                                         Text="{Binding actualend}"/>
 
                                         </StackLayout>
-                                        <StackLayout Orientation="Horizontal"
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal"
                                              Margin="15,5,0,0">
                                             <Label
                                         FontSize="Micro"

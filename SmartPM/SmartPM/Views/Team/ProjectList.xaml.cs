@@ -24,48 +24,42 @@ namespace SmartPM.Views.Team
 
         private AuthenModel userAccount = new AuthenModel();
 
-        public   AProjectList pdata =  new AProjectList();
+        public   List<AProjectList> pdata =  new List<AProjectList>();
         public string uid { get; set; }
         public string gid { get; set; }
+        public string picture { get; set; }
+        public string backclr { get; set; }
         public ProjectList(string id ,string groupid)
         {
             InitializeComponent();
 
             uid = id;
             gid = groupid;
-            RenderAPI(uid,gid);
+            RenderProject();
 
-           /* List<AProjectList> list = new List<AProjectList>
+           /*List<AProjectList> list = new List<AProjectList>
             {
                 new AProjectList
                 {
+                    projectNumber = "P100001",
                     projectName = "โปรเจค SpacXcross",
                     projectManager = "Elon Maskie",
                     projectStart = "32 มกราคม 2561 - 32 มกราคม 2580",
                     projectEnd = "0 Days",
                     projectCost = "10,000,000,000 Baht",
+                    customerName = "Adobe",
                    backclr = "#4CAF50",
-                     picture = "thumTime"
-                },
-
-                  new AProjectList
-                {
-                    projectName = "โปรเจค NextEarth",
-                    projectManager = "Elon Maskie",
-                    projectStart = "30 กุมภาพันธ์ 2561 - 32 มกราคม 2580",
-                    projectEnd = "0 Days",
-                    projectCost = "100,000,000,000,000,000 Baht",
-                    backclr = "#c8cd20",
                      picture = "thumTime"
                 },
 
                                     new AProjectList
                 {
-                    projectName = "โปรเจค TheEndOfEarth",
+                    projectNumber = "P100003",
                     projectManager = "Cloee Aisas",
                     projectStart = "25 ตุลาคม 2561 - 32 มกราคม 2580",
                     projectEnd = "0 Days",
                     projectCost = "100,000,000,000,000,000 Baht",
+                    customerName = "GooGle",
                     backclr = "#e83030",
                      picture = "thumTime"
                 }
@@ -73,34 +67,30 @@ namespace SmartPM.Views.Team
             projectlist.ItemsSource = list;*/
         }
 
-        public async void RenderAPI(string id, string gid)
+        public async void RenderProject()
         {
-            string jsonResult = await FilterProject(id, gid);
-            JObject prodata = JObject.Parse(jsonResult);
+            
+            var list = new List<AProjectList>();
+            var jsonResult = await getProject();
+            list = JsonConvert.DeserializeObject<List<AProjectList>>(jsonResult);
+            projectlist.ItemsSource = list;
+            this.IsBusy = false;
 
-            pdata.projectName = (string)prodata["projectName"];
-            pdata.projectManager = (string)prodata["projectManager"];
-            pdata.projectStart = (string)prodata["projectStart"];
-            pdata.projectEnd = (string)prodata["projectEnd"];
-            pdata.projectCost = (string)prodata["projectCost"];
-            BindingContext = pdata;
+
+
         }
-
-        public async Task<string> FilterProject(string uid , string gid )
+        public async Task<string> getProject()
         {
             try
             {
                 // This is the postdata
                 var postData = new List<KeyValuePair<string, string>>(2);
-                postData.Add(new KeyValuePair<string, string>("id", uid));
-                postData.Add(new KeyValuePair<string, string>("groupid", gid));
-
                 HttpContent content = new FormUrlEncodedContent(postData);
 
                 using (var client = new HttpClient())
                 {
                     client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://localhost:56086/APIRest2/FilterProject", content))
+                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/getProject", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {
@@ -113,7 +103,7 @@ namespace SmartPM.Views.Team
                         }
                         else
                         {
-                            return "error" + Convert.ToString(response.StatusCode);
+                            return "error " + Convert.ToString(response.StatusCode);
                         }
                     }
                 }
@@ -122,17 +112,19 @@ namespace SmartPM.Views.Team
             {
                 return Convert.ToString(ex);
             }
-        }
 
+        }
 
         private async void projectlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
 
             var Projectlists = e.Item as AProjectList;
-            string id = Projectlists.projectName;
+            string id = Projectlists.projectNumber;
+
+            
 
 
-            var page = new ProjectDashboardScreen();
+            var page = new ProjectDashboardScreen(id);
             //App.Current.MainPage = new NavigationPage(page);
             await Navigation.PushAsync(page);
         }

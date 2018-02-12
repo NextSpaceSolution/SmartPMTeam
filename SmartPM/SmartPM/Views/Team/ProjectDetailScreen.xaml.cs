@@ -22,7 +22,7 @@ namespace SmartPM.Views.Team
 	public partial class ProjectDetailScreen : ContentPage
 	{
         private AuthenModel userAccount = new AuthenModel();
-        public ProjectDetailScreen ()
+        public ProjectDetailScreen (string id)
 		{
 			InitializeComponent ();
 

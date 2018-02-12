@@ -36,9 +36,9 @@ namespace SmartPM.Views
             gid = group;
             pid = project;
 
-            RenderAPI(uid, gid, pid);
+            //RenderAPI(uid, gid, pid);
 
-            /*List<TaskModel> task = new List<TaskModel>
+            List<TaskModel> task = new List<TaskModel>
             {
                 new TaskModel
                 {
@@ -58,7 +58,7 @@ namespace SmartPM.Views
                 {
                     taskId = "t002",
                     projectnumber = "p001",
-                    taskname = "System Analysis And Design",
+                    taskname = "System Analysis ",
                     taskstart = "02/02/2018",
                     taskend = "05/02/2018",
                     actualstart = "03/02/2018",
@@ -110,10 +110,10 @@ namespace SmartPM.Views
                     backclr = "#c8cd20",
                     picture = "thumTime"
                 },
-            };*/
+            };
 
            
-            //Tasklist.ItemsSource = task;
+            Tasklist.ItemsSource = task;
 
 		}
 
@@ -180,6 +180,9 @@ namespace SmartPM.Views
 
         private async void tasklist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+
+            var tasklists = e.Item as TaskModel;
+            string id = tasklists.taskId;
             await Navigation.PushAsync(new TaskFunctionScreen("100019","10","100002","100004"));
         }
 

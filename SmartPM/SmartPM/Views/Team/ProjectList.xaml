@@ -49,6 +49,16 @@
                                         Text="{Binding projectManager}"/>
                                 </StackLayout>
 
+                                    <StackLayout Orientation="Horizontal"
+                                             Margin="15,0,0,2">
+                                        <Label 
+                                        FontSize="Micro"
+                                        Text="Customer : "/>
+                                        <Label 
+                                        FontSize="Micro"
+                                        Text="{Binding customerName}"/>
+                                    </StackLayout>
+
                                     <Label 
                                         Margin="15,0,0,2"
                                         FontSize="Micro"
@@ -67,20 +77,7 @@
                                         Text="{Binding projectCost}"/>
                                     </StackLayout>
 
-                                    <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,15"
-                                                 >
-                                        <Label 
-                                            FontAttributes="Italic"
-                                        FontSize="Micro"
-                                            TextColor="Green"
-                                        Text="เกินเวลา   "/>
-                                        <Label 
-                                             FontAttributes="Italic"
-                                            TextColor="Green"
-                                        FontSize="Micro"
-                                        Text="{Binding projectEnd}"/>
-                                    </StackLayout>
+
                                 
                                 </StackLayout>
                                 <StackLayout Grid.Row="0" Grid.Column="0" BackgroundColor="{Binding backclr}" Margin="2" >

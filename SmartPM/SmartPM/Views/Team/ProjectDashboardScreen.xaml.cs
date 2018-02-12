@@ -22,20 +22,30 @@ namespace SmartPM.Views.Team
 	public partial class ProjectDashboardScreen : ContentPage
 	{
         private AuthenModel userAccount = new AuthenModel();
-        public ProjectDashboardScreen ()
+
+        AProjectList pdata = new AProjectList();
+        public ProjectDashboardScreen (string id)
 		{
 			InitializeComponent ();
-         
+            pdata.projectNumber = id;
         }
+
+
+
 
         private async void ToolbarItem_Activated(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new LoginScreen());
         }
 
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped(object sender, ItemTappedEventArgs e)
         {
-            await Navigation.PushAsync(new ProjectDetailScreen());
+
+            var Projectlists = e.Item as AProjectList;
+            string id = Projectlists.projectNumber;
+            await Navigation.PushAsync(new ProjectDetailScreen(id));
+
+
         }
 
         private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)

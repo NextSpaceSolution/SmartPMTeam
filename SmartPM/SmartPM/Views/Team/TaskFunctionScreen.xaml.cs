@@ -35,7 +35,7 @@ namespace SmartPM.Views.Team
             pid = project;
             tid = task;
 
-            RenderAPI(uid, gid, pid, task);
+            //RenderAPI(uid, gid, pid, task);
 
             /*List<TaskFunctionModel> taskfunc = new List<TaskFunctionModel>
             {

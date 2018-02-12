@@ -15,13 +15,13 @@ namespace SmartPM
 		public App ()
 		{
 			InitializeComponent();
-            //MainPage = new UserProfileScreen();
+            MainPage = new GlobalTimesheetSubmit("92","10","20");
             
-           MainPage = new NavigationPage(new TeamDashboardScreen())
+           /*MainPage = new NavigationPage(new TeamDashboardScreen())
             {
                 BarBackgroundColor = Color.FromHex("#E91E63"),
                 BarTextColor = Color.White
-            };
+            };*/
 /*<<<<<<< HEAD
            
 =======

@@ -43,7 +43,7 @@ namespace SmartPM.Views.Team
             {
                 BarBackgroundColor = Color.FromHex("#546E7A")
             };*/
-            await Navigation.PushAsync(new ProjectList("100021", "10"));
+            await Navigation.PushAsync(new ProjectList("100017", "50"));
         }
 
         private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
