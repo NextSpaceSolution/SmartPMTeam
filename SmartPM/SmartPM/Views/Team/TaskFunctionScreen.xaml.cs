@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SmartPM.Models;
 using Xamarin.Forms;
@@ -17,7 +18,7 @@ namespace SmartPM.Views.Team
 	{
         private AuthenModel userAccount = new AuthenModel();
 
-        public TaskFunctionModel fdata = new TaskFunctionModel();
+        public List<TaskFunctionModel> fdata = new List<TaskFunctionModel>();
         public string uid { get; set; }
         public string gid { get; set; }
         public string pid { get; set; }
@@ -35,7 +36,7 @@ namespace SmartPM.Views.Team
             pid = project;
             tid = task;
 
-            //RenderAPI(uid, gid, pid, task);
+            RenderAPI(uid, gid, pid, tid);
 
             /*List<TaskFunctionModel> taskfunc = new List<TaskFunctionModel>
             {
@@ -133,22 +134,12 @@ namespace SmartPM.Views.Team
 
         public async void RenderAPI(string uid, string gid, string pid , string tid)
         {
-            string jsonResult = await FilterFunction(uid, gid, pid,tid);
-            JObject functiondata = JObject.Parse(jsonResult);
+            var list = new List<TaskFunctionModel>();
+            var jsonResult = await FilterFunction(uid, gid, pid, tid);
+            list = JsonConvert.DeserializeObject<List<TaskFunctionModel>>(jsonResult);
+            Taskflist.ItemsSource = list;
+            this.IsBusy = false;
 
-            fdata.taskId = (string)functiondata["taskId"];
-            fdata.projectNumber = (string)functiondata["projectnumber"];
-            fdata.functionId = (string)functiondata["functionId"];
-            fdata.functionName = (string)functiondata["functionName"];
-            fdata.functionstart = (string)functiondata["functionstart"];
-            fdata.functionend = (string)functiondata["functionend"];
-            fdata.actualstart = (string)functiondata["actualstart"];
-            fdata.actualend = (string)functiondata["actualend"];
-            fdata.variant = (string)functiondata["variant"];
-            fdata.team = (string)functiondata["team"];
-            fdata.backclr = (string)functiondata["backclr"];
-            fdata.picture = (string)functiondata["picture"];
-            BindingContext = fdata;
         }
 
 
@@ -158,17 +149,17 @@ namespace SmartPM.Views.Team
             {
                 // This is the Postdata
                 var postData = new List<KeyValuePair<string, string>>(2);
-                postData.Add(new KeyValuePair<string, string>("id", uid));
-                postData.Add(new KeyValuePair<string, string>("group", gid));
-                postData.Add(new KeyValuePair<string, string>("project", pid));
-                postData.Add(new KeyValuePair<string, string>("task", tid));
+                postData.Add(new KeyValuePair<string, string>("gid", gid));
+                postData.Add(new KeyValuePair<string, string>("uid", uid));
+                postData.Add(new KeyValuePair<string, string>("pid", pid));
+                postData.Add(new KeyValuePair<string, string>("tid", tid));
 
                 HttpContent content = new FormUrlEncodedContent(postData);
 
                 using (var client = new HttpClient())
                 {
                     client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://localhost:56086/APIRest2/FilterFunction", content))
+                    using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest2/FilterFunction", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {

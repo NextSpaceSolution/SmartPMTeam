@@ -20,7 +20,9 @@ using System.Collections.ObjectModel;
 namespace SmartPM.Views.Team
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TeamDashboardScreen : ContentPage
+
+
+    public partial class TeamDashboardScreen : ContentPage
 	{
 
         string a;
@@ -149,7 +151,7 @@ namespace SmartPM.Views.Team
         private async void logout(object sender, EventArgs e)
         {
 
-            userAccount = null;
+            
             App.Current.MainPage = new LoginScreen();
         }
     }

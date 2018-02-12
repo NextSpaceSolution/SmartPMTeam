@@ -35,7 +35,7 @@ namespace SmartPM.Views.Team
 
             uid = id;
             gid = groupid;
-            RenderProject();
+            RenderProject(uid , gid);
 
            /*List<AProjectList> list = new List<AProjectList>
             {
@@ -67,11 +67,11 @@ namespace SmartPM.Views.Team
             projectlist.ItemsSource = list;*/
         }
 
-        public async void RenderProject()
+        public async void RenderProject(string uid , string gid)
         {
             
             var list = new List<AProjectList>();
-            var jsonResult = await getProject();
+            var jsonResult = await FilterProject(uid , gid);
             list = JsonConvert.DeserializeObject<List<AProjectList>>(jsonResult);
             projectlist.ItemsSource = list;
             this.IsBusy = false;
@@ -79,18 +79,20 @@ namespace SmartPM.Views.Team
 
 
         }
-        public async Task<string> getProject()
+        public async Task<string> FilterProject(string uid ,string  gid)
         {
             try
             {
                 // This is the postdata
                 var postData = new List<KeyValuePair<string, string>>(2);
+                postData.Add(new KeyValuePair<string, string>("uid", uid));
+                postData.Add(new KeyValuePair<string, string>("gid", gid));
                 HttpContent content = new FormUrlEncodedContent(postData);
 
                 using (var client = new HttpClient())
                 {
                     client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/getProject", content))
+                    using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest2/FilterProject", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {
@@ -124,7 +126,7 @@ namespace SmartPM.Views.Team
             
 
 
-            var page = new ProjectDashboardScreen(id);
+            var page = new ProjectDashboardScreen(uid,gid,id);
             //App.Current.MainPage = new NavigationPage(page);
             await Navigation.PushAsync(page);
         }

@@ -12,38 +12,29 @@ namespace SmartPM
 {
 	public partial class App : Application
 	{
-<<<<<<< HEAD
-		public App ()
-		{
-			InitializeComponent();
-            MainPage = new GlobalTimesheetSubmit("92","10","20");
-            
-           /*MainPage = new NavigationPage(new TeamDashboardScreen())
-=======
+
+
 
         public App()
         {
             InitializeComponent();
             //MainPage = new UserProfileScreen();
-            /*
-           MainPage = new NavigationPage(new TeamDashboardScreen())
->>>>>>> 7f306aa6df9585444b9a1188b9b6d8fb299b2fd9
+            
+           MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"))
+
             {
                 BarBackgroundColor = Color.FromHex("#E91E63"),
                 BarTextColor = Color.White
-            };*/
-<<<<<<< HEAD
-/*<<<<<<< HEAD
+            };
+
+
            
-=======
->>>>>>> 5ee1fdb56e909cee428a7c90df0d79abdabc275c
-=======
->>>>>>> 7f306aa6df9585444b9a1188b9b6d8fb299b2fd9
+
             //var page = new PMDashboardScreen();
             ///NavigationPage.SetHasBackButton(page, false);
 
 
-            MainPage = new NavigationPage(new GlobalTimesheet());
+           // MainPage = new NavigationPage(new GlobalTimesheet());
 
 
             //MainPage = new NavigationPage( new MainPage());
