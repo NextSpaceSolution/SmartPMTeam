@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace SmartPM.Views
+namespace SmartPM
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class GlobalTimesheet4 : ContentPage
+	public partial class TestTableVeiw : ContentPage
 	{
-		public GlobalTimesheet4 ()
+		public TestTableVeiw ()
 		{
 			InitializeComponent ();
 		}

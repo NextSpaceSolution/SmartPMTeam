@@ -25,7 +25,8 @@ namespace SmartPM.Views.Admin
 		{
 			InitializeComponent ();
 
-            List<AProjectList> list = new List<AProjectList>
+           // List<AProjectList> list = new List<AProjectList>();
+            /*
             {
                 new AProjectList
                 {
@@ -67,8 +68,9 @@ namespace SmartPM.Views.Admin
                     projectEnd = "dummyEndDate",
                     projectCost = "10 Baht"
                 }
-            };
-            projectlist.ItemsSource = list;
+            };*/
+            // projectlist.ItemsSource = list;
+            RenderProject();
         }
         private async void projectlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -84,12 +86,12 @@ namespace SmartPM.Views.Admin
 
         public async void RenderProject()
         {
-            /*
+            
             var list = new List<AProjectList>();
             var jsonResult = await getProject();
             list = JsonConvert.DeserializeObject<List<AProjectList>>(jsonResult);
             projectlist.ItemsSource = list;
-            this.IsBusy = false;*/
+            this.IsBusy = false;
             
 
 
@@ -105,7 +107,7 @@ namespace SmartPM.Views.Admin
                 using (var client = new HttpClient())
                 {
                     client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/ProjectManagement/getProject", content))
+                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/getProject", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {

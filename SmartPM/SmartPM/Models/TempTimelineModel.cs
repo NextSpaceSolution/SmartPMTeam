@@ -7,9 +7,11 @@ namespace SmartPM.Models
     public class TempTimelineModel
     {
 
-        public string _date { get; set; }
-        public string _header { get; set; }
-        public string _descrips { get; set; }
+        public string TimelineId { get; set; }
+        public string ProjectNumber { get; set; }
+        public DateTime TimelineDate { get; set; }
+        public string Header { get; set; }
+        public string Note { get; set; }
        // public bool IsLast { get; set; }
     }
 }

@@ -31,13 +31,13 @@
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
 
-                                    <Label HorizontalOptions="Center" Text="{Binding _date}" Margin="0,5,0,0" TextColor="#880E4F"/>
+                                    <Label HorizontalOptions="Center" Text="{Binding TimelineDate, StringFormat='{0: dd-MM-yyyy}'}" Margin="10,5,0,0" TextColor="#880E4F"/>
                                     <Label
                              Grid.Column="2"
                              Margin="20,2,0,0"
                              TextColor="#212121"
                              FontSize="18"
-                             Text="{Binding _header}" />
+                             Text="{Binding Header}" />
                                     <Label
                             Grid.Row="1"
                             Grid.Column="2"
@@ -46,7 +46,7 @@
                             FontSize="14"
                             VerticalOptions="StartAndExpand"
                             HorizontalOptions="FillAndExpand"
-                            Text="{Binding _descrips}" />
+                            Text="{Binding Note}" />
 
                                     <BoxView
                             Grid.RowSpan="2"
@@ -61,9 +61,6 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button Clicked="Addtodo" Text="Add TempItem" Style="Small" TextColor="Green" BackgroundColor="White" BorderColor="Green"></Button>
-                <Button Clicked="Nexttodo" Text="Add NewItem" Style="Small" TextColor="Green" BackgroundColor="White" BorderColor="Green"></Button>
-
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

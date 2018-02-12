@@ -13,7 +13,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using SmartPM.Views.Admin;
 using Plugin.Connectivity;
-using SmartPM.Views.Team;
+using SmartPM.Views;
 
 
 namespace SmartPM.Views.Team
@@ -21,10 +21,19 @@ namespace SmartPM.Views.Team
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProjectDashboardScreen : ContentPage
 	{
+
+       
+
+
         private AuthenModel userAccount = new AuthenModel();
+<<<<<<< HEAD
 
         AProjectList pdata = new AProjectList();
         public ProjectDashboardScreen (string id)
+=======
+        public ProjectDashboardScreen ()
+
+>>>>>>> 7f306aa6df9585444b9a1188b9b6d8fb299b2fd9
 		{
 			InitializeComponent ();
             pdata.projectNumber = id;
@@ -60,7 +69,7 @@ namespace SmartPM.Views.Team
 
         private async void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new TodoTimeline());
+            await Navigation.PushAsync(new TempPage());
         }
 
         private async void logout(object sender, EventArgs e)

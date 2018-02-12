@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartPM.Views.Team.TeamDashboardScreen"
-             Title="DASHBOARD">
+    Title="DASHBOARD">
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Logout" Activated="logout" Order="Secondary"/>
@@ -85,7 +85,7 @@
                         <Image Source="thumChart" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="50" WidthRequest="50"/>
                         <Label 
                         TextColor="White"
-                        Text="TRACKING PERFOMANCE" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" FontAttributes="Italic" Style="{DynamicResource LabelStyle}"/>
+                        Text="YOUR PERFORMANCE" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" FontAttributes="Italic" Style="{DynamicResource LabelStyle}"/>
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
                         </Grid.GestureRecognizers>

@@ -32,13 +32,22 @@ namespace SmartPM.Views
         public TaskScreen (string user, string group, string project)
 		{
 			InitializeComponent ();
+
+            /*
+            List<TaskModel> task = new List<TaskModel>
+
             uid = user;
             gid = group;
             pid = project;
 
             //RenderAPI(uid, gid, pid);
 
+<<<<<<< HEAD
             List<TaskModel> task = new List<TaskModel>
+=======
+            /*List<TaskModel> task = new List<TaskModel>
+>>>>>>> b444f0d26c7f2629ac7b5d7aab7c14cd39b58ddb
+>>>>>>> 7f306aa6df9585444b9a1188b9b6d8fb299b2fd9
             {
                 new TaskModel
                 {
@@ -113,8 +122,12 @@ namespace SmartPM.Views
             };
 
            
+<<<<<<< HEAD
             Tasklist.ItemsSource = task;
 
+=======
+            //Tasklist.ItemsSource = task;
+>>>>>>> 7f306aa6df9585444b9a1188b9b6d8fb299b2fd9
 		}
 
         public async void RenderAPI(string uid, string gid, string pid)

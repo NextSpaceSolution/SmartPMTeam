@@ -1,28 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Net.Http;
+using System.Net;
+using SmartPM.Models;
+using SmartPM.Models.Timesheet;
 using Xamarin.Forms.Xaml;
+using System;
 
 namespace SmartPM.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class GlobalTimesheetSubmit : ContentPage
 	{
-
-        public string GprojectName { get; set; }
-        public string GtaskName { get; set; }
-        public string GjobName { get; set; }
-        public GlobalTimesheetSubmit (string pname, string tname, string jname)
+        
+        TimesheetOneModel obj = new TimesheetOneModel();
+        public GlobalTimesheetSubmit (TimesheetOneModel model)
 		{
 			InitializeComponent ();
-            GprojectName = pname;
-            GtaskName = tname;
-            GjobName = jname;
-            BindingContext = this;
-		}
+            Labelfullname.Text = model.fullName;
+            Labeljob.Text = model.jobResp;
+            LabelProname.Text = model.projectName;
+            Taskname.Text = model.TaskName;
+            LableFunction.Text = model.functionName;
+        }
 
     
         private async void Button_Clicked(object sender, EventArgs e)
@@ -32,7 +39,7 @@ namespace SmartPM.Views
 
         private async void Button_Clicked2(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GlobalTimesheet4());
+            await Navigation.PushAsync(new dummyView());
         }
     }
 }
