@@ -10,27 +10,26 @@ namespace SmartPM.Models
 
         public string username { get; set; }
 
-        public object jobResponsible { get; set; }
-
-        public string userEditBy { get; set; }
-
-        public DateTime? userEditDate { get; set; }
-
-        public object groupId { get; set; }
-
-        public string status { get; set; }
-
-        public string groupName { get; set; }
+        public object password { get; set; }
 
         public string firstname { get; set; }
 
         public string lastname { get; set; }
 
-        public string tel { get; set; }
+        public object userCreateBy { get; set; }
+        public DateTime? userCreateDate { get; set; }
 
-        public string picture { get; set; }
+        public string userEditBy { get; set; }
 
-        public string email { get; set; }
+        public DateTime userEditDate { get; set; }
+
+        public string jobResponsible { get; set; }
+
+        public string status { get; set; }
+
+        public string userTel { get; set; }
+
+        public string lineId { get; set; }
 
 
     }

@@ -18,14 +18,14 @@ namespace SmartPM
         public App()
         {
             InitializeComponent();
-            //MainPage = new UserProfileScreen();
+            MainPage = new TestConcate();
             
-           MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"))
+          /* MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"))
 
             {
                 BarBackgroundColor = Color.FromHex("#E91E63"),
                 BarTextColor = Color.White
-            };
+            };*/
 
 
            

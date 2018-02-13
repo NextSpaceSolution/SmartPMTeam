@@ -2,153 +2,166 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartPM.Views.Team.ProjectDetailScreen"
-             Title="Detail PTC001">
+             Title="Detail PTC001"
+             BackgroundColor="#F4F4F4">
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Logout" Activated="logout" Order="Secondary"/>
     </ContentPage.ToolbarItems>
-
     <ContentPage.Content>
-        <StackLayout Padding="5">
-            <ListView
-                x:Name="projectlist"
-                SeparatorVisibility="None"
-                HasUnevenRows="True"     
-                IsPullToRefreshEnabled="True"
-                IsRefreshing="False">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout 
+      
+        <StackLayout>
+
+                <StackLayout 
                                 BackgroundColor="White"
                                 Margin="2">
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,5,0,0">
-                                    <Label
-                                        TextColor="#44687b"
-                                        Text="Project Name : "/>
-                                    <Label 
-                                        TextColor="#44687b"
-                                        Text="{Binding projectName}"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
 
-                                </StackLayout>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout  Margin="15,5,0,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label TextColor="#44687b"
+                              Text="ชื่อโครงการ  " HorizontalOptions ="Center"/>
+                        
+                    </StackLayout>
+                    
+                    <StackLayout  Margin="15,5,0,0" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2">
+                        <Label TextColor="#44687b"
+                              Text="{Binding projectName}" HorizontalOptions="Start"/>
+                     </StackLayout>
 
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="PM : "/>
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding projectManager}"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="Start Date : "/>
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding projectStart}"/>
-                                </StackLayout>
+                    <StackLayout  Margin="15,0,0,5" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                         <Label FontSize="Micro"
+                               Text="ผู้จัดการ : "   HorizontalOptions ="Center"/>
+                    </StackLayout>
+                    <StackLayout  Margin="15,0,0,5" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2">
+                                 <Label FontSize="Micro"
+                                        Text="{Binding projectManager}" HorizontalOptions="Start"/>
+                    </StackLayout>
+                    <StackLayout Margin="15,0,0,5" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                                 <Label FontSize="Micro"
+                                        Text="วันที่เริ่มต้น : "  HorizontalOptions ="Center"/>
+                    </StackLayout>
+                    
+                    <StackLayout Margin="15,0,0,5" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
+                        <Label FontSize="Micro"
+                               Text="{Binding projectStart}" HorizontalOptions="Start"/>
+                      </StackLayout>
 
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="End Date : "/>
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding projectEnd}"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="Project Cost : "/>
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding projectCost}"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="Project Creatby : "/>
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding projectCreateBy}"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="Project customer name : "/>
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding customerName}"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="Project customer tel : "/>
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding customerTel}"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="Project ac start : "/>
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding actualStart}"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="Project ac end : "/>
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding actualEnd}"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="Project note: "/>
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding note}"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="Project variant : "/>
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding variant}"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="Project status : "/>
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding projectStatus}"/>
-                                </StackLayout>
+                    <StackLayout  Margin="15,0,0,5" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                         <Label FontSize="Micro"
+                                Text="วันที่สิ้นสุด : "  HorizontalOptions ="Center"/>
+                    </StackLayout>
+                    <StackLayout  Margin="15,0,0,5" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2">
+                          <Label FontSize="Micro"
+                                 Text="{Binding projectEnd}" HorizontalOptions="Start"/>
+                    </StackLayout>
 
+                    <StackLayout  Margin="15,0,0,5" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+                          <Label FontSize="Micro"
+                                 Text="ค่าใช้จ่ายโ๕รงการ : "  HorizontalOptions ="Center"/>
+                    </StackLayout>
+                    <StackLayout  Margin="15,0,0,5" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2">
+                          <Label FontSize="Micro"
+                                 Text="{Binding projectCost}" HorizontalOptions="Start"/>
+                     </StackLayout>
 
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                    <StackLayout Margin="15,0,0,5" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+                          <Label  FontSize="Micro"
+                                  Text="ผู้สร้างโครงการ : "  HorizontalOptions ="Center"/>
+                    </StackLayout>
+                    <StackLayout  Margin="15,0,0,5" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2">
+                        <Label  FontSize="Micro"
+                                Text="{Binding projectCreateBy}" HorizontalOptions="Start"/>
+                    </StackLayout>
+
+                    <StackLayout Margin="15,0,0,5" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
+                          <Label FontSize="Micro"
+                                 Text="ชื่อลูกค้า : "  HorizontalOptions ="Center"/>
+                    </StackLayout>
+                    <StackLayout  Margin="15,0,0,5" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2">
+                          <Label FontSize="Micro"
+                                 Text="{Binding customerName}" HorizontalOptions="Start"/>
+                    </StackLayout>
+
+                    <StackLayout Margin="15,0,0,5" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2">
+                          <Label FontSize="Micro"
+                                 Text="เบอร์ติดต่อลูกคา : "  HorizontalOptions ="Center"/>
+                    </StackLayout>
+                    <StackLayout  Margin="15,0,0,5" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2">
+                          <Label FontSize="Micro"
+                                 Text="{Binding customerTel}" HorizontalOptions="Start"/>
+                    </StackLayout>
+
+                    <StackLayout  Margin="15,0,0,5" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
+                          <Label FontSize="Micro"
+                                  Text="วันเริ่มโ๕รงการจริง : "  HorizontalOptions ="Center"/>
+                    </StackLayout>
+                    <StackLayout  Margin="15,0,0,5" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2">
+                          <Label FontSize="Micro"
+                                 Text="{Binding actualStart}" HorizontalOptions="Start"/>
+                    </StackLayout>
+
+                    <StackLayout Margin="15,0,0,5" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2">
+                          <Label FontSize="Micro"
+                                 Text="วันสิ้นสุดโ๕รงการจริง : "  HorizontalOptions ="Center"/>
+                    </StackLayout>
+                    <StackLayout  Margin="15,0,0,5" Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="2">
+                          <Label FontSize="Micro"
+                               Text="{Binding actualEnd}" HorizontalOptions="Start"/>
+                    </StackLayout>
+
+                    <StackLayout Margin="15,0,0,5" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2">
+                          <Label  FontSize="Micro"
+                                  Text="บรรทึกโครงการ: "  HorizontalOptions ="Center"/>
+                    </StackLayout>
+                    <StackLayout  Margin="15,0,0,5" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="2">
+                          <Label  FontSize="Micro"
+                                   Text="{Binding note}" HorizontalOptions="Start"/>
+                    </StackLayout>
+
+                    <StackLayout Margin="15,0,0,5" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2">
+                          <Label FontSize="Micro"
+                                  Text="วันที่่เหลือในการทำโครงกร: "  HorizontalOptions ="Center"/>
+                    </StackLayout>
+
+                    <StackLayout  Margin="15,0,0,5" Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="2">
+                          <Label FontSize="Micro"
+                                 Text="{Binding variant}" HorizontalOptions="Start"/>
+                     </StackLayout>
+
+                    <StackLayout Margin="15,0,0,5" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2">
+                          <Label FontSize="Micro"
+                                 Text="สถานะของโครงการ : "  HorizontalOptions ="Center"/>
+                    </StackLayout>
+
+                    <StackLayout  Margin="15,0,0,5" Grid.Row="12" Grid.Column="2" Grid.ColumnSpan="2">
+                        <Label FontSize="Micro"
+                               Text="{Binding projectStatus}" HorizontalOptions="Start"/>
+                    </StackLayout>
+
+                </Grid>
+            </StackLayout>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

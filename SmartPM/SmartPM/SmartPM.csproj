@@ -63,7 +63,7 @@
     <EmbeddedResource Update="Views\dummyView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Edidprofile.xaml">
+    <EmbeddedResource Update="Views\Editprofile.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\GlobalTimesheet.xaml">

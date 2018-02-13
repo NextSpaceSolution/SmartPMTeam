@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SmartPM.Views.Edidprofile">
-
+             x:Class="SmartPM.Views.Editprofile">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Logout" Activated="logout" Order="Secondary"/>
     </ContentPage.ToolbarItems>
@@ -34,8 +33,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Source="{Binding picture}" Grid.Row="0" Grid.ColumnSpan="2" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center"/>
-                    <Button Clicked="changepic" Text="Change Picture" BackgroundColor="#F4F4F4" Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="Center" />
+                    <!--Image x:Name="picture"  Source="{Binding picture}" Grid.Row="0" Grid.ColumnSpan="2" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center"/>
+                    <Button Clicked="changepic" Text="Change Picture" BackgroundColor="#F4F4F4" Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="Center" />-->
 
                     <StackLayout Grid.Row="2" Grid.ColumnSpan="2"  Padding="8">
                         <Label Text="Old Password"/>
@@ -49,22 +48,27 @@
 
                     <StackLayout Grid.Row="4" Grid.ColumnSpan="2" Padding="8">
                         <Label Text="FirstName"/>
-                        <Entry x:Name="editfirstname" Text="{Binding firstname}" FontSize="Micro" />
+                        <Entry x:Name="firstname" Text="{Binding firstname}" FontSize="Micro" />
                     </StackLayout>
 
                     <StackLayout Grid.Row="5" Grid.ColumnSpan="2" Padding="8">
                         <Label Text="LastName"/>
-                        <Entry x:Name="editlastname" Text="{Binding lastname}"  FontSize="Micro"/>
+                        <Entry x:Name="lastname" Text="{Binding lastname}"  FontSize="Micro"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="5" Grid.ColumnSpan="2" Padding="8">
+                        <Label Text="jobResponsible"/>
+                        <Entry x:Name="jobResponsible" Text="{Binding jobResponsible}"  FontSize="Micro"/>
                     </StackLayout>
 
                     <StackLayout Grid.Row="6" Grid.ColumnSpan="2" Padding="8">
                         <Label Text="Telephone"/>
-                        <Entry x:Name="edittel" Text="{Binding tel}" FontSize="Micro" />
+                        <Entry x:Name="userTel" Text="{Binding userTel}" FontSize="Micro" />
                     </StackLayout>
 
                     <StackLayout Grid.Row="7" Grid.ColumnSpan="2" Padding="8">
                         <Label Text="Email"/>
-                        <Entry x:Name="editEmail" Text="{Binding email}" FontSize="Micro" />
+                        <Entry x:Name="lineId" Text="{Binding lineId}" FontSize="Micro" />
                     </StackLayout>
 
                     <StackLayout Grid.Row="8" Grid.ColumnSpan="2" Padding="8">

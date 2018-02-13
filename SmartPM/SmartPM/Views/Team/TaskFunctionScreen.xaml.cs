@@ -31,12 +31,15 @@ namespace SmartPM.Views.Team
 
 			InitializeComponent ();
 
+            Title = task;
+
+
             uid = user;
             gid = group;
             pid = project;
             tid = task;
 
-            RenderAPI(uid, gid, pid, tid);
+            RenderAPI(gid, uid, pid, tid);
 
             /*List<TaskFunctionModel> taskfunc = new List<TaskFunctionModel>
             {
@@ -132,10 +135,10 @@ namespace SmartPM.Views.Team
             App.Current.MainPage = new LoginScreen();
         }
 
-        public async void RenderAPI(string uid, string gid, string pid , string tid)
+        public async void RenderAPI(string gid, string uid, string pid , string tid)
         {
             var list = new List<TaskFunctionModel>();
-            var jsonResult = await FilterFunction(uid, gid, pid, tid);
+            var jsonResult = await FilterFunction(gid, uid, pid, tid);
             list = JsonConvert.DeserializeObject<List<TaskFunctionModel>>(jsonResult);
             Taskflist.ItemsSource = list;
             this.IsBusy = false;
@@ -143,7 +146,7 @@ namespace SmartPM.Views.Team
         }
 
 
-        public async Task<string> FilterFunction(string uid, string gid, string pid, string tid)
+        public async Task<string> FilterFunction(string gid, string uid, string pid, string tid)
         {
             try
             {
@@ -158,7 +161,7 @@ namespace SmartPM.Views.Team
 
                 using (var client = new HttpClient())
                 {
-                    client.Timeout = new TimeSpan(0, 0, 15);
+                    //client.Timeout = new TimeSpan(0, 0, 15);
                     using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest2/FilterFunction", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
