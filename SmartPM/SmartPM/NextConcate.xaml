@@ -4,9 +4,47 @@
              x:Class="SmartPM.NextConcate">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding .}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout Orientation="Horizontal">
+                <Label Text="ProjectId : " HorizontalOptions="Center"></Label>
+                <Label x:Name="p1" HorizontalOptions="Center" ></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="UserId : " HorizontalOptions="Center"></Label>
+                <Label x:Name="p2" HorizontalOptions="Center" ></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="TaskId : " HorizontalOptions="Center"></Label>
+                <Label x:Name="p3" HorizontalOptions="Center" ></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="FunctionId : " HorizontalOptions="Center"></Label>
+                <Label x:Name="p4" HorizontalOptions="Center" ></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="ActName : " HorizontalOptions="Center"></Label>
+                <Label x:Name="p5" HorizontalOptions="Center" ></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="TimesheetId : " HorizontalOptions="Center"></Label>
+                <Label x:Name="t1" HorizontalOptions="Center" ></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="TestPickDate1 : " HorizontalOptions="Center"></Label>
+                <Label x:Name="t2" HorizontalOptions="Center" ></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="TestPickDate2 : " HorizontalOptions="Center"></Label>
+                <Label x:Name="t3" HorizontalOptions="Center" ></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Launch Start : " HorizontalOptions="Center"></Label>
+                <Label x:Name="t4" HorizontalOptions="Center" ></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Launch End : " HorizontalOptions="Center"></Label>
+                <Label x:Name="t5" HorizontalOptions="Center" ></Label>
+            </StackLayout>
+           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

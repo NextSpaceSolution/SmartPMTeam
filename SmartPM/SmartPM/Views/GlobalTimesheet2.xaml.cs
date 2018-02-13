@@ -13,6 +13,7 @@ using SmartPM.Models;
 using SmartPM.Models.Timesheet;
 using Xamarin.Forms.Xaml;
 using System;
+using Plugin.Connectivity;
 
 namespace SmartPM.Views
 {
@@ -34,7 +35,7 @@ namespace SmartPM.Views
             this.pname = pname;
 
 
-            RenderFindPro(pname);
+           
             */
 
 
@@ -45,27 +46,43 @@ namespace SmartPM.Views
             Labelfullname.Text = model.fullName;
             Labeljob.Text = model.jobResp;
             LabelProname.Text = model.projectName;
+            obj.userId = model.userId;
+            obj.groupId = model.groupId;
+            if (checkConnect() == true)
+                RenderFindPro(obj.projectName);
+            else
+                Title = "Internet not connect";
+            
             /*
             Labelfname.Text = fname;
             Labellname.Text = lname;
             Labeljob.Text = lname;
             LabelProname.Text = pname;*/
-            
+            /*
             phase.Items.Add("Phase001");        
             phase.Items.Add("Phase003");
             phase.Items.Add("Phase006");
             
-
+            */
 
         }
-        /*
+        public bool checkConnect()
+        {
+            var isConnected = CrossConnectivity.Current.IsConnected;
+            if (isConnected == true)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
         public async void RenderFindPro(string name)
         {
             string jsonResult = await FindProId(name);
             JObject data = JObject.Parse(jsonResult);
-            pid = (string)data["projectNumber"];
-            RenderFilterTask(gid, uid, pid);
-        }*/
+            obj.projectId = (string)data["projectNumber"];
+            RenderFilterTask(obj.groupId, obj.userId, obj.projectId);
+        }
 
         public async void RenderFilterTask(string gid, string uid, string pid)
         {
@@ -161,7 +178,7 @@ namespace SmartPM.Views
 
                 using (var client = new HttpClient())
                 {
-                    client.Timeout = new TimeSpan(0, 0, 15);
+                    //client.Timeout = new TimeSpan(0, 0, 15);
                     using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/FilterTask", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))

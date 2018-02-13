@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartPM.TestValidationInput">
+    <ContentPage.Content>
+        <StackLayout Margin="15">
+            <Entry x:Name="MainEntry" Placeholder="Input fuck">
+                <Entry.Behaviors></Entry.Behaviors>
+            </Entry>
+            <Entry x:Name="SecondEntry" Placeholder="Input YSTN">
+                <Entry.Behaviors></Entry.Behaviors>
+            </Entry>
+            <Entry x:Name="ThirdEntry" Placeholder="Input Arang">
+                <Entry.Behaviors></Entry.Behaviors>
+            </Entry>
+            <Button HorizontalOptions="Center" Clicked="onSubmit" Text="TestValidation"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

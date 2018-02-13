@@ -13,6 +13,7 @@ using SmartPM.Models;
 using SmartPM.Models.Timesheet;
 using Xamarin.Forms.Xaml;
 using System;
+using Plugin.Connectivity;
 
 namespace SmartPM.Views
 {
@@ -42,24 +43,41 @@ namespace SmartPM.Views
             obj.jobResp = model.jobResp;
             obj.projectName = model.projectName;
             obj.TaskName = model.TaskName;
+            obj.projectId = model.projectId;
+            obj.userId = model.userId;
+            obj.groupId = model.groupId;
 
-           // RenderFindTid(tname)
+            if (checkConnect() == true)
+                RenderFindTid(obj.TaskName);
+            else
+                Title = "Internet not connect";
 
             
-            job.Items.Add("Job001");
-            job.Items.Add("Job003");
+
             
+           /* job.Items.Add("Job001");
+            /*job.Items.Add("Job003");
+            */
 
         }
 
-        /*
+        public bool checkConnect()
+        {
+            var isConnected = CrossConnectivity.Current.IsConnected;
+            if (isConnected == true)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
         public async void RenderFindTid(string tname)
         {
             string jsonResult = await FindTaskId(tname);
             JObject data = JObject.Parse(jsonResult);
-            tid = (string)data["taskId"];
-            RenderFilterFunction(gid, uid, pid, tid);
-        }*/
+            obj.taskId = (string)data["taskId"];
+            RenderFilterFunction(obj.groupId, obj.userId, obj.projectId, obj.taskId);
+        }
 
         public async void RenderFilterFunction(string gid, string uid, string pid, string taid)
         {
@@ -157,7 +175,7 @@ namespace SmartPM.Views
 
                 using (var client = new HttpClient())
                 {
-                    client.Timeout = new TimeSpan(0, 0, 15);
+                    //client.Timeout = new TimeSpan(0, 0, 15);
                     using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/FilterFunction", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))

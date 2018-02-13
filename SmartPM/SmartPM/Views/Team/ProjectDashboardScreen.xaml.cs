@@ -26,6 +26,11 @@ namespace SmartPM.Views.Team
 
 
         private AuthenModel userAccount = new AuthenModel();
+<<<<<<< HEAD
+        AProjectList temp = new AProjectList();
+        public ProjectDashboardScreen ()
+=======
+>>>>>>> 064ebc055a958c1e94045921145701ee3eb8b7b1
 
 
         AProjectList pdata = new AProjectList();
@@ -48,6 +53,7 @@ namespace SmartPM.Views.Team
 
         private async void ToolbarItem_Activated(object sender, EventArgs e)
         {
+            
             await Navigation.PushAsync(new LoginScreen());
         }
 
@@ -73,7 +79,7 @@ namespace SmartPM.Views.Team
 
         private async void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new TempPage());
+            //await Navigation.PushAsync(new TempPage());
         }
 
         private async void logout(object sender, EventArgs e)

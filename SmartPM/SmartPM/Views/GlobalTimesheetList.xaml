@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartPM.Views.GlobalTimesheetList">
+    <ContentPage.Content>
+        <StackLayout Padding="5">
+            <ListView
+                x:Name="projectlist"
+                SeparatorVisibility="None"
+                HasUnevenRows="True"     
+                ItemTapped="projectlist_ItemTapped"
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="False">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout 
+                                BackgroundColor="White"
+                                Margin="2">
+                                <StackLayout Orientation="Horizontal"
+                                             Margin="15,5,0,0">
+                                    <Label
+                                        TextColor="#44687b"
+                                        Text="Timesheet name : "/>
+                                    <Label 
+                                        TextColor="#44687b"
+                                        Text="{Binding projectName}"/>
+
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal"
+                                             Margin="15,0,0,5">
+                                    <Label 
+                                        FontSize="Micro"
+                                        Text="Date : "/>
+                                    <Label 
+                                        FontSize="Micro"
+                                        Text="{Binding projectManager}"/>
+                                </StackLayout>
+                               
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

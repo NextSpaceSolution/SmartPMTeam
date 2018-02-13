@@ -114,9 +114,14 @@ namespace SmartPM.Views
             Tasklist.ItemsSource = task;*/
 
 		}
+<<<<<<< HEAD
+        /*
+        public async void RenderAPI(string uid, string gid, string pid)
+=======
 
 
         private async void tasklist_ItemTapped(object sender, ItemTappedEventArgs e)
+>>>>>>> 064ebc055a958c1e94045921145701ee3eb8b7b1
         {
 
             var tasklists = e.Item as TaskModel;
@@ -187,8 +192,22 @@ namespace SmartPM.Views
             }
         }
 
+     */
 
-
+<<<<<<< HEAD
+        private async void tasklist_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            await Navigation.PushAsync(new TaskFunctionScreen("100019","10","100002","100004"));
+        }
        
+        private async void logout(object sender, EventArgs e)
+        {
+
+            userAccount = null;
+            App.Current.MainPage = new LoginScreen();
+        }
+=======
+       
+>>>>>>> 064ebc055a958c1e94045921145701ee3eb8b7b1
     }
 }

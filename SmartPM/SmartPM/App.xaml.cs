@@ -18,10 +18,19 @@ namespace SmartPM
         public App()
         {
             InitializeComponent();
+<<<<<<< HEAD
             MainPage = new TestConcate();
+=======
+            //MainPage = new UserProfileScreen();
+<<<<<<< HEAD
+            /*
+           MainPage = new NavigationPage(new TeamDashboardScreen("10","20"))
+=======
+>>>>>>> 883e90c1ef59b1ace11026e2284b9f40fb92ff0b
             
           /* MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"))
 
+>>>>>>> 064ebc055a958c1e94045921145701ee3eb8b7b1
             {
                 BarBackgroundColor = Color.FromHex("#E91E63"),
                 BarTextColor = Color.White
@@ -33,12 +42,19 @@ namespace SmartPM
             //var page = new PMDashboardScreen();
             ///NavigationPage.SetHasBackButton(page, false);
 
+<<<<<<< HEAD
+            //string id = "10009";
+            // string gid = "10";
+            //MainPage = new NavigationPage(new TodoTimeline());
+=======
 
            // MainPage = new NavigationPage(new GlobalTimesheet());
+>>>>>>> 064ebc055a958c1e94045921145701ee3eb8b7b1
 
 
             //MainPage = new NavigationPage( new MainPage());
-            // MainPage = new MainPage();
+            // MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"));
+            MainPage = new TempPage("100001");
         }
 
         protected override void OnStart()

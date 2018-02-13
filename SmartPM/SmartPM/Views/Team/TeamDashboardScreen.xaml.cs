@@ -48,7 +48,7 @@ namespace SmartPM.Views.Team
                 Title = "Internet not connected";
             else {
                 RenderUserInfo(userId);
-                Title = userId + gid;
+                //Title = userId + gid;
                  }
 
         }
@@ -105,10 +105,11 @@ namespace SmartPM.Views.Team
             await Navigation.PushAsync(new UserProfileScreen());
         }
 
+        /*
         private async void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new dummyView());
-        }
+        }*/
 
         public async Task<string> getUserInfo(string id)
         {
@@ -151,7 +152,11 @@ namespace SmartPM.Views.Team
         private async void logout(object sender, EventArgs e)
         {
 
+<<<<<<< HEAD
+            //userAccount = null;
+=======
             
+>>>>>>> 064ebc055a958c1e94045921145701ee3eb8b7b1
             App.Current.MainPage = new LoginScreen();
         }
     }
