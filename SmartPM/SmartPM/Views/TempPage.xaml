@@ -8,7 +8,7 @@
             <StackLayout>
                 <ListView 
             x:Name="listItems"
-            RowHeight="75"
+            RowHeight="150"
             Opacity="1"
             SeparatorVisibility="None">
                     <ListView.Header>
@@ -24,32 +24,99 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="100" />
                                         <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="100" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="30" />
-                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="20" />
+                                        <RowDefinition Height="20" />
+                                        <RowDefinition Height="20" />
+                                        <RowDefinition Height="60" />
                                     </Grid.RowDefinitions>
 
-                                    <Label HorizontalOptions="Center" Text="{Binding TimelineDate, StringFormat='{0: dd-MM-yyyy}'}" Margin="10,5,0,0" TextColor="#880E4F"/>
+                                    <Label HorizontalOptions="Center" Text="{Binding functionLogId, StringFormat='{0: dd-MM-yyyy}'}" Margin="10,5,0,0" TextColor="#880E4F" />
                                     <Label
                              Grid.Column="2"
+                             Grid.ColumnSpan="2"
                              Margin="20,2,0,0"
                              TextColor="#212121"
                              FontSize="18"
-                             Text="{Binding Header}" />
+                             Text="{Binding taskName}" />
+
+                         
+
                                     <Label
                             Grid.Row="1"
                             Grid.Column="2"
+                                        Grid.ColumnSpan="2"
                             Margin="20,0,0,0"
+                            TextColor="Navy"
+                            FontSize="14"
+                            VerticalOptions="StartAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{Binding functionName}" />
+
+                          
+
+                                    <Label
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Margin="20,0,0,0"
+                            TextColor="#424242"
+                            FontSize="14"
+                            VerticalOptions="StartAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Text="ตามแผน :" />
+                                    <Label
+                            Grid.Row="2"
+                            Grid.Column="3"
                             TextColor="#607D8B"
                             FontSize="14"
                             VerticalOptions="StartAndExpand"
                             HorizontalOptions="FillAndExpand"
-                            Text="{Binding Note}" />
+                           Text="{Binding functionEnd, StringFormat='{0: dd-MM-yyyy}'}" />
 
+
+                                    <Label
+                            Grid.Row="3"
+                            Grid.Column="2"
+                            Margin="20,0,0,0"
+                            TextColor="#424242"
+                            FontSize="14"
+                            VerticalOptions="StartAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Text="ปฏิบัติจริง :" />
+                                    <Label
+                            Grid.Row="3"
+                            Grid.Column="3"
+                            TextColor="#607D8B"
+                            FontSize="14"
+                            VerticalOptions="StartAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{Binding actualEnd, StringFormat='{0: dd-MM-yyyy}'}" />
+
+                                    <Label
+                            Grid.Row="4"
+                            Grid.Column="2"
+                            Margin="20,0,0,0"
+                            TextColor="#424242"
+                            FontSize="14"
+                            VerticalOptions="StartAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Text="Commit :" />
+                                               
+                                    <Label
+                            Grid.Row="4"
+                            Grid.Column="3"
+                            TextColor="#607D8B"
+                            FontSize="14"
+                            VerticalOptions="StartAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{Binding userCommit}" />
+                         
                                     <BoxView
-                            Grid.RowSpan="2"
+                            Grid.RowSpan="5"
                             Grid.Column="1"
                             BackgroundColor="#E4B6C3"
                             HorizontalOptions="Center"       

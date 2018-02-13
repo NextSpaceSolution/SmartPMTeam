@@ -74,7 +74,7 @@
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
                     </Grid.GestureRecognizers>
                 </StackLayout>
-
+<!--
                     <StackLayout HeightRequest="100"
                              Grid.Row="1"
                              Grid.Column="1"       
@@ -89,8 +89,8 @@
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
                         </Grid.GestureRecognizers>
-                    </StackLayout>
-                </Grid>
+                    </StackLayout>-->
+                </Grid> 
                 <Grid Grid.Row="0" BackgroundColor="#E91E63">
                     <Grid HorizontalOptions="Center">
                         <Grid.ColumnDefinitions>

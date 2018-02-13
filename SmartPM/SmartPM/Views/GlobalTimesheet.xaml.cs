@@ -12,6 +12,8 @@ using System.Net;
 using SmartPM.Models.Timesheet;
 using Xamarin.Forms.Xaml;
 using System;
+using SmartPM.Models;
+using Plugin.Connectivity;
 
 namespace SmartPM.Views
 {
@@ -33,6 +35,8 @@ namespace SmartPM.Views
             objTimesheet.lastName = "ไม่มีตังกินข้าว";
             objTimesheet.fullName = objTimesheet.firstName + " " + objTimesheet.lastName;
             objTimesheet.jobResp = "ผู้บัญชาการต่ำสุด";
+            objTimesheet.userId = "100017";
+            objTimesheet.groupId = "50";
 
 
             /*
@@ -40,19 +44,31 @@ namespace SmartPM.Views
             _ulname = "ไม่มีตังกินข้าว";
             _fullname = _ufname + "  " + _ulname;
             */
-
-            // RenderFilterPro(_uid, _gid);
+            if (checkConnect() == true)
+                RenderFilterPro(objTimesheet.userId, objTimesheet.groupId);
+            else
+                Title = "Internet not connect";
 
             Labelfullname.Text = objTimesheet.fullName;
             // Labellname.Text = _ulname;
             Labeljob.Text = objTimesheet.jobResp;
-            
+            /*
             project.Items.Add("Project001");
             project.Items.Add("Project002");
             project.Items.Add("dummyProject");    
-            
+            */
         }
-        /*
+
+        public bool checkConnect()
+        {
+            var isConnected = CrossConnectivity.Current.IsConnected;
+            if (isConnected == true)
+            {
+                return true;
+            }
+            else
+            return false;
+        }
         private async void RenderFilterPro(string uid, string gid)
         {
             var ResultProject = new List<AProjectList>();
@@ -74,7 +90,7 @@ namespace SmartPM.Views
             }
 
         }
-        */
+        
  
         private void project_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -102,7 +118,7 @@ namespace SmartPM.Views
 
                 using (var client = new HttpClient())
                 {
-                    client.Timeout = new TimeSpan(0, 0, 15);
+                    //client.Timeout = new TimeSpan(0, 0, 15);
                     using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/FilterProject", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))

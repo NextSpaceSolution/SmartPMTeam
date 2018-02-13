@@ -13,27 +13,22 @@ namespace SmartPM
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TestConcate : ContentPage
 	{
-        DateTime _date { get; set; }
-        TimeSpan _time { get; set; }
-        string date { get; set; }
-        string time { get; set; }
-        string _concate { get; set; }
+        List<string> itemes = new List<string>
+        {
+            "ALON","BLON","CLON","ABLON","ACLON","ABCLON","DLON","ZLON","JLON","AKLON","1LON"
+        };
 		public TestConcate ()
 		{
-			InitializeComponent ();         
+			InitializeComponent ();
+            SerachList.ItemsSource = itemes;
 		}
-        public async void Next(object sender, EventArgs e)
+
+        private void MainSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            _date = datepick.Date;
-            _time = timepick.Time;
-
-            date = _date.ToString("yyyy-MM-dd");
-            time = _time.ToString(@"hh\:mm\:ss");
-
-           // string us = _date.ToString(new CultureInfo("en -US"));
-            //string tus = _time.ToString(new CultureInfo("en-US"));
-            _concate = date+"T"+time;
-            await Navigation.PushAsync(new NextConcate(_concate));
+            var keyword = MainSearch.Text;
+            SerachList.ItemsSource = 
+                itemes.Where(name => 
+                name.ToLower().Contains(keyword.ToLower()));
         }
 	}
 }

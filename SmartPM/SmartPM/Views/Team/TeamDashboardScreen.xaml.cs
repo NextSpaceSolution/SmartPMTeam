@@ -46,7 +46,7 @@ namespace SmartPM.Views.Team
                 Title = "Internet not connected";
             else {
                 RenderUserInfo(userId);
-                Title = userId + gid;
+                //Title = userId + gid;
                  }
 
         }
@@ -103,10 +103,11 @@ namespace SmartPM.Views.Team
             await Navigation.PushAsync(new UserProfileScreen());
         }
 
+        /*
         private async void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new dummyView());
-        }
+        }*/
 
         public async Task<string> getUserInfo(string id)
         {
@@ -119,7 +120,7 @@ namespace SmartPM.Views.Team
 
                 using (var client = new HttpClient())
                 {
-                    client.Timeout = new TimeSpan(0, 0, 15);
+                    //client.Timeout = new TimeSpan(0, 0, 15);
                     using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest/GetUserInfo", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
@@ -149,7 +150,7 @@ namespace SmartPM.Views.Team
         private async void logout(object sender, EventArgs e)
         {
 
-            userAccount = null;
+            //userAccount = null;
             App.Current.MainPage = new LoginScreen();
         }
     }

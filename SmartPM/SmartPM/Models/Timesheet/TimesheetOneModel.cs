@@ -28,5 +28,6 @@ namespace SmartPM.Models.Timesheet
         public string taskId { get; set; }
 
         public string functionName { get; set; }
+        public string functionId {get;set;}
     }
 }
