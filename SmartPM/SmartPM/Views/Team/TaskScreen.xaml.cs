@@ -24,7 +24,7 @@ namespace SmartPM.Views
 
         private AuthenModel userAccount = new AuthenModel();
 
-        public TaskModel tdata = new TaskModel();
+        public List<TaskModel2> tdata = new List<TaskModel2>();
         public string uid { get; set; }
         public string gid { get; set; }
 
@@ -33,17 +33,20 @@ namespace SmartPM.Views
 		{
 			InitializeComponent ();
 
-            /*
-            List<TaskModel> task = new List<TaskModel>
+
+            Title = user;
 
             uid = user;
             gid = group;
-            pid = project;
+            pid = project; 
 
-            RenderAPI(uid, gid, pid);
+            RenderAPI(gid, uid, pid);
 
-            /*List<TaskModel> task = new List<TaskModel>
->>>>>>> b444f0d26c7f2629ac7b5d7aab7c14cd39b58ddb
+
+            
+
+           /* List<TaskModel> task = new List<TaskModel>
+
             {
                 new TaskModel
                 {
@@ -63,7 +66,7 @@ namespace SmartPM.Views
                 {
                     taskId = "t002",
                     projectnumber = "p001",
-                    taskname = "System Analysis And Design",
+                    taskname = "System Analysis ",
                     taskstart = "02/02/2018",
                     taskend = "05/02/2018",
                     actualstart = "03/02/2018",
@@ -115,48 +118,64 @@ namespace SmartPM.Views
                     backclr = "#c8cd20",
                     picture = "thumTime"
                 },
-            };*/
+            };
 
-           
-            //Tasklist.ItemsSource = task;
+
+            //Tasklist.ItemsSource = task;*/
+
 		}
+<<<<<<< HEAD
         /*
         public async void RenderAPI(string uid, string gid, string pid)
-        {
-            string jsonResult = await FilterTask(uid, gid,pid);
-            JObject taskdata = JObject.Parse(jsonResult);
+=======
 
-            tdata.taskId = (string)taskdata["taskId"];
-            tdata.projectnumber = (string)taskdata["projectnumber"];
-            tdata.taskname = (string)taskdata["taskname"];
-            tdata.taskstart = (string)taskdata["taskstart"];
-            tdata.taskend = (string)taskdata["taskend"];
-            tdata.actualstart = (string)taskdata["actualstart"];
-            tdata.actualend = (string)taskdata["actualend"];
-            tdata.variant = (string)taskdata["variant"];
-            tdata.team = (string)taskdata["team"];
-            tdata.backclr = (string)taskdata["backclr"];
-            tdata.picture = (string)taskdata["picture"];
-            BindingContext = taskdata;
+
+        private async void tasklist_ItemTapped(object sender, ItemTappedEventArgs e)
+>>>>>>> 064ebc055a958c1e94045921145701ee3eb8b7b1
+        {
+
+            var tasklists = e.Item as TaskModel;
+            string id = tasklists.taskId;
+            await Navigation.PushAsync(new TaskFunctionScreen(uid, gid, pid, id));
+        }
+
+        private async void logout(object sender, EventArgs e)
+        {
+
+            userAccount = null;
+            App.Current.MainPage = new LoginScreen();
+        }
+
+
+
+
+        public async void RenderAPI(string gid, string uid, string pid)
+        {
+            var list = new List<TaskModel2>();
+            var jsonResult = await FilterTask(gid , uid , pid);
+            list = JsonConvert.DeserializeObject<List<TaskModel2>>(jsonResult);
+            Tasklist.ItemsSource = list;
+            this.IsBusy = false;
+
         }
         
 
-        public async Task<string> FilterTask(string uid , string gid,string pid)
+        public async Task<string> FilterTask(string gid, string uid, string pid)
         {
             try
             {
                 // This is the Postdata
                 var postData = new List<KeyValuePair<string, string>>(2);
-                postData.Add(new KeyValuePair<string , string>("id",uid));
-                postData.Add(new KeyValuePair<string, string>("group", gid));
-                postData.Add(new KeyValuePair<string, string>("project", pid));
+                postData.Add(new KeyValuePair<string , string>("gid", gid));
+                postData.Add(new KeyValuePair<string, string>("uid", uid));
+                postData.Add(new KeyValuePair<string, string>("pid", pid));
 
                 HttpContent content = new FormUrlEncodedContent(postData);
 
                 using (var client = new HttpClient())
                 {
                     client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://localhost:56086/APIRest2/FilterTask", content))
+                    using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest2/FilterTask", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {
@@ -182,6 +201,7 @@ namespace SmartPM.Views
 
      */
 
+<<<<<<< HEAD
         private async void tasklist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             await Navigation.PushAsync(new TaskFunctionScreen("100019","10","100002","100004"));
@@ -193,5 +213,8 @@ namespace SmartPM.Views
             userAccount = null;
             App.Current.MainPage = new LoginScreen();
         }
+=======
+       
+>>>>>>> 064ebc055a958c1e94045921145701ee3eb8b7b1
     }
 }

@@ -12,9 +12,9 @@ namespace SmartPM.Models
             public string projectName { get; set; }
             public string projectManager { get; set; }
         public string projectStart { get; set; }
-        public string projectEnd{ get; set; }
-       // public DateTime projectStart { get; set; }
-          //  public DateTime projectEnd { get; set; }
+        public string projectEnd { get; set; }
+        //public DateTime projectStart { get; set; }
+           // public DateTime projectEnd { get; set; }
             public string projectCost { get; set; }
             public string projectCreateBy { get; set; }
             public string projectCreateDate { get; set; }
@@ -28,9 +28,7 @@ namespace SmartPM.Models
             public object variant { get; set; }
             public object projectStatus { get; set; }
 
-        public string picture { get; set; }
 
-        public string backclr { get; set; }
 
     }
 

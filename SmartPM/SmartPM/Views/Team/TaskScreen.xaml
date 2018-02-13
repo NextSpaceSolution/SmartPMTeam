@@ -43,50 +43,54 @@
                                         Text="Task Name : "/>
                                             <Label 
                                         TextColor="#44687b"
-                                        Text="{Binding taskname}"/>
+                                        Text="{Binding taskName}"/>
 
                                         </StackLayout>
+                                        
+                                        
+                                        <StackLayout Orientation="Horizontal">
                                         <StackLayout Orientation="Horizontal"
                                              Margin="15,5,0,0">
                                             <Label
                                         FontSize="Micro"
-                                        Text="Task Start : "/>
+                                        Text="วันที่เริ่มต้นทาร์ค ถึง วันที่สิ้นสุดทาร์ค : "/>
                                             <Label 
                                      FontSize="Micro"
-                                        Text="{Binding taskstart}"/>
+                                        Text="{Binding taskStart}"/>
 
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal"
                                              Margin="15,5,0,0">
                                             <Label
                                         FontSize="Micro"
-                                        Text="Task End : "/>
+                                        
+                                        
+                                        Text="{Binding taskEnd}"/>
+
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal"
+                                             Margin="15,5,0,0">
+                                            <Label
+                                        FontSize="Micro"
+                                        Text="วันที่เริ่มต้นจริง ถึง วันที่สิ้นสุดจริง: "/>
                                             <Label 
                                         FontSize="Micro"
-                                        Text="{Binding taskend}"/>
+                                        Text="{Binding actualStart}"/>
 
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal"
                                              Margin="15,5,0,0">
-                                            <Label
-                                        FontSize="Micro"
-                                        Text="Ac Start : "/>
                                             <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding actualstart}"/>
-
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal"
-                                             Margin="15,5,0,0">
-                                            <Label
                                        FontSize="Micro"
-                                        Text="Ac End : "/>
-                                            <Label 
-                                       FontSize="Micro"
-                                        Text="{Binding actualend}"/>
+                                        Text="{Binding actualEnd}"/>
 
                                         </StackLayout>
-                                        <StackLayout Orientation="Horizontal"
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal"
                                              Margin="15,5,0,0">
                                             <Label
                                         FontSize="Micro"

@@ -26,13 +26,30 @@ namespace SmartPM.Views.Team
 
 
         private AuthenModel userAccount = new AuthenModel();
+<<<<<<< HEAD
         AProjectList temp = new AProjectList();
         public ProjectDashboardScreen ()
+=======
+>>>>>>> 064ebc055a958c1e94045921145701ee3eb8b7b1
 
-		{
+
+        AProjectList pdata = new AProjectList();
+
+        public string uid { get; set; }
+        public string gid { get; set; }
+        public string pid { get; set; }
+        public ProjectDashboardScreen (string user ,string group  , string project)
+        {
+            uid = user;
+            gid = group;
+            pid = project;
+
 			InitializeComponent ();
-         
+           
         }
+
+
+
 
         private async void ToolbarItem_Activated(object sender, EventArgs e)
         {
@@ -40,14 +57,19 @@ namespace SmartPM.Views.Team
             await Navigation.PushAsync(new LoginScreen());
         }
 
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped(object sender, ItemTappedEventArgs e)
         {
-            await Navigation.PushAsync(new ProjectDetailScreen());
+
+            var Projectlists = e.Item as AProjectList;
+            string id = Projectlists.projectNumber;
+            await Navigation.PushAsync(new ProjectDetailScreen(id));
+
+
         }
 
         private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new TaskScreen("100021","10","100001"));
+            await Navigation.PushAsync(new TaskScreen(uid,gid,pid));
         }
 
         private async void TapGestureRecognizer_Tapped_2(object sender, EventArgs e)

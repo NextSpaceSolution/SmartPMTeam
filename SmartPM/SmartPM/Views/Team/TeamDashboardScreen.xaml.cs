@@ -20,7 +20,9 @@ using System.Collections.ObjectModel;
 namespace SmartPM.Views.Team
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TeamDashboardScreen : ContentPage
+
+
+    public partial class TeamDashboardScreen : ContentPage
 	{
 
         string a;
@@ -89,7 +91,7 @@ namespace SmartPM.Views.Team
             {
                 BarBackgroundColor = Color.FromHex("#546E7A")
             };*/
-            await Navigation.PushAsync(new ProjectList("100021", "10"));
+            await Navigation.PushAsync(new ProjectList("100017", "50"));
         }
 
         private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
@@ -150,7 +152,11 @@ namespace SmartPM.Views.Team
         private async void logout(object sender, EventArgs e)
         {
 
+<<<<<<< HEAD
             //userAccount = null;
+=======
+            
+>>>>>>> 064ebc055a958c1e94045921145701ee3eb8b7b1
             App.Current.MainPage = new LoginScreen();
         }
     }
