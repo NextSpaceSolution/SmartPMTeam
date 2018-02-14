@@ -45,83 +45,73 @@ namespace SmartPM.Views
 
             
 
-           /* List<TaskModel> task = new List<TaskModel>
+            /*List<TaskModel2> task = new List<TaskModel2>
 
             {
-                new TaskModel
+                new TaskModel2
                 {
                     taskId = "t001",
-                    projectnumber = "p001",
-                    taskname = "Gettering Requirement",
-                    taskstart = "31/01/2018",
-                    taskend = "01/02/2018",
-                    actualstart = "01/02/2018",
-                    actualend = "01/02/2018",
+                    projectNumber = "p001",
+                    taskName = "Gettering Requirement",
+                    taskStart = "31/01/2018",
+                    taskEnd = "01/02/2018",
+                    actualStart = "01/02/2018",
+                    actualEnd = "01/02/2018",
                     variant = "0",
-                     team = "Employee1,dummyEmployee",
-                     backclr = "#4CAF50",
-                     picture = "thumTime"
+                   
                 },
-                new TaskModel
+                new TaskModel2
                 {
                     taskId = "t002",
-                    projectnumber = "p001",
-                    taskname = "System Analysis ",
-                    taskstart = "02/02/2018",
-                    taskend = "05/02/2018",
-                    actualstart = "03/02/2018",
-                    actualend = "05/02/2018",
+                    projectNumber = "p001",
+                    taskName = "System Analysis ",
+                    taskStart = "02/02/2018",
+                    taskEnd = "05/02/2018",
+                    actualStart = "03/02/2018",
+                    actualEnd = "05/02/2018",
                     variant = "2",
-                    team = "Employee2,dummyEmployee",
-                     backclr = "#4CAF50",
-                     picture = "thumTime"
+ 
                 },
-                new TaskModel
+                new TaskModel2
                 {
                      taskId = "t003",
-                    projectnumber = "p001",
-                    taskname = "Development",
-                    taskstart = "02/02/2018",
-                    taskend = "05/02/2018",
-                    actualstart = "03/02/2018",
-                    actualend = "05/02/2018",
+                    projectNumber = "p001",
+                    taskName = "Development",
+                    taskStart = "02/02/2018",
+                    taskEnd = "05/02/2018",
+                    actualStart = "03/02/2018",
+                    actualEnd = "05/02/2018",
                     variant = "2",
-                    team = "Employee3,dummyEmployee",
-                    backclr = "#4CAF50",
-                     picture = "thumTime"
+
                 },
-                  new TaskModel
+                  new TaskModel2
                 {
                      taskId = "t004",
-                    projectnumber = "p001",
-                    taskname = "Tesing",
-                    taskstart = "02/02/2018",
-                    taskend = "05/02/2018",
-                    actualstart = "03/02/2018",
-                    actualend = "05/02/2018",
+                    projectNumber = "p001",
+                    taskName = "Tesing",
+                    taskStart = "02/02/2018",
+                    taskEnd = "05/02/2018",
+                    actualStart = "03/02/2018",
+                    actualEnd = "05/02/2018",
                     variant = "2",
-                    team = "Employee4,dummyEmployee",
-                    backclr = "#4CAF50",
-                     picture = "thumTime"
+
                 },
-                    new TaskModel
+                    new TaskModel2
                 {
                      taskId = "t005",
-                    projectnumber = "p001",
-                    taskname = "Deploy",
-                    taskstart = "02/02/2018",
-                    taskend = "05/02/2018",
-                    actualstart = "03/02/2018",
-                    actualend = "05/02/2018",
+                    projectNumber = "p001",
+                    taskName = "Deploy",
+                    taskStart = "02/02/2018",
+                    taskEnd = "05/02/2018",
+                    actualStart = "03/02/2018",
+                    actualEnd = "05/02/2018",
                     variant = "2",
-                    team = "Employee5,dummyEmployee",
-                    backclr = "#c8cd20",
-                    picture = "thumTime"
+
                 },
             };
 
 
-            //Tasklist.ItemsSource = task;*/
+            Tasklist.ItemsSource = task;*/
 
 		}
 
@@ -134,7 +124,10 @@ namespace SmartPM.Views
 
             var tasklists = e.Item as TaskModel;
             string id = tasklists.taskId;
-            await Navigation.PushAsync(new TaskFunctionScreen(uid, gid, pid, id));
+
+            var page = new TaskFunctionScreen(uid, gid, pid, id);
+            await Navigation.PushAsync(page);
+            //await Navigation.PushAsync(new TaskFunctionScreen(uid, gid, pid, id));
         }
 
         private async void logout(object sender, EventArgs e)
@@ -172,7 +165,7 @@ namespace SmartPM.Views
 
                 using (var client = new HttpClient())
                 {
-                    client.Timeout = new TimeSpan(0, 0, 15);
+                   // client.Timeout = new TimeSpan(0, 0, 15);
                     using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest2/FilterTask", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))

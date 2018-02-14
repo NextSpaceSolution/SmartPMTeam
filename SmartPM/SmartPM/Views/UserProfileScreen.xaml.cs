@@ -32,19 +32,16 @@ namespace SmartPM.Views
             acc.firstname = "Monkey";
             acc.lastname = "D Luffy";
             acc.jobResponsible = "Analisys and Develop and Testing";
-            acc.groupId = "99";
-            acc.groupName = "TeamDevelop";
+            acc.userTel = "085-555-5555";
+            acc.lineId = "line.me";
             acc.status = "working";
-            acc.picture = "userTemp";
-            acc.email = "momon@sadaharu.com";
-            acc.tel = "085-555-5555";
             BindingContext = acc;
         }
 
 
         public async void Button_click(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Edidprofile());
+            await Navigation.PushAsync(new Editprofile(""));
         }
 
         private async void logout(object sender, EventArgs e)
