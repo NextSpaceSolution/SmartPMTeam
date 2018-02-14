@@ -1,13 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SmartPM.Views.GlobalTimesheetList">
+             x:Class="SmartPM.Views.GlobalTimesheetList"
+             Title="Timesheet L2W">
     <ContentPage.Content>
-        <StackLayout Padding="5">
+        <StackLayout Padding="0,0,5,0">
+            <AbsoluteLayout>
+                <StackLayout Orientation="Horizontal">
+                    <SearchBar x:Name="MainSearch" TextChanged="MainSearch_TextChanged" Placeholder="Find here" PlaceholderColor="Orange" Margin="5,0,5,5">
+                    </SearchBar>
+                </StackLayout>
+            </AbsoluteLayout>
+
             <ListView
-                x:Name="projectlist"
+                x:Name="TimesheetlistItem"
                 SeparatorVisibility="None"
-                HasUnevenRows="True"     
+                HasUnevenRows="True"  
                 ItemTapped="projectlist_ItemTapped"
                 IsPullToRefreshEnabled="True"
                 IsRefreshing="False">
@@ -21,7 +29,7 @@
                                              Margin="15,5,0,0">
                                     <Label
                                         TextColor="#44687b"
-                                        Text="Timesheet name : "/>
+                                        Text="โปรเจค :"/>
                                     <Label 
                                         TextColor="#44687b"
                                         Text="{Binding projectName}"/>
@@ -29,13 +37,31 @@
                                 </StackLayout>
 
                                 <StackLayout Orientation="Horizontal"
+                                             Margin="15,0,0,0">
+                                    <Label 
+                                        FontSize="Micro"
+                                        Text="เฟส : "/>
+                                    <Label 
+                                        FontSize="Micro"
+                                        Text="{Binding taskName}"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal"
+                                             Margin="15,0,0,0">
+                                    <Label 
+                                        FontSize="Micro"
+                                        Text="หัวข้องาน : "/>
+                                    <Label 
+                                        FontSize="Micro"
+                                        Text="{Binding functionName}"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal"
                                              Margin="15,0,0,5">
                                     <Label 
                                         FontSize="Micro"
-                                        Text="Date : "/>
+                                        Text="วันที่บันทึก : "/>
                                     <Label 
                                         FontSize="Micro"
-                                        Text="{Binding projectManager}"/>
+                                        Text="{Binding timeSheetId, StringFormat='{0: dd-MM-yyyy}'}"/>
                                 </StackLayout>
                                
                             </StackLayout>

@@ -62,7 +62,7 @@
                            />
 
                 <Picker x:Name="phase" 
-                            Title="Choose Phase"
+                            Title="เลือกเฟสที่รับผิดชอบ"
                             TextColor="Black"
                             Grid.Row="2"
                             Grid.Column="0"

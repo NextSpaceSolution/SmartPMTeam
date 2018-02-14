@@ -30,7 +30,7 @@ namespace SmartPM.Views
         {
             InitializeComponent();
             //Gettimeline();
-            string pid = "100001";
+            string pid = id;
             RenderReqTimelineLog(pid);
         
 

@@ -26,11 +26,15 @@ namespace SmartPM.Views.Team
 
 
         private AuthenModel userAccount = new AuthenModel();
+<<<<<<< HEAD
 
         AProjectList temp = new AProjectList();
         
 
+=======
+>>>>>>> 8202e9ee96dece78bea987402d97e13547c55d3b
 
+        AProjectList temp = new AProjectList();
 
         AProjectList pdata = new AProjectList();
 

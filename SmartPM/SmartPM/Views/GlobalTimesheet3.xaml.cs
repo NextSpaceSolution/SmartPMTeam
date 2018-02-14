@@ -48,7 +48,7 @@ namespace SmartPM.Views
             obj.groupId = model.groupId;
 
             if (checkConnect() == true)
-                RenderFindTid(obj.TaskName);
+                RenderFindTid(obj.projectId,obj.TaskName);
             else
                 Title = "Internet not connect";
 
@@ -71,19 +71,19 @@ namespace SmartPM.Views
             else
                 return false;
         }
-        public async void RenderFindTid(string tname)
+        public async void RenderFindTid(string pid, string tname)
         {
-            string jsonResult = await FindTaskId(tname);
+            string jsonResult = await FindTaskId(pid, tname);
             JObject data = JObject.Parse(jsonResult);
             obj.taskId = (string)data["taskId"];
-            RenderFilterFunction(obj.groupId, obj.userId, obj.projectId, obj.taskId);
+            RenderFilterFunction(obj.userId, obj.projectId, obj.taskId);
         }
 
-        public async void RenderFilterFunction(string gid, string uid, string pid, string taid)
+        public async void RenderFilterFunction(string uid, string pid, string taid)
         {
             var ResultFunc = new List<TimesheetfunctionModel>();
             var tempResultFunc = new List<TimesheetfunctionModel>();
-            string filterFunc = await FilterFunction(gid, uid, pid, taid);
+            string filterFunc = await FilterFunction(uid, pid, taid);
             ResultFunc = JsonConvert.DeserializeObject<List<TimesheetfunctionModel>>(filterFunc);
 
             foreach (var item in ResultFunc)
@@ -118,16 +118,23 @@ namespace SmartPM.Views
         }
         private async void Button_Clicked2(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GlobalTimesheetSubmit(obj));
+            if (string.IsNullOrEmpty(obj.functionName))
+            {
+                await DisplayAlert("Notic", "!!! กรุนาเลือกชื่องาน", "Ok");
+
+            }
+            else
+                await Navigation.PushAsync(new GlobalTimesheetSubmit(obj));
         }
 
 
-        public async Task<string> FindTaskId(string name)
+        public async Task<string> FindTaskId(string pid,string name)
         {
             try
             {
                 // This is the postdata
                 var postData = new List<KeyValuePair<string, string>>(2);
+                postData.Add(new KeyValuePair<string, string>("pid", pid));
                 postData.Add(new KeyValuePair<string, string>("tname", name));
 
                 HttpContent content = new FormUrlEncodedContent(postData);
@@ -160,13 +167,12 @@ namespace SmartPM.Views
 
         }
 
-        public async Task<string> FilterFunction(string gid, string uid, string pid, string tid)
+        public async Task<string> FilterFunction(string uid, string pid, string tid)
         {
             try
             {
                 // This is the postdata
-                var postData = new List<KeyValuePair<string, string>>(2);
-                postData.Add(new KeyValuePair<string, string>("gid", gid));
+                var postData = new List<KeyValuePair<string, string>>(2);  
                 postData.Add(new KeyValuePair<string, string>("uid", uid));
                 postData.Add(new KeyValuePair<string, string>("pid", pid));
                 postData.Add(new KeyValuePair<string, string>("tid", tid));
@@ -176,7 +182,7 @@ namespace SmartPM.Views
                 using (var client = new HttpClient())
                 {
                     //client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/FilterFunction", content))
+                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/FilterFunctionTimesheet", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {

@@ -113,6 +113,7 @@ namespace SmartPM.Views
 
         private void phase_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             obj.TaskName = phase.Items[phase.SelectedIndex];
         }
 
@@ -122,7 +123,13 @@ namespace SmartPM.Views
         }
         private async void Button_Clicked2(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GlobalTimesheet3(obj));
+            if (string.IsNullOrEmpty(obj.TaskName))
+            {
+                await DisplayAlert("Notic", "!!! กรุนาเลือกเฟส", "Ok");
+
+            }
+            else
+                await Navigation.PushAsync(new GlobalTimesheet3(obj));
         }
 
 
