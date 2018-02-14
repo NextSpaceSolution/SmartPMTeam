@@ -9,8 +9,25 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Padding="5">
+            <StackLayout Orientation="Horizontal"
+                         Margin="15,5,0,0">
+                <Label TextColor="#44687b"
+                        Text="Project Name : "/>
+                <Label TextColor="#44687b"
+                       x:Name="projectname"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal"
+                        Margin="15,8,0,5">
+                <Label  FontSize="Micro"
+                        Text="Project Manager : "
+                        VerticalOptions="Center"/>
+                <Label FontSize="Micro"
+                        x:Name="projecmanager"/>
+            </StackLayout>
+            
             <ListView
-                x:Name="projectlist"
+                x:Name="Teamlist"
                 SeparatorVisibility="None"
                 HasUnevenRows="True"     
                 ItemTapped="teamlist_ItemTapped"
@@ -23,90 +40,15 @@
                                 BackgroundColor="White"
                                 Margin="2">
                                 <StackLayout Orientation="Horizontal"
-                                             Margin="15,5,0,0">
-                                    <Label
-                                        TextColor="#44687b"
-                                        Text="Project Name : "/>
-                                    <Label 
-                                        TextColor="#44687b"
-                                        Text="{Binding projectnumber}"/>
-
-                                </StackLayout>
-
-                                <StackLayout Orientation="Horizontal"
                                              Margin="15,8,0,5">
                                     <Label 
                                         FontSize="Micro"
-                                        Text="Project Manager : " VerticalOptions="Center"/>
-                                    
-                                    <Image Source="{Binding picturemanager}" HeightRequest="50" HorizontalOptions="Center"/>
+                                        Text="Team Mate : " VerticalOptions="Center"/>
 
                                     <Label 
                                         FontSize="Micro"
-                                        Text="{Binding managername}" VerticalOptions="Center"/>
+                                        Text="{Binding fullName}" VerticalOptions="Center"/>
                                 </StackLayout>
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,8,0,5">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="Team Person 1 : " VerticalOptions="Center"/>
-                                    
-                                    <Image Source="{Binding pictureteam1}" HeightRequest="50" HorizontalOptions="Center"/>
-                                    
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding employeename1}" VerticalOptions="Center"/>
-                                </StackLayout>
-
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,8,0,5">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="Team Person 2 : " VerticalOptions="Center"/>
-
-                                    <Image Source="{Binding pictureteam2}" HeightRequest="50" HorizontalOptions="Center"/>
-                                    
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding employeename2}" VerticalOptions="Center"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,8,0,5">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="Team Person 3 : " VerticalOptions="Center"/>
-
-                                    <Image Source="{Binding pictureteam3}" HeightRequest="50" HorizontalOptions="Center"/>
-                                    
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding employeename3}" VerticalOptions="Center"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,8,0,5">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="Team Person 4 : " VerticalOptions="Center"/>
-
-                                    <Image Source="{Binding pictureteam4}" HeightRequest="50" HorizontalOptions="Center"/>
-                                    
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding employeename4}" VerticalOptions="Center"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,8,0,5">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="Team Person 5 : " VerticalOptions="Center"/>
-
-                                    <Image Source="{Binding pictureteam5}" HeightRequest="50" HorizontalOptions="Center"/>
-                                    
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding employeename5}" VerticalOptions="Center"/>
-                                </StackLayout>
-                               
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

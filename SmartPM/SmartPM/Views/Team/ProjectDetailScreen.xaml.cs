@@ -23,18 +23,20 @@ namespace SmartPM.Views.Team
     {
         private AuthenModel userAccount = new AuthenModel();
 
-        AProjectList pdata = new AProjectList();
+        ProjectInfo pdata = new ProjectInfo();
+        List<ProjectInfo> list = new List<ProjectInfo>();
         private string pid;
 
 
         public ProjectDetailScreen(string id)
         {
             InitializeComponent();
+            Title = pid;
 
             pid = id;
             RenderAPI(pid);
 
-            AProjectList list = new AProjectList();
+           /* AProjectList list = new AProjectList();
             
                 list.projectName = "dummyProject XXX";
                 list.projectManager = "dummyManager001";
@@ -52,7 +54,7 @@ namespace SmartPM.Views.Team
 
                     
             
-            BindingContext = list;
+            BindingContext = list;*/
         }
 
         private async void logout(object sender, EventArgs e)
@@ -64,27 +66,75 @@ namespace SmartPM.Views.Team
 
         public async void RenderAPI(string pid)
         {
-            string jsonResult = await FilterProject(pid);
-            JObject datapro = JObject.Parse(jsonResult);
+            var jsonResult = await GetProInfo(pid);
+            list = JsonConvert.DeserializeObject<List<ProjectInfo>>(jsonResult);
+            if (list == null)
+            {
+                DisplayAlert("NNNN", "Novalue", "OK");
+            }
+            else
+            {
+                foreach (var item in list)
+                {
+                    pdata.projectName = item.projectName;
+                    pdata.projectManagerfName = item.projectManagerfName + "  " + item.projectManagerlName;
+                    pdata.projectStart = item.projectStart;
+                    pdata.projectEnd = item.projectEnd;
+                    pdata.actualStart = item.actualStart;
+                    pdata.actualEnd = item.actualEnd;
+                    pdata.projectCreateBy = item.projectCreateBy;
+                    pdata.projectCost = item.projectCost;
+                    pdata.customerName = item.customerName;
+                    pdata.customerTel = item.customerTel;
+                    pdata.variant = item.variant;
+                    pdata.projectStatus = item.projectStatus;
+                    pdata.note = item.note;
 
-            pdata.projectNumber = (string)datapro["projectNumber"];
-            pdata.projectManager = (string)datapro["projectManager"];
-            pdata.projectStart = (string)datapro["projectStart"];
-            pdata.projectEnd = (string)datapro["projectEnd"];
-            pdata.projectCost = (string)datapro["projectCost"];
-            pdata.projectCreateBy = (string)datapro["projectCreateBy"];
-            pdata.customerName = (string)datapro["customerName"];
-            pdata.customerTel = (string)datapro["customerTel"];
-            pdata.actualStart = (string)datapro["actualStart"];
-            pdata.actualEnd = (string)datapro["actualEnd"];
-            pdata.note = (string)datapro["note"];
-            pdata.variant = (string)datapro["variant"];
-            pdata.projectStatus = (string)datapro["projectStatus"];
 
-            BindingContext = pdata;
+                }
+            }
+
+            /* projectname.Text = pdata.projectName;
+             projecmanager.Text = pdata.projectManagerfName;
+             projectcreateby.Text = pdata.projectCreateBy;
+             projectstart.Text = pdata.projectStart.ToString();
+             projectend.Text = pdata.projectEnd.ToString();
+             note.Text = pdata.note;
+             variant.Text = pdata.variant.ToString();
+             projectstatus.Text = pdata.projectStatus.ToString();
+             actualStart.Text = pdata.actualStart.ToString();
+             actualend.Text = pdata.actualEnd.ToString();
+             projectcost.Text = pdata.projectCost.ToString();
+             customername.Text = pdata.customerName;
+             customertel.Text = pdata.customerTel;*/
+
+            projectname.Text = pdata.projectName;
+            projecmanager.Text = pdata.projectManagerfName;
+            projectcreateby.Text = pdata.projectCreateBy;
+            projectstart.Text = pdata.projectStart.ToString();
+            projectend.Text = pdata.projectEnd.ToString();
+            note.Text = pdata.note;
+            variant.Text = pdata.variant.ToString();
+            if (pdata.projectStatus == null)
+            {
+                pdata.projectStatus = "--";
+            }
+            else
+            {
+                
+            }
+            projectstatus.Text = pdata.projectStatus;
+            actualStart.Text = pdata.actualStart.ToString();
+            actualend.Text = pdata.actualEnd.ToString();
+            projectcost.Text = pdata.projectCost.ToString();
+            customername.Text = pdata.customerName;
+            customertel.Text = pdata.customerTel;
+
+
+            this.IsBusy = false;
 
         }
-        public async Task<string> FilterProject(string pid)
+        public async Task<string> GetProInfo(string pid)
         {
             try
             {
@@ -97,7 +147,7 @@ namespace SmartPM.Views.Team
                 using (var client = new HttpClient())
                 {
                     //client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest2/FilterProject", content))
+                    using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest2/getProjectInfo", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {

@@ -141,6 +141,8 @@ namespace SmartPM.Views.Team
             var jsonResult = await FilterFunction(gid, uid, pid, tid);
             list = JsonConvert.DeserializeObject<List<TaskFunctionModel>>(jsonResult);
             Taskflist.ItemsSource = list;
+
+
             this.IsBusy = false;
 
         }
