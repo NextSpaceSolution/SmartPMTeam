@@ -48,7 +48,7 @@
                            Grid.ColumnSpan="2"
                            />
                     <Picker x:Name="project" 
-                            Title="Choose Project"
+                            Title="เลือกโปรเจคที่รับผิดชอบ"
                             TextColor="#2F2A25"
                             StyleClass="Info"
                             Grid.Row="1"

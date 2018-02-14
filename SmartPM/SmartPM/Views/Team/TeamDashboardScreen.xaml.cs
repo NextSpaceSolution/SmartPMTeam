@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Net;
+using SmartPM.Models.Timesheet;
 using Plugin.Connectivity;
 using SmartPM.Views.Team;
 using SmartPM.Views;
@@ -24,16 +25,8 @@ namespace SmartPM.Views.Team
 
     public partial class TeamDashboardScreen : ContentPage
 	{
-
-        string a;
-        string b;
-        string c;
-
-        string UserId;
-        string Firstname;
-        string Lastname;
-        string JobResponsible;
-        string GroupId;
+        TimesheetOneModel objTimesheet = new TimesheetOneModel();
+       
         private string userId { get; set; }
         private string groupId { get; set; }
    
@@ -44,10 +37,12 @@ namespace SmartPM.Views.Team
             userId = id;
             groupId = gid;
 
+
+
             if (InternetCheckConnectivity() == false)
                 Title = "Internet not connected";
             else {
-                RenderUserInfo(userId);
+                renderReqUserInfo(userId);
                 //Title = userId + gid;
                  }
 
@@ -64,18 +59,20 @@ namespace SmartPM.Views.Team
             return false;
         }
 
-        public async void RenderUserInfo(string userId)
+        public async void renderReqUserInfo(string id)
         {
-            string _userResult = await getUserInfo(userId);
-            JObject data = JObject.Parse(_userResult);
-            UserId = userId;
-            Firstname = (string)data["firstname"];
-            Lastname = (string)data["lastname"];
-            JobResponsible = (string)data["jobResponsible"];
-            GroupId = groupId;
-            
-           // _userInfo = JsonConvert.DeserializeObject<ObservableCollection<UserInfo>>(_userResult);
-     
+            string resultInfo = await ReqUserInfo(id);
+            JObject data = JObject.Parse(resultInfo);
+            string uid = (string)data["userId"];
+            string gid = (string)data["groupId"];
+            string fname = (string)data["firstname"];
+            string lname = (string)data["lastname"];
+            string jobRes = (string)data["jobResponsible"];
+            objTimesheet.userId = uid;
+            objTimesheet.groupId = gid;
+            objTimesheet.fullName = fname + " " + lname;
+            objTimesheet.jobResp = jobRes;
+
         }
 
         /*
@@ -91,12 +88,21 @@ namespace SmartPM.Views.Team
             {
                 BarBackgroundColor = Color.FromHex("#546E7A")
             };*/
-            await Navigation.PushAsync(new ProjectList("100017", "50"));
+            await Navigation.PushAsync(new ProjectList(userId,groupId));
         }
 
         private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GlobalTimesheet());
+            var page = new TabbedPage
+            {
+                Children =
+                {
+                    new GlobalTimesheetList(userId),
+                    new GlobalTimesheet(objTimesheet)
+
+                }
+            };
+            await Navigation.PushAsync(page);
             //UserId,Firstname,Lastname,JobResponsible,GroupId
         }
 
@@ -152,12 +158,47 @@ namespace SmartPM.Views.Team
         private async void logout(object sender, EventArgs e)
         {
 
-<<<<<<< HEAD
+
             //userAccount = null;
-=======
-            
->>>>>>> 064ebc055a958c1e94045921145701ee3eb8b7b1
+
             App.Current.MainPage = new LoginScreen();
+        }
+
+        public async Task<string> ReqUserInfo(string id)
+        {
+            try
+            {
+                // This is the postdata
+                var postData = new List<KeyValuePair<string, string>>(2);
+                postData.Add(new KeyValuePair<string, string>("id", id));
+                HttpContent content = new FormUrlEncodedContent(postData);
+
+                using (var client = new HttpClient())
+                {
+                    //client.Timeout = new TimeSpan(0, 0, 15);
+                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest/GetUserInfo", content))
+                    {
+                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
+                        {
+                            using (var responseContent = response.Content)
+                            {
+                                string result = await responseContent.ReadAsStringAsync();
+                                Console.WriteLine(result);
+                                return result;
+                            }
+                        }
+                        else
+                        {
+                            return "error " + Convert.ToString(response.StatusCode);
+                        }
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                return Convert.ToString(ex);
+            }
+
         }
     }
 }

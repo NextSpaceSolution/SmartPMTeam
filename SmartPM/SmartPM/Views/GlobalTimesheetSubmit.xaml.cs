@@ -39,12 +39,12 @@ namespace SmartPM.Views
             if (checkConnect() == true)
                 {
                 RenderGetActionName();
-                RenderFindFunctionId(timesheetData.TaskId, model.functionName);
+                RenderFindFunctionId(model.projectId,timesheetData.TaskId, model.functionName);
                 }
             else
                 Title = "Internet not connect";
 
-            
+
             //timesheetData.TimeSheetId
             /*
             timesheetData.UserId = model.userId;
@@ -58,10 +58,10 @@ namespace SmartPM.Views
             ActionNames.Items.Add("Development");
             ActionNames.Items.Add("Testing");
             */
-            timesheetData.UserId = "100017";
+            timesheetData.UserId = model.userId;
             timesheetData.ProjectNumber = model.projectId;
            // timesheetData.FunctionId = "100001";
-            timesheetData.ActionId = "A";
+           // timesheetData.ActionId = "F";
 
         }
 
@@ -110,45 +110,55 @@ namespace SmartPM.Views
             //  string uid = "100019";
             // string fid = "100008";
 
-            
+            if (string.IsNullOrEmpty(tempObj.actionName))
+            {
+                await DisplayAlert("Notic", "!!! กรุนาเลือก Action", "Ok");
+
+            }
+            else { 
+                string actId = await reqFindActionId(tempObj.actionName);
+            JObject data2 = JObject.Parse(actId);
+            string aid = (string)data2["actionId"];
 
             //await Navigation.PushAsync(new NextConcate(proId,uid,taskId,fid,tempObj.actionName,tempObj.Strdate, tempObj.StrStime, tempObj.StrEtime, tempObj.concateStime, tempObj.concateEtime));
-            string result = await reqRecordTimesheet(timesheetData.ProjectNumber, timesheetData.ActionId,
+            string result = await reqRecordTimesheet(timesheetData.ProjectNumber, aid,
                                                   timesheetData.TaskId, timesheetData.FunctionId, timesheetData.UserId,
                                                   timesheetData.TimeSheetStart, timesheetData.TimeSheetEnd);
             JObject data = JObject.Parse(result);
             string msg = (string)data["msg"];
-            if (msg == "success")
-                App.Current.MainPage.DisplayAlert("NOtic", "Record Successfully", "Ok");
-            else
-                App.Current.MainPage.DisplayAlert("Notic", "Record False", "Try again");
+            if (msg == "success") { 
+                var userAct = await DisplayAlert("Notic", "Record Successfully", "Ok","Cancle");
+                if (userAct)
+                {
+                    await Navigation.PopToRootAsync();
+                }
+
+            }
+            else { 
+               var userAct = await DisplayAlert("Notic", "Record False TryAgain", "Ok", "Cancle");
+              if (userAct != true)
+               {
+                    await Navigation.PopToRootAsync();
+               }
+            }
+            }
+
+
         }
 
-        public async void RenderFindFunctionId(string tid, string fname)
+        public async void RenderFindFunctionId(string pid,string tid, string fname)
         {
-            string result = await reqFindFunctionId(tid, fname);
+            string result = await reqFindFunctionId(pid,tid, fname);
             JObject temp = JObject.Parse(result);
             timesheetData.FunctionId = (string)temp["functionId"];
 
         }
 
-        public async void RenderRequestNewtimesheet()
+        public async void RenderFindActionId(string actName)
         {
-            // var Result = await reqRecordTimesheet(parameter);
-            //JObject tempData = JObject.Parse(Result);
-            //string jsonResult = (string)tempDada["msg"];
-            /*
-            if (jsonResult == "Success")
-            {
-                await DisplayAlert("Notification", "บันทึกข้อมูลเรียบร้อย", "OK");
-                await Navigation.PopAsync();
-            }
-            else
-            {
-
-                await DisplayAlert("Notification", "ไม่สามารถบันทึกข้อมูลได้", "Cancle");
-            }*/
+            
         }
+      
 
         public async void RenderGetActionName()
         {
@@ -261,12 +271,13 @@ namespace SmartPM.Views
 
         }
 
-        public async Task<string> reqFindFunctionId(string tid, string funcName)
+        public async Task<string> reqFindFunctionId(string pid, string tid, string funcName)
         {
             try
             {
                 // This is the postdata
                 var postData = new List<KeyValuePair<string, string>>(2);
+                postData.Add(new KeyValuePair<string, string>("pid", pid));
                 postData.Add(new KeyValuePair<string, string>("tid", tid));
                 postData.Add(new KeyValuePair<string, string>("funcName", funcName));
 
@@ -277,8 +288,47 @@ namespace SmartPM.Views
                 using (var client = new HttpClient())
                 {
                     //
-                    client.Timeout = new TimeSpan(0, 0, 15);
+                    //client.Timeout = new TimeSpan(0, 0, 15);
                     using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/FindFunctionId", content))
+                    {
+                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
+                        {
+                            using (var responseContent = response.Content)
+                            {
+                                string result = await responseContent.ReadAsStringAsync();
+                                Console.WriteLine(result);
+                                return result;
+                            }
+                        }
+                        else
+                        {
+                            return "error " + Convert.ToString(response.StatusCode);
+                        }
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                return Convert.ToString(ex);
+            }
+
+
+
+        }
+
+        public async Task<string> reqFindActionId(string actName)
+        {
+            try
+            {
+                // This is the postdata
+                var postData = new List<KeyValuePair<string, string>>(2);
+                postData.Add(new KeyValuePair<string, string>("actName", actName));
+                HttpContent content = new FormUrlEncodedContent(postData);
+
+                using (var client = new HttpClient())
+                {
+                    //client.Timeout = new TimeSpan(0, 0, 15);
+                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/FindValueActionId", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {

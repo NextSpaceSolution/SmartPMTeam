@@ -44,26 +44,27 @@
                     </Grid.GestureRecognizers>
                 </StackLayout>
                 <StackLayout HeightRequest="100"
-                             Grid.Row="0"
-                             Grid.Column="1"
+                             Grid.Row="1"
+                             Grid.Column="0"
+                             Grid.ColumnSpan="2"
                              Padding="5,20,0,5"
-                               Margin="0,0,5,0"
+                                Margin="5,0,5,5"
                              BackgroundColor="#6A1B9A"
                              >
                         <Image Source="thumTime" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="50" WidthRequest="50"/>
                         <Label 
                         TextColor="White"
-                    Text="TIMESHEET" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" FontAttributes="Italic" Style="{DynamicResource LabelStyle}"/>
+                    Text="TIMESHEET" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" FontAttributes="Italic" Style="{DynamicResource LabelStyle}"/>
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
                     </Grid.GestureRecognizers>
                 </StackLayout>
 
                 <StackLayout HeightRequest="100"
-                             Grid.Row="1"
-                             Grid.Column="0"
-                             Padding="5,20,0,5"
-                             Margin="5,0,0,0"
+                             Grid.Row="0"
+                             Grid.Column="1"
+                             Padding="5,20,0,5"                          
+                             Margin="0,0,5,0"
                              BackgroundColor="#00695C"
                              >
                         <Image Source="thumUser" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="50" WidthRequest="50"/>

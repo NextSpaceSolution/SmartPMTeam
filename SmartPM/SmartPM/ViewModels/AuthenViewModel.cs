@@ -84,32 +84,11 @@ namespace SmartPM.ViewModels
                     NavigationPage.SetHasBackButton(page, false);
                     App.Current.MainPage = new NavigationPage(page);
                     
-                    /*
-                    App.Current.MainPage = new TabbedPage
-                    {
-                        Children = {
-                            new AdminDashboard(),
-                            new AdminProfile()
-                        }
-                    };*/
+               
 
                 }
-                else if (groupid == "50")
-                {
-
-                    var page = new PMDashboardScreen();
-                    NavigationPage.SetHasBackButton(page, false);
-                    App.Current.MainPage = new NavigationPage(page);
-                    /*
-                    App.Current.MainPage = new NavigationPage(new TabbedPage {
-                        Children = {
-                            new PMDashboardScreen(),
-                            new PMProfileScreen()
-                        }
-                    };)*/
-
-                }
-                else if (groupid == "10")
+              
+                else if (groupid == "10" || groupid == "50")
                 {
 
                     var page = new TeamDashboardScreen(userid, groupid);

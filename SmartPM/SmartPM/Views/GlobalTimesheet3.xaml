@@ -78,7 +78,7 @@
 
 
                 <Picker x:Name="job" 
-                            Title="Choose Job"
+                            Title="เลือกงานที่รับผิดชอบ"
                             TextColor="Black"
                             Grid.Row="3"
                             Grid.Column="0"
