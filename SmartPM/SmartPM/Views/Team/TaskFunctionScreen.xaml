@@ -53,7 +53,7 @@
                                         Text="Function Start : "/>
                                         <Label 
                                      FontSize="Micro"
-                                        Text="{Binding functionstart}"/>
+                                        Text="{Binding functionStart ,StringFormat='{0: dd-MM-yyyy}' }"/>
 
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal"
@@ -63,7 +63,7 @@
                                         Text="Function End : "/>
                                         <Label 
                                         FontSize="Micro"
-                                        Text="{Binding functionend}"/>
+                                        Text="{Binding functionEnd ,StringFormat='{0: dd-MM-yyyy}'}"/>
 
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal"
@@ -73,7 +73,7 @@
                                         Text="Ac Start : "/>
                                         <Label 
                                         FontSize="Micro"
-                                        Text="{Binding actualstart}"/>
+                                        Text="{Binding actualStart ,StringFormat='{0: dd-MM-yyyy}'}"/>
 
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal"
@@ -83,7 +83,7 @@
                                         Text="Ac End : "/>
                                         <Label 
                                        FontSize="Micro"
-                                        Text="{Binding actualend}"/>
+                                        Text="{Binding actualEnd, StringFormat='{0: dd-MM-yyyy}'}"/>
 
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal"

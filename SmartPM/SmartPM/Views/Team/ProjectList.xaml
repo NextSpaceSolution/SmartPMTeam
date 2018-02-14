@@ -10,6 +10,13 @@
     
     <ContentPage.Content>
         <StackLayout Padding="5">
+            <!--AbsoluteLayout>
+                <StackLayout Orientation="Horizontal">
+                    <SearchBar x:Name="MainSearch" TextChanged="MainSearch_TextChanged" Placeholder="Find here" PlaceholderColor="Orange" Margin="10,0,10,5">
+                    </SearchBar>
+                </StackLayout>
+            </>-->
+
             <ListView
                 x:Name="projectlist"
                 SeparatorVisibility="None"

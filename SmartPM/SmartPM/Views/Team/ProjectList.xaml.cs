@@ -29,6 +29,8 @@ namespace SmartPM.Views.Team
         public string gid { get; set; }
         public string picture { get; set; }
         public string backclr { get; set; }
+
+        List<AProjectList> list = new List<AProjectList>();
         public ProjectList(string id ,string groupid)
         {
             InitializeComponent();
@@ -67,10 +69,18 @@ namespace SmartPM.Views.Team
             projectlist.ItemsSource = list;*/
         }
 
+        /*private void MainSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var keyword = MainSearch.Text;
+            projectlist.ItemsSource =
+                list.Where(projectNumber.Contains());
+        }*/
+
+
         public async void RenderProject(string uid , string gid)
         {
             
-            var list = new List<AProjectList>();
+           
             var jsonResult = await FilterProject(uid , gid);
             list = JsonConvert.DeserializeObject<List<AProjectList>>(jsonResult);
             projectlist.ItemsSource = list;

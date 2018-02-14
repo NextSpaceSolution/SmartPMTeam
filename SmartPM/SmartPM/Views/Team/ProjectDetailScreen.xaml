@@ -30,134 +30,124 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
-
                     </Grid.ColumnDefinitions>
-                    <StackLayout  Margin="15,5,0,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Label TextColor="#44687b"
-                              Text="ชื่อโครงการ  " HorizontalOptions ="Center"/>
-                        
+                    
+                    <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label Text="ชื่อโครงการ" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="projectname"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label  Text="หัวหน้าโครงการ"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="projecmanager"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label  Text="ผู้สร้างโครงการ"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="projectcreateby"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label  Text="เริ่มโครงการ"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="projectstart"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label  Text="สิ้นสุดโครงการ"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="projectend"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label Text="วันเริ่มทำจริง" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="actualStart"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label  Text="วันสิ้นสุดจริง"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="actualend"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label Text="เหลือเวลา"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="variant"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label  Text="ค่าใช้จ่ายโครงการ"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="projectcost"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label  Text="Note"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="note"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label  Text="ชื่อลูกค้า"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="customername"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label  Text="เบอร์โทรลูกค้า"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="customertel"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label  Text="สถานะโครงการ"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="12" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="projectstatus"/>
                     </StackLayout>
                     
-                    <StackLayout  Margin="15,5,0,0" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2">
-                        <Label TextColor="#44687b"
-                              Text="{Binding projectName}" HorizontalOptions="Start"/>
-                     </StackLayout>
-
-                    <StackLayout  Margin="15,0,0,5" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-                         <Label FontSize="Micro"
-                               Text="ผู้จัดการ : "   HorizontalOptions ="Center"/>
-                    </StackLayout>
-                    <StackLayout  Margin="15,0,0,5" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2">
-                                 <Label FontSize="Micro"
-                                        Text="{Binding projectManager}" HorizontalOptions="Start"/>
-                    </StackLayout>
-                    <StackLayout Margin="15,0,0,5" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-                                 <Label FontSize="Micro"
-                                        Text="วันที่เริ่มต้น : "  HorizontalOptions ="Center"/>
-                    </StackLayout>
                     
-                    <StackLayout Margin="15,0,0,5" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
-                        <Label FontSize="Micro"
-                               Text="{Binding projectStart}" HorizontalOptions="Start"/>
-                      </StackLayout>
 
-                    <StackLayout  Margin="15,0,0,5" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
-                         <Label FontSize="Micro"
-                                Text="วันที่สิ้นสุด : "  HorizontalOptions ="Center"/>
-                    </StackLayout>
-                    <StackLayout  Margin="15,0,0,5" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2">
-                          <Label FontSize="Micro"
-                                 Text="{Binding projectEnd}" HorizontalOptions="Start"/>
-                    </StackLayout>
 
-                    <StackLayout  Margin="15,0,0,5" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
-                          <Label FontSize="Micro"
-                                 Text="ค่าใช้จ่ายโ๕รงการ : "  HorizontalOptions ="Center"/>
-                    </StackLayout>
-                    <StackLayout  Margin="15,0,0,5" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2">
-                          <Label FontSize="Micro"
-                                 Text="{Binding projectCost}" HorizontalOptions="Start"/>
-                     </StackLayout>
-
-                    <StackLayout Margin="15,0,0,5" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
-                          <Label  FontSize="Micro"
-                                  Text="ผู้สร้างโครงการ : "  HorizontalOptions ="Center"/>
-                    </StackLayout>
-                    <StackLayout  Margin="15,0,0,5" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2">
-                        <Label  FontSize="Micro"
-                                Text="{Binding projectCreateBy}" HorizontalOptions="Start"/>
-                    </StackLayout>
-
-                    <StackLayout Margin="15,0,0,5" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
-                          <Label FontSize="Micro"
-                                 Text="ชื่อลูกค้า : "  HorizontalOptions ="Center"/>
-                    </StackLayout>
-                    <StackLayout  Margin="15,0,0,5" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2">
-                          <Label FontSize="Micro"
-                                 Text="{Binding customerName}" HorizontalOptions="Start"/>
-                    </StackLayout>
-
-                    <StackLayout Margin="15,0,0,5" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2">
-                          <Label FontSize="Micro"
-                                 Text="เบอร์ติดต่อลูกคา : "  HorizontalOptions ="Center"/>
-                    </StackLayout>
-                    <StackLayout  Margin="15,0,0,5" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2">
-                          <Label FontSize="Micro"
-                                 Text="{Binding customerTel}" HorizontalOptions="Start"/>
-                    </StackLayout>
-
-                    <StackLayout  Margin="15,0,0,5" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
-                          <Label FontSize="Micro"
-                                  Text="วันเริ่มโ๕รงการจริง : "  HorizontalOptions ="Center"/>
-                    </StackLayout>
-                    <StackLayout  Margin="15,0,0,5" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2">
-                          <Label FontSize="Micro"
-                                 Text="{Binding actualStart}" HorizontalOptions="Start"/>
-                    </StackLayout>
-
-                    <StackLayout Margin="15,0,0,5" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2">
-                          <Label FontSize="Micro"
-                                 Text="วันสิ้นสุดโ๕รงการจริง : "  HorizontalOptions ="Center"/>
-                    </StackLayout>
-                    <StackLayout  Margin="15,0,0,5" Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="2">
-                          <Label FontSize="Micro"
-                               Text="{Binding actualEnd}" HorizontalOptions="Start"/>
-                    </StackLayout>
-
-                    <StackLayout Margin="15,0,0,5" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2">
-                          <Label  FontSize="Micro"
-                                  Text="บรรทึกโครงการ: "  HorizontalOptions ="Center"/>
-                    </StackLayout>
-                    <StackLayout  Margin="15,0,0,5" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="2">
-                          <Label  FontSize="Micro"
-                                   Text="{Binding note}" HorizontalOptions="Start"/>
-                    </StackLayout>
-
-                    <StackLayout Margin="15,0,0,5" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2">
-                          <Label FontSize="Micro"
-                                  Text="วันที่่เหลือในการทำโครงกร: "  HorizontalOptions ="Center"/>
-                    </StackLayout>
-
-                    <StackLayout  Margin="15,0,0,5" Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="2">
-                          <Label FontSize="Micro"
-                                 Text="{Binding variant}" HorizontalOptions="Start"/>
-                     </StackLayout>
-
-                    <StackLayout Margin="15,0,0,5" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2">
-                          <Label FontSize="Micro"
-                                 Text="สถานะของโครงการ : "  HorizontalOptions ="Center"/>
-                    </StackLayout>
-
-                    <StackLayout  Margin="15,0,0,5" Grid.Row="12" Grid.Column="2" Grid.ColumnSpan="2">
-                        <Label FontSize="Micro"
-                               Text="{Binding projectStatus}" HorizontalOptions="Start"/>
-                    </StackLayout>
 
                 </Grid>
             </StackLayout>
