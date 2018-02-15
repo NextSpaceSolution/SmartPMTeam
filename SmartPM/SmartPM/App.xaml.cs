@@ -19,12 +19,12 @@ namespace SmartPM
         {
             InitializeComponent();
 
-<<<<<<< HEAD
-            //MainPage = new TeamDashboardScreen("100017","50");
 
-            /*{
-=======
-            //MainPage = new TestConcate();
+           MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"));
+
+            //{
+
+            //MainPage = new TestTableVeiw();
 
             //MainPage = new UserProfileScreen();
 
@@ -39,7 +39,7 @@ namespace SmartPM
 
 
             {
->>>>>>> 8202e9ee96dece78bea987402d97e13547c55d3b
+
                 BarBackgroundColor = Color.FromHex("#E91E63"),
                 BarTextColor = Color.White
             };*/
@@ -53,7 +53,7 @@ namespace SmartPM
                            BarTextColor = Color.White
                     //   };
 
-<<<<<<< HEAD
+
 
             //string id = "10009";
             // string gid = "10";
@@ -68,7 +68,6 @@ namespace SmartPM
             // MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"));
            // MainPage = new TempPage("100001");
         }
-=======
 
 
 
@@ -100,10 +99,10 @@ namespace SmartPM
 
 
            // MainPage = new NavigationPage(new TeamDashboardScreen("100017", "50"));
-            MainPage = new LoginScreen();
+           // MainPage = new LoginScreen();
         
     }
->>>>>>> 8202e9ee96dece78bea987402d97e13547c55d3b
+
 
         protected override void OnStart()
         {

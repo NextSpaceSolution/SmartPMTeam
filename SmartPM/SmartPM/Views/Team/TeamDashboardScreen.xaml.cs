@@ -26,7 +26,8 @@ namespace SmartPM.Views.Team
     public partial class TeamDashboardScreen : ContentPage
 	{
         TimesheetOneModel objTimesheet = new TimesheetOneModel();
-       
+        AccountModel acc = new AccountModel();
+        List<AccountModel> lst = new List<AccountModel>();
         private string userId { get; set; }
         private string groupId { get; set; }
    
@@ -43,6 +44,7 @@ namespace SmartPM.Views.Team
                 Title = "Internet not connected";
             else {
                 renderReqUserInfo(userId);
+                RenderAPI(userId);
                 //Title = userId + gid;
                  }
 
@@ -58,6 +60,27 @@ namespace SmartPM.Views.Team
             }
             return false;
         }
+
+        public async void RenderAPI(string id)
+        {
+            string resultInfo = await getUserInfo(id);
+            JObject data = JObject.Parse(resultInfo);
+            string uid = (string)data["userId"];
+            string gid = (string)data["groupId"];
+            string fname = (string)data["firstname"];
+            string lname = (string)data["lastname"];
+            string jobRes = (string)data["jobResponsible"];
+            objTimesheet.userId = uid;
+            objTimesheet.groupId = gid;
+            objTimesheet.fullName = fname + " " + lname;
+            objTimesheet.jobResp = jobRes;
+
+            fullname.Text = objTimesheet.fullName;
+            job.Text = objTimesheet.jobResp;
+
+
+        }
+
 
         public async void renderReqUserInfo(string id)
         {
@@ -108,7 +131,7 @@ namespace SmartPM.Views.Team
 
         private async void TapGestureRecognizer_Tapped_2(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new UserProfileScreen());
+            await Navigation.PushAsync(new UserProfileScreen(userId));
         }
 
         /*
@@ -129,7 +152,7 @@ namespace SmartPM.Views.Team
                 using (var client = new HttpClient())
                 {
                     //client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest/GetUserInfo", content))
+                    using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest/GetUserInfo", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {

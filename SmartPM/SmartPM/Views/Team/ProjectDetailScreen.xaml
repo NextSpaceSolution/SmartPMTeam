@@ -9,12 +9,14 @@
         <ToolbarItem Text="Logout" Activated="logout" Order="Secondary"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-      
+        <ScrollView>
         <StackLayout>
-
-                <StackLayout 
-                                BackgroundColor="White"
-                                Margin="2">
+            <StackLayout>
+                <Label Text="รายระเอียดโครงการ" FontSize="16" TextColor="Black" Margin="15,5,0,0"/>
+            </StackLayout>
+            
+                <StackLayout    BackgroundColor="White"
+                                >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -29,9 +31,99 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    
+                    <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label Text="ชื่อโครงการ" Margin="20,10,0,0"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="projectname" Margin="0,10,0,0"/>
+                    </StackLayout>
+
+                    <BoxView BackgroundColor="Gray" HeightRequest="0.2" Margin="3,0,0,3" Grid.Row="2" Grid.ColumnSpan="5"/>
+
+                    <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Label  Text="หัวหน้าโครงการ" Margin="20,0,0,0"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="projecmanager"/>
+                    </StackLayout>
+                    
+                    <BoxView BackgroundColor="Gray" HeightRequest="0.2" Margin="3,0,0,3" Grid.Row="4" Grid.ColumnSpan="5"/>
+
+                    <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Label  Text="ผู้สร้างโครงการ" Margin="20,0,0,0"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="projectcreateby"/>
+                    </StackLayout>
+
+                    <BoxView BackgroundColor="Gray" HeightRequest="0.2" Margin="3,0,0,3" Grid.Row="6" Grid.ColumnSpan="5"/>
+                    
+                    <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Label  Text="ค่าใช้จ่าย" Margin="20,0,0,0"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="3">
+                            <Label x:Name="projectcost" />
+                    </StackLayout>
+
+                    <BoxView BackgroundColor="Gray" HeightRequest="0.2" Margin="3,0,0,3" Grid.Row="8" Grid.ColumnSpan="5"/>
+                    
+                    <StackLayout Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Label  Text="Note" Margin="20,0,0,0" VerticalOptions="Center"/>
+                    </StackLayout>
+
+                        
+                    <StackLayout Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="3">
+                            <ScrollView>
+                        <Label  x:Name="note"/>
+                            </ScrollView>
+                        </StackLayout>
+                        
+                    <BoxView BackgroundColor="Gray" HeightRequest="0.2" Margin="3,0,0,3" Grid.Row="10" Grid.ColumnSpan="5"/>
+
+                    <StackLayout Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Label  Text="สถานะโครงการ" Margin="20,0,0,0"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="projectstatus" Margin="0,0,0,10"/>
+                    </StackLayout>
+                    
+                      
+                    </Grid>
+            </StackLayout>
+
+
+           
+
+            <StackLayout>
+                    <Label Text="ระยะเวลาและวันที่" FontSize="16" TextColor="Black" Margin="15,0,0,0" VerticalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout  BackgroundColor="White">
+                <Grid>
+                    <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                       
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -40,118 +132,93 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    
-                    <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Label Text="ชื่อโครงการ" />
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3">
-                        <Label x:Name="projectname"/>
-                    </StackLayout>
 
                     <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Label  Text="หัวหน้าโครงการ"/>
+                            <Label  Text="เริ่มต้น" Margin="20,10,0,0"/>
                     </StackLayout>
 
                     <StackLayout Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3">
-                        <Label x:Name="projecmanager"/>
+                        <Label x:Name="projectstart" Margin="0,10,0,0"/>
                     </StackLayout>
 
                     <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Label  Text="ผู้สร้างโครงการ"/>
+                            <Label  Text="สิ้นสุด" Margin="20,0,0,0"/>
                     </StackLayout>
 
                     <StackLayout Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3">
-                        <Label x:Name="projectcreateby"/>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Label  Text="เริ่มโครงการ"/>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
-                        <Label x:Name="projectstart"/>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Label  Text="สิ้นสุดโครงการ"/>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3">
                         <Label x:Name="projectend"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Label Text="วันเริ่มทำจริง" />
+                    <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Label Text="เริ่มจริง"  Margin="20,0,0,0"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3">
+                    <StackLayout Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
                         <Label x:Name="actualStart"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Label  Text="วันสิ้นสุดจริง"/>
+                    <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Label  Text="สิ้นสุด"  Margin="20,0,0,0"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="3">
+                    <StackLayout Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3">
                         <Label x:Name="actualend"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Label Text="เหลือเวลา"/>
+                    <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Label Text="เหลือเวลา" Margin="20,0,0,0"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="3">
-                        <Label x:Name="variant"/>
+                    <StackLayout Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="variant" Margin="0,0,0,10"/>
                     </StackLayout>
-
-                    <StackLayout Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Label  Text="ค่าใช้จ่ายโครงการ"/>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="3">
-                        <Label x:Name="projectcost"/>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Label  Text="Note"/>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="3">
-                        <Label x:Name="note"/>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Label  Text="ชื่อลูกค้า"/>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="3">
-                        <Label x:Name="customername"/>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Label  Text="เบอร์โทรลูกค้า"/>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="3">
-                        <Label x:Name="customertel"/>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Label  Text="สถานะโครงการ"/>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="12" Grid.Column="2" Grid.ColumnSpan="3">
-                        <Label x:Name="projectstatus"/>
-                    </StackLayout>
-                    
-                    
-
-
 
                 </Grid>
             </StackLayout>
 
+
+            
+
+            <StackLayout>
+                    <Label Text="ข้อมูลลูกค้า" FontSize="16" TextColor="Black" Margin="15,0,0,0"/>
+            </StackLayout>
+
+            <StackLayout  BackgroundColor="White">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Label  Text="ชื่อลูกค้า" Margin="20,10,0,0"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="customername" Margin="0,10,0,0"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Label  Text="เบอร์โทรลูกค้า" Margin="20,0,0,0"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3">
+                        <Label x:Name="customertel" Margin="0,0,0,10"/>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

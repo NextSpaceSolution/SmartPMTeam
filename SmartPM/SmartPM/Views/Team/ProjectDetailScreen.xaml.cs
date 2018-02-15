@@ -14,7 +14,7 @@ using System.Windows.Input;
 using SmartPM.Views.Admin;
 using Plugin.Connectivity;
 using SmartPM.Views;
-
+using System.Globalization;
 
 namespace SmartPM.Views.Team
 {
@@ -76,6 +76,14 @@ namespace SmartPM.Views.Team
             {
                 foreach (var item in list)
                 {
+                    /*if (pdata.actualStart == null)
+                    {
+
+                        DateTime? temp = DateTime.ParseExact("0000-00-00T00:00:00", "yyyy-MM-dd HH:mm:ss",CultureInfo.InvariantCulture);
+                        pdata.actualStart = temp;
+                    }*/
+
+
                     pdata.projectName = item.projectName;
                     pdata.projectManagerfName = item.projectManagerfName + "  " + item.projectManagerlName;
                     pdata.projectStart = item.projectStart;
@@ -86,7 +94,7 @@ namespace SmartPM.Views.Team
                     pdata.projectCost = item.projectCost;
                     pdata.customerName = item.customerName;
                     pdata.customerTel = item.customerTel;
-                    pdata.variant = item.variant;
+                    pdata.variant = item.variant.ToString();
                     pdata.projectStatus = item.projectStatus;
                     pdata.note = item.note;
 
@@ -94,19 +102,59 @@ namespace SmartPM.Views.Team
                 }
             }
 
-            /* projectname.Text = pdata.projectName;
-             projecmanager.Text = pdata.projectManagerfName;
-             projectcreateby.Text = pdata.projectCreateBy;
-             projectstart.Text = pdata.projectStart.ToString();
-             projectend.Text = pdata.projectEnd.ToString();
-             note.Text = pdata.note;
-             variant.Text = pdata.variant.ToString();
-             projectstatus.Text = pdata.projectStatus.ToString();
-             actualStart.Text = pdata.actualStart.ToString();
-             actualend.Text = pdata.actualEnd.ToString();
-             projectcost.Text = pdata.projectCost.ToString();
-             customername.Text = pdata.customerName;
-             customertel.Text = pdata.customerTel;*/
+            if (pdata.projectStatus == null)
+            {
+                pdata.projectStatus = "N/A";
+            }
+           /*if (pdata.projectStart == null)
+            {
+                
+                //string temp = "0000-00-00T00:00:00.00";
+                DateTime strDate = DateTime.ParseExact("0000-00-00T00:00:00.00", "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+                pdata.projectStart = strDate;
+            }
+            if (pdata.projectEnd == null)
+            {
+                string temp = "0000 - 00 - 00T00: 00:00.00";
+                DateTime strDate = DateTime.ParseExact(temp, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+                pdata.projectEnd = strDate;
+            }
+
+            if (pdata.projectCreateDate == null)
+            {
+                string temp = "0000 - 00 - 00T00: 00:00.00";
+                DateTime strDate = DateTime.ParseExact(temp, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+                pdata.projectCreateDate = strDate;
+            }
+            if (pdata.projectEditDate == null)
+            {
+                string temp = "0000 - 00 - 00T00: 00:00.00";
+                DateTime strDate = DateTime.ParseExact(temp, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+                pdata.projectEditDate = strDate;
+            }
+            if ( pdata.actualStart == null)
+            {
+                
+                DateTime temp = DateTime.Parse("0000-00-00T00:00:00.00");
+                pdata.actualStart = temp;
+            }
+            if (pdata.actualEnd == null)
+            {
+                DateTime temp = DateTime.Parse("0000-00-00T00:00:00.00");
+                
+                pdata.actualEnd = temp;
+            }
+            if(pdata.note == null)
+            {
+                pdata.note = "None Description";
+            }
+            if(pdata.projectEditBy == null)
+            {
+                pdata.projectEditBy = "N/a";
+            }*/
+           
+
+
 
             projectname.Text = pdata.projectName;
             projecmanager.Text = pdata.projectManagerfName;
@@ -115,14 +163,7 @@ namespace SmartPM.Views.Team
             projectend.Text = pdata.projectEnd.ToString();
             note.Text = pdata.note;
             variant.Text = pdata.variant.ToString();
-            if (pdata.projectStatus == null)
-            {
-                pdata.projectStatus = "--";
-            }
-            else
-            {
-                
-            }
+
             projectstatus.Text = pdata.projectStatus;
             actualStart.Text = pdata.actualStart.ToString();
             actualend.Text = pdata.actualEnd.ToString();
