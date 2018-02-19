@@ -2,37 +2,45 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartPM.Views.Team.TeamScreen"
-             Title="The Dream Team Of Project XXX">
+             Title="The Dream Team Of Project XXX"
+             BackgroundColor="#F4F4F4">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add New Team"  Activated="Add_Newteam" Order="Secondary" />
+        
         <ToolbarItem Text="Logout" Activated="logout" Order="Secondary"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Padding="5">
-            <StackLayout Orientation="Horizontal"
+        <StackLayout Padding="5" BackgroundColor="White" >
+            <StackLayout Orientation="Horizontal" 
                          Margin="15,5,0,0">
                 <Label TextColor="#44687b"
-                        Text="Project Name : "/>
+                       FontSize="16"
+                        Text="โครงการ : "/>
                 <Label TextColor="#44687b"
+                       FontSize="16"
                        x:Name="projectname"/>
             </StackLayout>
             
             <StackLayout Orientation="Horizontal"
+                         
                         Margin="15,8,0,5">
-                <Label  FontSize="Micro"
-                        Text="Project Manager : "
+                <Label  FontSize="15"
+                        Text="หัวหน้าโครงการ : "
                         VerticalOptions="Center"/>
-                <Label FontSize="Micro"
+                <Label FontSize="15"
                         x:Name="projecmanager"/>
-            </StackLayout>
-            
+                
+            </StackLayout >
+            <BoxView BackgroundColor="Gray" HeightRequest="0.2"/>
+
             <ListView
                 x:Name="Teamlist"
                 SeparatorVisibility="None"
                 HasUnevenRows="True"     
                 ItemTapped="teamlist_ItemTapped"
                 IsPullToRefreshEnabled="True"
-                IsRefreshing="False">
+                BackgroundColor="White"
+                IsRefreshing="False"
+                Margin="5">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -40,16 +48,18 @@
                                 BackgroundColor="White"
                                 Margin="2">
                                 <StackLayout Orientation="Horizontal"
-                                             Margin="15,8,0,5">
+                                             Margin="20,8,0,5">
                                     <Label 
-                                        FontSize="Micro"
-                                        Text="Team Mate : " VerticalOptions="Center"/>
+                                        FontSize="14"
+                                        Text="สมาชิกในทีม : " VerticalOptions="Center"/>
 
                                     <Label 
-                                        FontSize="Micro"
+                                        FontSize="14"
                                         Text="{Binding fullName}" VerticalOptions="Center"/>
                                 </StackLayout>
+                                <BoxView BackgroundColor="Gray" HeightRequest="0.2" />
                             </StackLayout>
+                            
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

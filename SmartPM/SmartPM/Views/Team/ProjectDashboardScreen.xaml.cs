@@ -18,30 +18,37 @@ using SmartPM.Views;
 
 namespace SmartPM.Views.Team
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ProjectDashboardScreen : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ProjectDashboardScreen : ContentPage
+    {
 
-       
+
 
 
         private AuthenModel userAccount = new AuthenModel();
+<<<<<<< HEAD
+=======
 
-        AProjectList temp = new AProjectList();
+
+        ProjectInfo temp = new ProjectInfo();
+        List<ProjectInfo> list = new List<ProjectInfo>();
+
+>>>>>>> 780e503192421f409945dcad67e1899187c34a71
+
 
         AProjectList pdata = new AProjectList();
 
         public string uid { get; set; }
         public string gid { get; set; }
         public string pid { get; set; }
-        public ProjectDashboardScreen (string user ,string group  , string project)
+        public ProjectDashboardScreen(string user, string group, string project)
         {
             uid = user;
             gid = group;
             pid = project;
 
-			InitializeComponent ();
-           
+            InitializeComponent();
+            RenderAPI(pid);
         }
 
 
@@ -49,14 +56,14 @@ namespace SmartPM.Views.Team
 
         private async void ToolbarItem_Activated(object sender, EventArgs e)
         {
-            
+
             await Navigation.PushAsync(new LoginScreen());
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, ItemTappedEventArgs e)
         {
 
-            
+
             await Navigation.PushAsync(new ProjectDetailScreen(pid));
 
 
@@ -64,7 +71,7 @@ namespace SmartPM.Views.Team
 
         private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new TaskScreen(uid,gid,pid));
+            await Navigation.PushAsync(new TaskScreen(uid, gid, pid));
         }
 
         private async void TapGestureRecognizer_Tapped_2(object sender, EventArgs e)
@@ -82,6 +89,59 @@ namespace SmartPM.Views.Team
 
             userAccount = null;
             App.Current.MainPage = new LoginScreen();
+        }
+
+        public async void RenderAPI(string pid)
+        {
+            var jsonResult = await GetProInfo(pid);
+            list = JsonConvert.DeserializeObject<List<ProjectInfo>>(jsonResult);
+            foreach(var item in list)
+            {
+                pdata.projectName = item.projectName;
+                pdata.customerName = item.customerName;
+            }
+
+            projectname.Text = pdata.projectName;
+            customer.Text = pdata.customerName;
+
+            this.IsBusy = false;
+        }
+
+            public async Task<string> GetProInfo(string pid)
+        {
+            try
+            {
+                // This is the postdata
+                var postData = new List<KeyValuePair<string, string>>(2);
+                postData.Add(new KeyValuePair<string, string>("pid", pid));
+
+                HttpContent content = new FormUrlEncodedContent(postData);
+
+                using (var client = new HttpClient())
+                {
+                    //client.Timeout = new TimeSpan(0, 0, 15);
+                    using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest2/getProjectInfo", content))
+                    {
+                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
+                        {
+                            using (var responseContent = response.Content)
+                            {
+                                string result = await responseContent.ReadAsStringAsync();
+                                Console.WriteLine(result);
+                                return result;
+                            }
+                        }
+                        else
+                        {
+                            return "error " + Convert.ToString(response.StatusCode);
+                        }
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                return Convert.ToString(ex);
+            }
         }
     }
 }

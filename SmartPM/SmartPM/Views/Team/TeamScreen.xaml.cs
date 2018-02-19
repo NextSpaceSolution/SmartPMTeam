@@ -57,11 +57,6 @@ namespace SmartPM.Views.Team
             projectlist.ItemsSource = list;*/
 
         }
-        private async void Add_Newteam(object sender, EventArgs e)
-        {
-
-            //await Navigation.PushAsync(new PMNewteamScreen());
-        }
 
         private async void teamlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {

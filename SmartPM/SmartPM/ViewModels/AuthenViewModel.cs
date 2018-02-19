@@ -132,8 +132,13 @@ namespace SmartPM.ViewModels
 
                 using (var client = new HttpClient())
                 {
+<<<<<<< HEAD
+                   // client.Timeout = new TimeSpan(0, 0, 15);
+                    using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest/Authen", content))
+=======
                     //client.Timeout = new TimeSpan(0, 0, 15);
                     using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest/Authen", content))
+>>>>>>> ae80719abb4ed8d1b8713c53873450e560fada70
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {
@@ -171,8 +176,8 @@ namespace SmartPM.ViewModels
 
                 using (var client = new HttpClient())
                 {
-                    client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest/GetId", content))
+                    //client.Timeout = new TimeSpan(0, 0, 15);
+                    using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest/GetId", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {
@@ -209,8 +214,8 @@ namespace SmartPM.ViewModels
 
                 using (var client = new HttpClient())
                 {
-                    client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest/GetGroupId", content))
+                    //client.Timeout = new TimeSpan(0, 0, 15);
+                    using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest/GetGroupId", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {

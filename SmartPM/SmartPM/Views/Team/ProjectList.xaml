@@ -44,45 +44,29 @@
 
                                 <Label  Margin="15,15,0,2"
                                         TextColor="#44687b"
-                                        Text="{Binding projectName}"/>
+                                        Text="{Binding projectName}" FontSize="18"/>
 
                                 <StackLayout Orientation="Horizontal"
                                              Margin="15,0,0,2">
                                     <Label 
-                                        FontSize="Micro"
+                                        FontSize="15"
                                         Text="PM : "/>
                                     <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding projectManager}"/>
+                                        
+                                        Text="{Binding projectCreateBy}"  FontSize="15"/>
                                 </StackLayout>
 
                                     <StackLayout Orientation="Horizontal"
                                              Margin="15,0,0,2">
                                         <Label 
-                                        FontSize="Micro"
+                                        FontSize="15"
                                         Text="Customer : "/>
                                         <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding customerName}"/>
+                                        
+                                        Text="{Binding customerName}"  FontSize="15"/>
                                     </StackLayout>
 
-                                    <Label 
-                                        Margin="15,0,0,2"
-                                        FontSize="Micro"
-                                        Text="{Binding projectStart}"/>
-                                    <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,2">
-                                        <Label 
-                                             FontAttributes="Italic"
-                                            TextColor="Orange"
-                                        FontSize="Micro"
-                                        Text="งบประมาณ  "/>
-                                        <Label 
-                                            TextColor="Orange"
-                                             FontAttributes="Italic"
-                                        FontSize="Micro"
-                                        Text="{Binding projectCost}"/>
-                                    </StackLayout>
+
 
 
                                 
