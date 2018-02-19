@@ -19,7 +19,6 @@ namespace SmartPM
         {
             InitializeComponent();
 
-<<<<<<< HEAD
             //MainPage = new TeamDashboardScreen("100017","50");
 
             /*{
@@ -103,7 +102,6 @@ namespace SmartPM
             MainPage = new LoginScreen();
         
     }
->>>>>>> 8202e9ee96dece78bea987402d97e13547c55d3b
 
         protected override void OnStart()
         {

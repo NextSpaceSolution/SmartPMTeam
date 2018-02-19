@@ -30,6 +30,7 @@
                     <RowDefinition Height="10"/>
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -71,6 +72,7 @@
 
                 <Button 
                         Command="{Binding LoginCommand}"
+                        x:Name="btn_Clicklogged"
                         TextColor="#3ABCC7"
                         BorderColor="#3ABCC7"
                         BorderWidth="0.8"
@@ -81,24 +83,28 @@
                       />
 
 
-                <Label Text="Rememberme"
+                <Label Text="Remember Me"
                        Grid.Row="6"
                        Grid.Column="0"
                        FontSize="Small"
                        TextColor="White"
                        Style="{DynamicResource LabelStyle}"
-                       VerticalOptions="CenterAndExpand"
-                       HorizontalOptions="CenterAndExpand"/>
+                       VerticalOptions="Start"
+                       HorizontalOptions="Start"/>
+
+                <Switch x:Name="rememberSwitch" IsEnabled="True" IsToggled="False" HorizontalOptions="End" VerticalOptions="End" Grid.Row="6" Grid.Column="1"></Switch>
 
             <Label Text="Forget Password"
-                       Grid.Row="6"
-                       Grid.Column="1"
+                       Grid.Row="7"
+                       Grid.Column="0"
                        FontSize="Small"
                        TextColor="White"
                        Style="{DynamicResource LabelStyle}"
                        VerticalOptions="CenterAndExpand"
                        HorizontalOptions="CenterAndExpand"
                        />
+                <Switch x:Name="KeepSwitch" IsEnabled="True" IsToggled="False" HorizontalOptions="End" VerticalOptions="End" Grid.Row="7" Grid.Column="1"></Switch>
+                
             </Grid>
         </StackLayout>
     </AbsoluteLayout>

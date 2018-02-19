@@ -26,13 +26,6 @@ namespace SmartPM.Views.Team
 
 
         private AuthenModel userAccount = new AuthenModel();
-<<<<<<< HEAD
-
-        AProjectList temp = new AProjectList();
-        
-
-=======
->>>>>>> 8202e9ee96dece78bea987402d97e13547c55d3b
 
         AProjectList temp = new AProjectList();
 
@@ -81,7 +74,7 @@ namespace SmartPM.Views.Team
 
         private async void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new TempPage());
+            await Navigation.PushAsync(new TempPage(pid));
         }
 
         private async void logout(object sender, EventArgs e)

@@ -19,7 +19,13 @@ namespace SmartPM.Views
             InitializeComponent();
 
 
-        }    
-       
+        }
+
+        public void btn_ClickLogged(object sender, EventArgs e)
+        {
+           
+            
+        }
+
     }
 }

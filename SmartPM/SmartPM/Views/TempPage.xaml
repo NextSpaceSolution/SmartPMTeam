@@ -4,39 +4,34 @@
              x:Class="SmartPM.Views.TempPage"
              Title="TotoList">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout>
-                <ListView 
+        <StackLayout>
+            <Label x:Name="Headerx" FontSize="20" TextColor="Black" Margin="10,10,0,5"></Label>
+            <Label Text="Timeline" FontSize="15" TextColor="Gray" Margin="10,0,0,5"></Label>
+            <ListView 
             x:Name="listItems"
             RowHeight="150"
             Opacity="1"
             SeparatorVisibility="None">
-                    <ListView.Header>
-                        <StackLayout Padding="20,20,0,20">
-                            <Label Text="NextSpace Pro" FontSize="20" TextColor="Black"></Label>
-                            <Label Text="Timeline" FontSize="15" TextColor="Gray"></Label>
-                        </StackLayout>
-                    </ListView.Header>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid ColumnSpacing="0" RowSpacing="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="100" />
-                                        <ColumnDefinition Width="30" />
-                                        <ColumnDefinition Width="100" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="30" />
-                                        <RowDefinition Height="20" />
-                                        <RowDefinition Height="20" />
-                                        <RowDefinition Height="20" />
-                                        <RowDefinition Height="60" />
-                                    </Grid.RowDefinitions>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnSpacing="0" RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="60" />
+                                </Grid.RowDefinitions>
 
-                                    <Label HorizontalOptions="Center" Text="{Binding functionLogId, StringFormat='{0: dd-MM-yyyy}'}" Margin="10,5,0,0" TextColor="#880E4F" />
-                                    <Label
+                                <Label HorizontalOptions="Center" Text="{Binding functionLogId, StringFormat='{0: dd-MM-yyyy}'}" Margin="10,5,0,0" TextColor="#880E4F" />
+                                <Label
                              Grid.Column="2"
                              Grid.ColumnSpan="2"
                              Margin="20,2,0,0"
@@ -44,9 +39,9 @@
                              FontSize="18"
                              Text="{Binding taskName}" />
 
-                         
 
-                                    <Label
+
+                                <Label
                             Grid.Row="1"
                             Grid.Column="2"
                                         Grid.ColumnSpan="2"
@@ -57,9 +52,9 @@
                             HorizontalOptions="FillAndExpand"
                             Text="{Binding functionName}" />
 
-                          
 
-                                    <Label
+
+                                <Label
                             Grid.Row="2"
                             Grid.Column="2"
                             Margin="20,0,0,0"
@@ -68,7 +63,7 @@
                             VerticalOptions="StartAndExpand"
                             HorizontalOptions="FillAndExpand"
                             Text="ตามแผน :" />
-                                    <Label
+                                <Label
                             Grid.Row="2"
                             Grid.Column="3"
                             TextColor="#607D8B"
@@ -78,7 +73,7 @@
                            Text="{Binding functionEnd, StringFormat='{0: dd-MM-yyyy}'}" />
 
 
-                                    <Label
+                                <Label
                             Grid.Row="3"
                             Grid.Column="2"
                             Margin="20,0,0,0"
@@ -87,7 +82,7 @@
                             VerticalOptions="StartAndExpand"
                             HorizontalOptions="FillAndExpand"
                             Text="ปฏิบัติจริง :" />
-                                    <Label
+                                <Label
                             Grid.Row="3"
                             Grid.Column="3"
                             TextColor="#607D8B"
@@ -96,7 +91,7 @@
                             HorizontalOptions="FillAndExpand"
                             Text="{Binding actualEnd, StringFormat='{0: dd-MM-yyyy}'}" />
 
-                                    <Label
+                                <Label
                             Grid.Row="4"
                             Grid.Column="2"
                             Margin="20,0,0,0"
@@ -105,8 +100,8 @@
                             VerticalOptions="StartAndExpand"
                             HorizontalOptions="FillAndExpand"
                             Text="Commit :" />
-                                               
-                                    <Label
+
+                                <Label
                             Grid.Row="4"
                             Grid.Column="3"
                             TextColor="#607D8B"
@@ -114,22 +109,21 @@
                             VerticalOptions="StartAndExpand"
                             HorizontalOptions="FillAndExpand"
                             Text="{Binding userCommit}" />
-                         
-                                    <BoxView
+
+                                <BoxView
                             Grid.RowSpan="5"
                             Grid.Column="1"
                             BackgroundColor="#E4B6C3"
                             HorizontalOptions="Center"       
                             VerticalOptions="Fill"
                             WidthRequest="3" />
-                                    <Image Grid.Column="1" Source="Bullet.png" VerticalOptions="Start"/>
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
-        </ScrollView>
+                                <Image Grid.Column="1" Source="Bullet.png" VerticalOptions="Start"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </ContentPage.Content>
 
 </ContentPage>
