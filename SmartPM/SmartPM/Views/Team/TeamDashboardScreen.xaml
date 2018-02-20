@@ -91,8 +91,8 @@
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
                         </Grid.GestureRecognizers>
                     </StackLayout>-->
-                </Grid> 
-                <Grid Grid.Row="0" BackgroundColor="#E91E63">
+                </Grid>
+                <Grid Grid.Row="0" BackgroundColor="#354b60">
                     <Grid HorizontalOptions="Center">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>

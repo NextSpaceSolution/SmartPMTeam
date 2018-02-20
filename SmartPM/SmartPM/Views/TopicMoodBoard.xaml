@@ -10,20 +10,59 @@
         <ToolbarItem Name="Cancle" Activated="toolBarCancle" ></ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Margin="10">
-            <Label Text="NEW TOPIC" HorizontalOptions="CenterAndExpand" />
-            <StackLayout Orientation="Horizontal">
-                <Label Text="แจ้งเตือนไปยังทีม" HorizontalOptions="StartAndExpand"></Label>
-                <Switch IsToggled="True" HorizontalOptions="EndAndExpand"></Switch>
+        <StackLayout>
+            <StackLayout Margin="0,20,0,10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout   Grid.ColumnSpan="2" BackgroundColor="White">
+                        <Label Text="NEW TOPIC" HorizontalOptions="CenterAndExpand" Grid.Row="0" Grid.ColumnSpan="2"   Margin="0,10,0,0"/>
+                        <StackLayout Orientation="Horizontal" Margin="15,0,0,0">
+                            <Label Text="แจ้งเตือน" HorizontalOptions="StartAndExpand" Grid.Row="1" Grid.Column="0" ></Label>
+                            <Switch IsToggled="True" HorizontalOptions="EndAndExpand" Grid.Row="1" Grid.Column="1" ></Switch>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal"  Margin="15,0,0,0">
+                            <Label Text="เร่งด่วน" HorizontalOptions="StartAndExpand" Grid.Row="2" Grid.Column="0" ></Label>
+                            <Switch IsToggled="False" HorizontalOptions="EndAndExpand" Grid.Row="2" Grid.Column="1"></Switch>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="เร่งด่วน" HorizontalOptions="StartAndExpand"></Label>
-                <Switch IsToggled="False" HorizontalOptions="EndAndExpand"></Switch>
-            </StackLayout>
-            <Label Text="Title" TextColor="#354b60"></Label>
-            <Entry Placeholder="Title"></Entry>
-            <Label Text="Detail" TextColor="#354b60"></Label>
-            <Editor HeightRequest="200"></Editor>
+
+
+            <StackLayout BackgroundColor="White" Margin="0,-15,0,10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+
+            
+                    <StackLayout Grid.ColumnSpan="2" Grid.Row="0" Margin="15,15,0,0">
+                        <Label Text="หัวข้อ" TextColor="#354b60"></Label>
+                        <Entry Placeholder="Title"></Entry>
+                    </StackLayout>
+
+                    <StackLayout Grid.ColumnSpan="2" Grid.Row="1" Margin="15,5,0,0">
+                        <Label Text="รายละเอียด" TextColor="#354b60"></Label>
+                        <Editor HeightRequest="200"  ></Editor>
+                    </StackLayout>
+        </Grid>
+        </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

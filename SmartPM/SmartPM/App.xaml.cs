@@ -20,7 +20,7 @@ namespace SmartPM
             InitializeComponent();
 
 
-            //MainPage = new TeamDashboardScreen("100017","50");
+            MainPage = new LoginScreen();
 
 
            //MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"));
@@ -32,13 +32,13 @@ namespace SmartPM
             //MainPage = new UserProfileScreen();
 
 
-                   //   MainPage = new NavigationPage(new TeamDashboardScreen("10","20"))
+                   // MainPage = new NavigationPage(new TeamDashboardScreen("10","20"))
 
 
           // MainPage = new NavigationPage(new TeamDashboardScreen("10","20"))
 
             
-          /* MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"))
+           /*MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"))
 
 
             {
