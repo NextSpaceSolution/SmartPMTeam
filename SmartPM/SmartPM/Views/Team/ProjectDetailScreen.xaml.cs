@@ -70,7 +70,7 @@ namespace SmartPM.Views.Team
             list = JsonConvert.DeserializeObject<List<ProjectInfo>>(jsonResult);
             if (list == null)
             {
-                DisplayAlert("NNNN", "Novalue", "OK");
+                await DisplayAlert("NNNN", "Novalue", "OK");
             }
             else
             {

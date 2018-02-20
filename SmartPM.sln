@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPM.Android", "SmartPM\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPM.iOS", "SmartPM\SmartPM.iOS\SmartPM.iOS.csproj", "{B5B7DA4C-789C-4EF7-8EE7-1B7EF9B83990}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPM", "SmartPM\SmartPM\SmartPM.csproj", "{1EE9CE39-A77C-45FA-8C10-436D2F1B9743}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartPM", "SmartPM\SmartPM\SmartPM.csproj", "{1EE9CE39-A77C-45FA-8C10-436D2F1B9743}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

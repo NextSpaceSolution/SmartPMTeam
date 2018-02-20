@@ -115,26 +115,13 @@ namespace SmartPM.Views
 
 		}
 
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> 780e503192421f409945dcad67e1899187c34a71
-       
 
 
 
-<<<<<<< HEAD
-        private async void tasklist_ItemTapped(object sender, ItemTappedEventArgs e)
-=======
-   
-
-
-    
 
         private async void tasklist_ItemTapped(object sender, ItemTappedEventArgs e)
 
->>>>>>> 780e503192421f409945dcad67e1899187c34a71
+
         {
 
             var tasklists = e.Item as TaskModel2;
@@ -209,16 +196,7 @@ namespace SmartPM.Views
 
 
 
-<<<<<<< HEAD
-       
 
-=======
-
-       
-
-
-
->>>>>>> 780e503192421f409945dcad67e1899187c34a71
 
     }
 }

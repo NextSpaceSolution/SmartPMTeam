@@ -19,12 +19,11 @@ namespace SmartPM
         {
             InitializeComponent();
 
-<<<<<<< HEAD
-            //MainPage = new TeamDashboardScreen("100017","50");
-=======
->>>>>>> 780e503192421f409945dcad67e1899187c34a71
 
-           MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"));
+            //MainPage = new TeamDashboardScreen("100017","50");
+
+
+           //MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"));
 
             //{
 
@@ -103,13 +102,9 @@ namespace SmartPM
 
 
            // MainPage = new NavigationPage(new TeamDashboardScreen("100017", "50"));
-           // MainPage = new LoginScreen();
+           MainPage = new LoginScreen();
         
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> 780e503192421f409945dcad67e1899187c34a71
 
         protected override void OnStart()
         {

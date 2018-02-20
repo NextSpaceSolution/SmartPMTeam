@@ -101,7 +101,8 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
-   
+                            <RowDefinition></RowDefinition>
+
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="150"></ColumnDefinition>
@@ -164,7 +165,9 @@
                                      Grid.ColumnSpan="2"
                             Grid.Column="1">
                         </TimePicker>
-
+<!--
+                        <Label Text="Time (Hours)" Grid.Row="4" Grid.Column="0"></Label>
+                        <Label x:Name="totalTime" Grid.Row="4" Grid.Column="1"></Label> -->
                         <Button Clicked="Button_Clicked"
                             Text="Back "
                          TextColor="White"
@@ -172,7 +175,7 @@
                             BorderColor="#3ABCC7"
                             BorderWidth="0.8"
                             BorderRadius="20"
-                            Grid.Row="4"
+                            Grid.Row="5"
                             Grid.Column="0"
                             StyleClass="Small"/>
 
@@ -183,7 +186,7 @@
                             BorderColor="#3ABCC7"
                             BorderWidth="0.8"
                             BorderRadius="20"
-                            Grid.Row="4"
+                            Grid.Row="5"
                             Grid.Column="1"
                                  Grid.ColumnSpan="2"
                             StyleClass="Small"/>

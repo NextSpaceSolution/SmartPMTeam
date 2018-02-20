@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartPM.Views.TopicMoodBoard"
+             Title="Create New Topic"
+             BackgroundColor="#F4F4F4">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Save" Activated="toolBarCreate" ></ToolbarItem>
+        <ToolbarItem Name="Cancle" Activated="toolBarCancle" ></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Label Text="NEW TOPIC" HorizontalOptions="CenterAndExpand" />
+            <StackLayout Orientation="Horizontal">
+                <Label Text="แจ้งเตือนไปยังทีม" HorizontalOptions="StartAndExpand"></Label>
+                <Switch IsToggled="True" HorizontalOptions="EndAndExpand"></Switch>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="เร่งด่วน" HorizontalOptions="StartAndExpand"></Label>
+                <Switch IsToggled="False" HorizontalOptions="EndAndExpand"></Switch>
+            </StackLayout>
+            <Label Text="Title" TextColor="#354b60"></Label>
+            <Entry Placeholder="Title"></Entry>
+            <Label Text="Detail" TextColor="#354b60"></Label>
+            <Editor HeightRequest="200"></Editor>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -23,7 +23,16 @@ namespace SmartPM.Views
 
         TimesheetOnSubmitModel timesheetData = new TimesheetOnSubmitModel();
         TempTimesheetModel tempObj = new TempTimesheetModel();
-     
+        TimeSpan myDateResult = DateTime.Now.TimeOfDay;
+        TimeSpan tempCurrentTime = TimeSpan.Parse("14:00:00");
+        TimeSpan hasCheckMorning = TimeSpan.Parse("12:00:00");
+        TimeSpan defaultMorningStarttime = TimeSpan.Parse("09:00:00");
+        TimeSpan defaultMorningEndtime = TimeSpan.Parse("12:00:00");
+        TimeSpan defaultNoonStarttime = TimeSpan.Parse("13:00:00");
+        TimeSpan defaultNoonEndtime = TimeSpan.Parse("18:00:00");
+        
+
+
         public GlobalTimesheetSubmit (TimesheetOneModel model)
 		{
 			InitializeComponent ();
@@ -34,7 +43,7 @@ namespace SmartPM.Views
             LableFunction.Text = model.functionName;
 
             timesheetData.TaskId = model.taskId;
-            
+            SetDefaultTime();
 
             if (checkConnect() == true)
                 {
@@ -84,63 +93,105 @@ namespace SmartPM.Views
         {
             await Navigation.PopAsync();
         }
+
+        public void SetDefaultTime()
+        {
+            if (myDateResult <= hasCheckMorning)
+            {
+                TimesheetStartPick.Time = defaultMorningStarttime;
+                TimesheetEndPick.Time = defaultMorningEndtime;
+            }
+            else
+            {
+                TimesheetStartPick.Time = defaultNoonStarttime;
+                TimesheetEndPick.Time = defaultNoonEndtime;
+            }
+        }
         private async void Button_Clicked2(object sender, EventArgs e)
         {
+            TimeSpan minimunTimeLength = TimeSpan.Parse("09:00:00");
+            TimeSpan maximunTimeLength = TimeSpan.Parse("21:00:00");
+            string total = string.Empty;
+            TimeSpan tempTotal;
             tempObj.tempDate = DateTimesheetPick.Date;
             tempObj.tempSTime = TimesheetStartPick.Time;
             tempObj.tempETime = TimesheetEndPick.Time;
 
-
-            tempObj.Strdate = tempObj.tempDate.ToString("dd-MM-yyyy");
-            tempObj.StrdateConcate = tempObj.tempDate.ToString("yyyy-MM-dd");
-            tempObj.StrStime = tempObj.tempSTime.ToString(@"hh\:mm\:ss");
-            tempObj.StrEtime = tempObj.tempETime.ToString(@"hh\:mm\:ss");
-            if (tempObj.StrStime == "00:00:00")
-                tempObj.StrStime = "09:00:00";
-            if (tempObj.StrEtime == "00:00:00")
-                tempObj.StrEtime = "18:00:00";
-
-            tempObj.concateStime = tempObj.StrdateConcate + " " + tempObj.StrStime;
-            tempObj.concateEtime = tempObj.StrdateConcate + " " + tempObj.StrEtime;
-
-            timesheetData.TimeSheetStart = tempObj.concateStime;
-            timesheetData.TimeSheetEnd = tempObj.concateEtime;
-            // string proId = "100001";
-            //string taskId = "100005";
-            //  string uid = "100019";
-            // string fid = "100008";
-
-            if (string.IsNullOrEmpty(tempObj.actionName))
+            if (TimesheetStartPick.Time < minimunTimeLength || TimesheetEndPick.Time > maximunTimeLength)
             {
-                await DisplayAlert("Notic", "!!! กรุนาเลือก Action", "Ok");
-
+                await DisplayAlert("Notice", "สามารถบันทึกเวลาได้ระหว่าง 09:00 - 21:00 น.", "OK");
             }
-            else { 
-                string actId = await reqFindActionId(tempObj.actionName);
-            JObject data2 = JObject.Parse(actId);
-            string aid = (string)data2["actionId"];
 
-            //await Navigation.PushAsync(new NextConcate(proId,uid,taskId,fid,tempObj.actionName,tempObj.Strdate, tempObj.StrStime, tempObj.StrEtime, tempObj.concateStime, tempObj.concateEtime));
-            string result = await reqRecordTimesheet(timesheetData.ProjectNumber, aid,
-                                                  timesheetData.TaskId, timesheetData.FunctionId, timesheetData.UserId,
-                                                  timesheetData.TimeSheetStart, timesheetData.TimeSheetEnd);
-            JObject data = JObject.Parse(result);
-            string msg = (string)data["msg"];
-            if (msg == "success") { 
-                var userAct = await DisplayAlert("Notic", "Record Successfully", "Ok","Cancle");
-                if (userAct)
+            else
+            {
+                if (TimesheetStartPick.Time > TimesheetEndPick.Time)
                 {
-                    await Navigation.PopToRootAsync();
+                    await DisplayAlert("Notice", "Launch End ต้องมากกว่า Launch Start", "OK");
                 }
+                else
+                {
+                    tempTotal = TimesheetEndPick.Time - TimesheetStartPick.Time;
+                    total = tempTotal.ToString(@"hh\:mm");
 
+
+                    tempObj.Strdate = tempObj.tempDate.ToString("dd-MM-yyyy");
+                    tempObj.StrdateConcate = tempObj.tempDate.ToString("yyyy-MM-dd");
+                    tempObj.StrStime = tempObj.tempSTime.ToString(@"hh\:mm\:ss");
+                    tempObj.StrEtime = tempObj.tempETime.ToString(@"hh\:mm\:ss");
+
+
+                    tempObj.concateStime = tempObj.StrdateConcate + " " + tempObj.StrStime;
+                    tempObj.concateEtime = tempObj.StrdateConcate + " " + tempObj.StrEtime;
+
+                    timesheetData.TimeSheetStart = tempObj.concateStime;
+                    timesheetData.TimeSheetEnd = tempObj.concateEtime;
+                    // string proId = "100001";
+                    //string taskId = "100005";
+                    //  string uid = "100019";
+                    // string fid = "100008";
+
+                    if (string.IsNullOrEmpty(tempObj.actionName))
+                    {
+                        await DisplayAlert("Notice", "!!! กรุนาเลือก Action", "Ok");
+
+                    }
+                    else
+                    {
+                        var resultTotal = await DisplayAlert("Notice", "Total time "+total+" ชั่วโมง:นาที","Ok", "Cancle");
+                        if (resultTotal)
+                        { 
+                        string actId = await reqFindActionId(tempObj.actionName);
+                        JObject data2 = JObject.Parse(actId);
+                        string aid = (string)data2["actionId"];
+
+                        //await Navigation.PushAsync(new NextConcate(proId,uid,taskId,fid,tempObj.actionName,tempObj.Strdate, tempObj.StrStime, tempObj.StrEtime, tempObj.concateStime, tempObj.concateEtime));
+                        string result = await reqRecordTimesheet(timesheetData.ProjectNumber, aid,
+                                                              timesheetData.TaskId, timesheetData.FunctionId, timesheetData.UserId,
+                                                              timesheetData.TimeSheetStart, timesheetData.TimeSheetEnd);
+                        JObject data = JObject.Parse(result);
+                        string msg = (string)data["msg"];
+                        if (msg == "success")
+                        {
+                            var userAct = await DisplayAlert("Noticd", "Record Successfully", "Ok", "Cancle");
+                            if (userAct)
+                            {
+                                await Navigation.PopToRootAsync();
+                            }
+
+                        }
+                        else
+                        {
+                            var userAct = await DisplayAlert("Notice", "Record False TryAgain", "Ok", "Cancle");
+                            if (userAct != true)
+                            {
+                                await Navigation.PopToRootAsync();
+                            }
+                        }
+                        }
+
+                    }
             }
-            else { 
-               var userAct = await DisplayAlert("Notic", "Record False TryAgain", "Ok", "Cancle");
-              if (userAct != true)
-               {
-                    await Navigation.PopToRootAsync();
-               }
-            }
+           
             }
 
 

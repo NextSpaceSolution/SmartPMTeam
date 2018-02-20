@@ -76,20 +76,28 @@ namespace SmartPM.Views
         {
             var ResultProject = new List<AProjectList>();
             var tempResultProject = new List<AProjectList>();
-            string filterProject = await FilterProject(uid, gid);
-            ResultProject = JsonConvert.DeserializeObject<List<AProjectList>>(filterProject);
-
-            foreach (var item in ResultProject)
+            try
             {
-                tempResultProject.Add(new AProjectList {
-                    projectNumber = item.projectNumber,
-                    projectName = item.projectName                  
-                });
+                string filterProject = await FilterProject(uid, gid);
+                ResultProject = JsonConvert.DeserializeObject<List<AProjectList>>(filterProject);
+
+                foreach (var item in ResultProject)
+                {
+                    tempResultProject.Add(new AProjectList
+                    {
+                        projectNumber = item.projectNumber,
+                        projectName = item.projectName
+                    });
+                }
+
+                foreach (var item in tempResultProject)
+                {
+                    project.Items.Add(item.projectName);
+                }
             }
-
-            foreach (var item in tempResultProject)
+            catch
             {
-                project.Items.Add(item.projectName);
+
             }
 
         }
