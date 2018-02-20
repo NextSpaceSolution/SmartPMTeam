@@ -30,7 +30,8 @@ namespace SmartPM.Views
         TimeSpan defaultMorningEndtime = TimeSpan.Parse("12:00:00");
         TimeSpan defaultNoonStarttime = TimeSpan.Parse("13:00:00");
         TimeSpan defaultNoonEndtime = TimeSpan.Parse("18:00:00");
-        
+        TimeSpan defaultOneHrs = TimeSpan.Parse("01:00:00");
+
 
 
         public GlobalTimesheetSubmit (TimesheetOneModel model)
@@ -130,8 +131,15 @@ namespace SmartPM.Views
                 }
                 else
                 {
+                    if (TimesheetStartPick.Time < defaultMorningEndtime && TimesheetEndPick.Time > defaultNoonStarttime)
+                    {
+                        tempTotal = (TimesheetEndPick.Time - TimesheetStartPick.Time) - defaultOneHrs;
+                        total = tempTotal.ToString(@"hh\:mm");
+                    }
+                    else { 
                     tempTotal = TimesheetEndPick.Time - TimesheetStartPick.Time;
                     total = tempTotal.ToString(@"hh\:mm");
+                    }
 
 
                     tempObj.Strdate = tempObj.tempDate.ToString("dd-MM-yyyy");

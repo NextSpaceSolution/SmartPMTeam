@@ -134,11 +134,11 @@ namespace SmartPM.Views.Team
             await Navigation.PushAsync(new UserProfileScreen(userId));
         }
 
-        /*
+        
         private async void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new dummyView());
-        }*/
+            await Navigation.PushAsync(new MoodBoard());
+        }
 
         public async Task<string> getUserInfo(string id)
         {

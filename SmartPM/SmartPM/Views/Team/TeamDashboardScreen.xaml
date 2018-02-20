@@ -38,7 +38,7 @@
                         <Image Source="thumBook" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="50" WidthRequest="50"/> 
                         <Label 
                         TextColor="White"
-                        Text="PROJECT" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" FontAttributes="Italic" Style="{DynamicResource LabelStyle}"/>
+                        Text="PROJECT" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" FontAttributes="Italic" Style="{DynamicResource LabelStyle}"/>
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                     </Grid.GestureRecognizers>
@@ -46,9 +46,8 @@
                 <StackLayout HeightRequest="100"
                              Grid.Row="1"
                              Grid.Column="0"
-                             Grid.ColumnSpan="2"
                              Padding="5,20,0,5"
-                                Margin="5,0,5,5"
+                                Margin="5,0,0,0"
                              BackgroundColor="#6A1B9A"
                              >
                         <Image Source="thumTime" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="50" WidthRequest="50"/>
@@ -70,29 +69,35 @@
                         <Image Source="thumUser" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="50" WidthRequest="50"/>
                         <Label 
                          TextColor="White"
-                       Text="ACCOUNT" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" FontAttributes="Italic" Style="{DynamicResource LabelStyle}"/>
+                       Text="ACCOUNT" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" FontAttributes="Italic" Style="{DynamicResource LabelStyle}"/>
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
                     </Grid.GestureRecognizers>
                 </StackLayout>
-<!--
+
                     <StackLayout HeightRequest="100"
                              Grid.Row="1"
                              Grid.Column="1"       
                              Padding="5,20,0,5"
-                              Margin="0,0,5,0"
+                             Margin="0,0,5,0"
                              BackgroundColor="#512DA8"
                              >
                         <Image Source="thumChart" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="50" WidthRequest="50"/>
                         <Label 
                         TextColor="White"
-                        Text="YOUR PERFORMANCE" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" FontAttributes="Italic" Style="{DynamicResource LabelStyle}"/>
+                        Text="BOARD" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" FontAttributes="Italic" Style="{DynamicResource LabelStyle}"/>
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
                         </Grid.GestureRecognizers>
+<<<<<<< HEAD
                     </StackLayout>-->
                 </Grid>
                 <Grid Grid.Row="0" BackgroundColor="#354b60">
+=======
+                    </StackLayout>
+                </Grid> 
+                <Grid Grid.Row="0" BackgroundColor="#E91E63">
+>>>>>>> d3ea28e56e3cba443d55aa11540a8c307f76a1eb
                     <Grid HorizontalOptions="Center">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
