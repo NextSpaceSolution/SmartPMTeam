@@ -61,7 +61,7 @@ namespace SmartPM.Views
                 else
                 {
                     //App.Current.MainPage = new dummyParamether(MainUser.Text, MainPassword.Text);
-                    App.Current.MainPage = new NavigationPage(new MoodBoard()) { BarBackgroundColor = Color.FromHex("#354b60"), BarTextColor = Color.White };
+                   // App.Current.MainPage = new NavigationPage(new ApproveTimesheet(uid)) { BarBackgroundColor = Color.FromHex("#354b60"), BarTextColor = Color.White };
                 
                 }
             }
@@ -102,18 +102,7 @@ namespace SmartPM.Views
                         var page = new TeamDashboardScreen(userid, groupid);
                         NavigationPage.SetHasBackButton(page, false);
                         App.Current.MainPage = new NavigationPage(page) { BarBackgroundColor = Color.FromHex("#354b60"), BarTextColor = Color.White };
-                        /*
-                        var page = new TeamMainScreen();
-                        NavigationPage.SetHasBackButton(page, false);
-                        App.Current.MainPage = new NavigationPage(page);
-                        /*
-                        App.Current.MainPage = new TabbedPage
-                        {
-                            Children = {
-                                new TeamDashboardScreen(),
-                                new TeamProfileScreen()
-                            }
-                        };*/
+                      
                     }
                     else
                     {

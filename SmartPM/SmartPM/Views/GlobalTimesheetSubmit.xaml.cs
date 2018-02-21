@@ -25,12 +25,13 @@ namespace SmartPM.Views
         TempTimesheetModel tempObj = new TempTimesheetModel();
         TimeSpan myDateResult = DateTime.Now.TimeOfDay;
         TimeSpan tempCurrentTime = TimeSpan.Parse("14:00:00");
-        TimeSpan hasCheckMorning = TimeSpan.Parse("12:00:00");
+        TimeSpan hasCheckMorning = TimeSpan.Parse("13:00:00");
         TimeSpan defaultMorningStarttime = TimeSpan.Parse("09:00:00");
-        TimeSpan defaultMorningEndtime = TimeSpan.Parse("12:00:00");
-        TimeSpan defaultNoonStarttime = TimeSpan.Parse("13:00:00");
+        TimeSpan defaultMorningEndtime = TimeSpan.Parse("13:00:00");
+        TimeSpan defaultNoonStarttime = TimeSpan.Parse("14:00:00");
         TimeSpan defaultNoonEndtime = TimeSpan.Parse("18:00:00");
         TimeSpan defaultOneHrs = TimeSpan.Parse("01:00:00");
+        TimeSpan defaultEdHrs = TimeSpan.Parse("09:00:00");
 
 
 
@@ -131,14 +132,14 @@ namespace SmartPM.Views
                 }
                 else
                 {
-                    if (TimesheetStartPick.Time < defaultMorningEndtime && TimesheetEndPick.Time > defaultNoonStarttime)
+                    if (TimesheetEndPick.Time.Subtract(TimesheetStartPick.Time) >= defaultEdHrs)
                     {
                         tempTotal = (TimesheetEndPick.Time - TimesheetStartPick.Time) - defaultOneHrs;
                         total = tempTotal.ToString(@"hh\:mm");
                     }
                     else { 
-                    tempTotal = TimesheetEndPick.Time - TimesheetStartPick.Time;
-                    total = tempTotal.ToString(@"hh\:mm");
+                        tempTotal = TimesheetEndPick.Time - TimesheetStartPick.Time;
+                        total = tempTotal.ToString(@"hh\:mm");
                     }
 
 
@@ -180,7 +181,7 @@ namespace SmartPM.Views
                         string msg = (string)data["msg"];
                         if (msg == "success")
                         {
-                            var userAct = await DisplayAlert("Noticd", "Record Successfully", "Ok", "Cancle");
+                            var userAct = await DisplayAlert("Notice", "Record Successfully", "Ok", "Cancle");
                             if (userAct)
                             {
                                 await Navigation.PopToRootAsync();

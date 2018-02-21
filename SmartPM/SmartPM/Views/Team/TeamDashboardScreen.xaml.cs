@@ -116,16 +116,38 @@ namespace SmartPM.Views.Team
 
         private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
-            var page = new TabbedPage
+            if (groupId == "50")
             {
-                Children =
+                var page = new TabbedPage
                 {
-                    new GlobalTimesheetList(userId),
-                    new GlobalTimesheet(objTimesheet)
+
+                    Children =
+                    {
+                        new ApproveTimesheet(userId),                 
+                        new GlobalTimesheet(objTimesheet),
+                        new GlobalTimesheetList(userId),
+
 
                 }
-            };
-            await Navigation.PushAsync(page);
+                };
+                await Navigation.PushAsync(page);
+            }
+            else
+            { 
+                var page = new TabbedPage
+                {
+                
+                    Children =
+                    {
+                         new GlobalTimesheet(objTimesheet),
+                        new GlobalTimesheetList(userId),
+                       
+
+                    }
+                };
+                await Navigation.PushAsync(page);
+            }
+            
             //UserId,Firstname,Lastname,JobResponsible,GroupId
         }
 

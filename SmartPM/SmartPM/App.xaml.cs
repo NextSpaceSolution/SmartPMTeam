@@ -19,11 +19,11 @@ namespace SmartPM
         {
             InitializeComponent();
 
-
             MainPage = new LoginScreen();
+            //MainPage = new NavigationPage(new ApproveTimesheet()) { BarBackgroundColor = Color.FromHex("#354b60"), BarTextColor = Color.White};
 
 
-           //MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"));
+            //MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"));
 
             //{
 
@@ -32,62 +32,62 @@ namespace SmartPM
             //MainPage = new UserProfileScreen();
 
 
-                   // MainPage = new NavigationPage(new TeamDashboardScreen("10","20"))
+            // MainPage = new NavigationPage(new TeamDashboardScreen("10","20"))
 
 
-          // MainPage = new NavigationPage(new TeamDashboardScreen("10","20"))
-
-            
-           /*MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"))
+            // MainPage = new NavigationPage(new TeamDashboardScreen("10","20"))
 
 
-            {
-
-                BarBackgroundColor = Color.FromHex("#E91E63"),
-                BarTextColor = Color.White
-            };*/
+            /*MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"))
 
 
-                   /*   MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"))
+             {
 
-            //
-                       {
-                           BarBackgroundColor = Color.FromHex("#E91E63"),
-                           BarTextColor = Color.White
-                    //   };
+                 BarBackgroundColor = Color.FromHex("#E91E63"),
+                 BarTextColor = Color.White
+             };*/
 
 
+            /*   MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"))
 
-            //string id = "10009";
-            // string gid = "10";
-            //MainPage = new NavigationPage(new TodoTimeline());
-
-
-            MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"));
+     //
+                {
+                    BarBackgroundColor = Color.FromHex("#E91E63"),
+                    BarTextColor = Color.White
+             //   };
 
 
 
-            //MainPage = new NavigationPage( new MainPage());
-            // MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"));
-           // MainPage = new TempPage("100001");
-        }
+     //string id = "10009";
+     // string gid = "10";
+     //MainPage = new NavigationPage(new TodoTimeline());
+
+
+     MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"));
 
 
 
-                       //var page = new PMDashboardScreen();
-                       ///NavigationPage.SetHasBackButton(page, false);
-
-
-                       //string id = "10009";
-                       // string gid = "10";
-                       //MainPage = new NavigationPage(new TodoTimeline());
+     //MainPage = new NavigationPage( new MainPage());
+     // MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"));
+    // MainPage = new TempPage("100001");
+ }
 
 
 
+                //var page = new PMDashboardScreen();
+                ///NavigationPage.SetHasBackButton(page, false);
+
+
+                //string id = "10009";
+                // string gid = "10";
+                //MainPage = new NavigationPage(new TodoTimeline());
 
 
 
-                       // MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"));*/
+
+
+
+                // MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"));*/
             // MainPage = new TempPage("100001");
             /*var page = new TabbedPage
             {
@@ -95,16 +95,16 @@ namespace SmartPM
                 {
                     new GlobalTimesheetList(),
                     new GlobalTimesheet()
-                    
+
                 }
             };
             MainPage = new NavigationPage(page);*/
 
 
-           // MainPage = new NavigationPage(new TeamDashboardScreen("100017", "50"));
-           MainPage = new LoginScreen();
-        
-    }
+            // MainPage = new NavigationPage(new TeamDashboardScreen("100017", "50"));
+
+
+        }
 
         protected override void OnStart()
         {

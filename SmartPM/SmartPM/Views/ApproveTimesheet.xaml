@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartPM.Views.ApproveTimesheet"
+             xmlns:converter="clr-namespace:SmartPM.Helpers"
+             Title="Approve">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:RelativeDateTimeConvertor x:Key="RelativeDateTimeConvertor" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ListView x:Name="NewsList"
+            RowHeight="100" HasUnevenRows="true"
+             ItemSelected="approve_Selected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="OnMore" CommandParameter="{Binding .}"
+                                Text="approve" />
+                            <MenuItem Clicked="OnDelete"  CommandParameter="{Binding .}"
+                                Text="reject" IsDestructive="True" />
+                        </ViewCell.ContextActions>
+                        <StackLayout Padding="20">
+                            <Label HorizontalOptions="EndAndExpand"  Text="{Binding submitDate, Converter={StaticResource RelativeDateTimeConvertor}}" FontSize="12"/>
+                            <StackLayout Orientation="Horizontal">
+                                    <Frame CornerRadius="15" Margin="0,0,10,0" Padding="0" IsClippedToBounds="True">
+                                    <Image Source="https://i2.wp.com/beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg" Aspect="Fill" HeightRequest="30" WidthRequest="30"></Image>
+                                </Frame>
+                                <Label TextColor="Crimson"  VerticalOptions="Center" FontSize="15" FontAttributes="Bold" Text="{Binding fullName}"/>
+                            </StackLayout>
+                            
+                            <Grid RowSpacing="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Label Text="โปรเจค : " TextColor="#5faee3" FontSize="12" Grid.Column="0" Grid.Row="0"></Label>
+                                <Label Text="{Binding projectName}" FontSize="12" Grid.Column="1" Grid.Row="0"/>
+
+
+                                <Label Text="เฟส : " TextColor="#5faee3" FontSize="12" Grid.Column="0" Grid.Row="1"></Label>
+                                <Label Text="{Binding tackName}" FontSize="12" Grid.Column="1" Grid.Row="1"/>
+
+                                <Label Text="หัวข้องาน :" TextColor="#5faee3" FontSize="12" Grid.Column="0" Grid.Row="2"></Label>
+                                <Label Text="{Binding functionName}" FontSize="12" Grid.Column="1" Grid.Row="2"/>
+
+                                <Label Text="Action : " TextColor="#5faee3" FontSize="12" Grid.Column="0" Grid.Row="3"></Label>
+                                <Label Text="{Binding actionName}" FontSize="12" Grid.Column="1" Grid.Row="3"/>
+                           
+                           <!-- <StackLayout Orientation="Horizontal">
+                                <Label Text="เริ่ม : " FontSize="12"></Label>
+                                <Label Text="{Binding timeStart}" FontSize="12" />
+                                <Label Text="  ถึง : " FontSize="12"></Label>
+                                <Label Text="{Binding timeEnd}" FontSize="12" /> 
+                            </StackLayout> -->
+
+
+                                <Label Text="Duration : " TextColor="#77d065" FontSize="12" Grid.Column="0" Grid.Row="4"></Label>
+                                <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="4">
+                                <Label Text="{Binding durationHrs}" FontSize="12" />
+                                <Label Text=" Hrs. " FontSize="12"></Label>
+                                <Label Text="{Binding durationMns}" FontSize="12" />
+                                <Label Text=" Mns. " FontSize="12"></Label>
+                                </StackLayout>
+                            </Grid>
+                            <!-- <Label HorizontalOptions="EndAndExpand"  Text="{Binding fullname}}" FontSize="12"/>-->
+                   
+                        </StackLayout>
+             
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

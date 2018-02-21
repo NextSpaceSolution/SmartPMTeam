@@ -59,7 +59,7 @@
                     </Grid.GestureRecognizers>
                 </StackLayout>
 
-                <StackLayout HeightRequest="100"
+                    <StackLayout HeightRequest="100"
                              Grid.Row="0"
                              Grid.Column="1"
                              Padding="5,20,0,5"                          
@@ -70,11 +70,10 @@
                         <Label 
                          TextColor="White"
                        Text="ACCOUNT" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" FontAttributes="Italic" Style="{DynamicResource LabelStyle}"/>
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
-                    </Grid.GestureRecognizers>
-                </StackLayout>
-
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
+                        </Grid.GestureRecognizers>
+                    </StackLayout>
                     <StackLayout HeightRequest="100"
                              Grid.Row="1"
                              Grid.Column="1"       
@@ -89,18 +88,15 @@
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
                         </Grid.GestureRecognizers>
-<<<<<<< HEAD
-                    </StackLayout>-->
-                </Grid>
-                <Grid Grid.Row="0" BackgroundColor="#354b60">
-=======
+
                     </StackLayout>
-                </Grid> 
-                <Grid Grid.Row="0" BackgroundColor="#E91E63">
->>>>>>> d3ea28e56e3cba443d55aa11540a8c307f76a1eb
+                </Grid>
+
+                <Grid Grid.Row="0" BackgroundColor="#354b60">
+
                     <Grid HorizontalOptions="Center">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="60"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Image Grid.Column="0" Source="userTemp" HeightRequest="30" Aspect="AspectFit" Margin="0,10,0,10"></Image>
