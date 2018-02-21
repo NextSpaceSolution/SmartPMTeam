@@ -84,7 +84,7 @@
                        Style="{DynamicResource LabelStyle}"
                        VerticalOptions="CenterAndExpand"
                        HorizontalOptions="CenterAndExpand"/>
-                <Switch x:Name="rememberSwitch" IsEnabled="True" IsToggled="False" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Grid.Row="4" Grid.Column="1"></Switch>
+                <Switch x:Name="rememberSwitch" IsEnabled="True" IsToggled="True" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Grid.Row="4" Grid.Column="1"></Switch>
 
                 <Label Text="Forget Password"
                        Grid.Row="7"

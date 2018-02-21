@@ -32,5 +32,26 @@ namespace SmartPM.Helpers
             set => AppSettings.AddOrUpdateValue(nameof(PassWord), value);
         }
 
+        public static string Group
+        {
+            get => AppSettings.GetValueOrDefault(nameof(Group), string.Empty);
+            set => AppSettings.AddOrUpdateValue(nameof(Group), value);
+        }
+
+        public static string UserId
+        {
+            get => AppSettings.GetValueOrDefault(nameof(UserId), string.Empty);
+            set => AppSettings.AddOrUpdateValue(nameof(UserId), value);
+        }
+
+        public static void ClearAcctout()
+        {
+            Settings.UserName = string.Empty;
+            Settings.PassWord = string.Empty;
+            Settings.UserId = string.Empty;
+            Settings.Group = string.Empty;
+
+        }
+
     }
 }

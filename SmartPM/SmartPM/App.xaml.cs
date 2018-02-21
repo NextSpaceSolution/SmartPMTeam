@@ -7,6 +7,8 @@ using SmartPM.Views.PM;
 using SmartPM.Views.Team;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
+using SmartPM.Helpers;
+using SmartPM.Services;
 
 namespace SmartPM
 {
@@ -19,91 +21,29 @@ namespace SmartPM
         {
             InitializeComponent();
 
-            MainPage = new LoginScreen();
-            //MainPage = new NavigationPage(new ApproveTimesheet()) { BarBackgroundColor = Color.FromHex("#354b60"), BarTextColor = Color.White};
-
-
-            //MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"));
-
-            //{
-
-            //MainPage = new TestTableVeiw();
-
-            //MainPage = new UserProfileScreen();
-
-
-            // MainPage = new NavigationPage(new TeamDashboardScreen("10","20"))
-
-
-            // MainPage = new NavigationPage(new TeamDashboardScreen("10","20"))
-
-
-            /*MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"))
-
-
-             {
-
-                 BarBackgroundColor = Color.FromHex("#E91E63"),
-                 BarTextColor = Color.White
-             };*/
-
-
-            /*   MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"))
-
-     //
-                {
-                    BarBackgroundColor = Color.FromHex("#E91E63"),
-                    BarTextColor = Color.White
-             //   };
-
-
-
-     //string id = "10009";
-     // string gid = "10";
-     //MainPage = new NavigationPage(new TodoTimeline());
-
-
-     MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"));
-
-
-
-     //MainPage = new NavigationPage( new MainPage());
-     // MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"));
-    // MainPage = new TempPage("100001");
- }
-
-
-
-                //var page = new PMDashboardScreen();
-                ///NavigationPage.SetHasBackButton(page, false);
-
-
-                //string id = "10009";
-                // string gid = "10";
-                //MainPage = new NavigationPage(new TodoTimeline());
-
-
-
-
-
-
-                // MainPage = new NavigationPage(new TeamDashboardScreen("100017","50"));*/
-            // MainPage = new TempPage("100001");
-            /*var page = new TabbedPage
+            if (string.IsNullOrEmpty(Settings.UserName) || string.IsNullOrEmpty(Settings.PassWord))
+                MainPage = new LoginScreen();
+            else
             {
-                Children =
+                if (Settings.Group == "99")
                 {
-                    new GlobalTimesheetList(),
-                    new GlobalTimesheet()
+                    var page = new AdminDashboard();
+                    NavigationPage.SetHasBackButton(page, false);
+                    App.Current.MainPage = new NavigationPage(page);
+
+
 
                 }
-            };
-            MainPage = new NavigationPage(page);*/
 
+                else if (Settings.Group == "10" ||Settings.Group == "50")
+                {
 
-            // MainPage = new NavigationPage(new TeamDashboardScreen("100017", "50"));
+                    var page = new TeamDashboardScreen(Settings.UserId, Settings.Group);
+                    NavigationPage.SetHasBackButton(page, false);
+                    App.Current.MainPage = new NavigationPage(page) { BarBackgroundColor = Color.FromHex("#354b60"), BarTextColor = Color.White };
 
-
+                }
+            }
         }
 
         protected override void OnStart()

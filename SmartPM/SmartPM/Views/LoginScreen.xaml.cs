@@ -14,6 +14,7 @@ using Plugin.Settings;
 using SmartPM.Helpers;
 using System.Net.Http;
 using System.Net;
+using SmartPM.Helpers;
 
 namespace SmartPM.Views
 {
@@ -60,6 +61,10 @@ namespace SmartPM.Views
                 }
                 else
                 {
+                    Settings.UserName = string.Empty;
+                    Settings.PassWord = string.Empty;
+                    Settings.Group = string.Empty;
+                    Settings.UserId = string.Empty;
                     //App.Current.MainPage = new dummyParamether(MainUser.Text, MainPassword.Text);
                    // App.Current.MainPage = new NavigationPage(new ApproveTimesheet(uid)) { BarBackgroundColor = Color.FromHex("#354b60"), BarTextColor = Color.White };
                 
@@ -82,9 +87,13 @@ namespace SmartPM.Views
                     JObject obj2 = JObject.Parse(jsonid);
                     string userid = (string)obj2["userId"];
 
+                    Settings.UserId = userid;
+
                     string jsonGid = await Authentication.GetGroupId(userid);
                     JObject obj3 = JObject.Parse(jsonGid);
                     string groupid = (string)obj3["groupId"];
+
+                    Settings.Group = groupid;
 
                     if (groupid == "99")
                     {

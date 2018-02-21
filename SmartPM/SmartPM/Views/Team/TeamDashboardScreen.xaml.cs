@@ -17,6 +17,7 @@ using Plugin.Connectivity;
 using SmartPM.Views.Team;
 using SmartPM.Views;
 using System.Collections.ObjectModel;
+using SmartPM.Helpers;
 
 namespace SmartPM.Views.Team
 {
@@ -205,7 +206,7 @@ namespace SmartPM.Views.Team
 
 
             //userAccount = null;
-
+            Settings.ClearAcctout();
             App.Current.MainPage = new LoginScreen();
         }
 
