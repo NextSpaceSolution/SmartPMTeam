@@ -4,16 +4,15 @@
              x:Class="SmartPM.TestValidationInput">
     <ContentPage.Content>
         <StackLayout Margin="15">
-            <Entry x:Name="MainEntry" Placeholder="Input fuck">
-                <Entry.Behaviors></Entry.Behaviors>
-            </Entry>
-            <Entry x:Name="SecondEntry" Placeholder="Input YSTN">
-                <Entry.Behaviors></Entry.Behaviors>
-            </Entry>
-            <Entry x:Name="ThirdEntry" Placeholder="Input Arang">
-                <Entry.Behaviors></Entry.Behaviors>
-            </Entry>
-            <Button HorizontalOptions="Center" Clicked="onSubmit" Text="TestValidation"></Button>
+      
+                <Label Text="Player_Id "></Label>
+                <Label x:Name="Player_ID"></Label>
+
+  
+                <Label Text="Push_Id  "></Label>
+                <Label x:Name="Push_ID"></Label>
+
+          
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

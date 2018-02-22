@@ -16,6 +16,7 @@ using SmartPM.Views.Team;
 using SmartPM.Views.PM;
 using SmartPM.Views.Admin;
 using Xamarin.Forms.Xaml;
+using Com.OneSignal;
 
 namespace SmartPM
 {
@@ -26,34 +27,22 @@ namespace SmartPM
 		{
 			InitializeComponent ();
            
-		}
+           
+            SomeMethod();
 
-        public async void AlertMassage(string msg)
-        {
-            await App.Current.MainPage.DisplayAlert("Notification", msg , "Oke");
         }
-        public async void onSubmit(object sender, EventArgs e)
+
+        void SomeMethod()
         {
-            if (string.IsNullOrWhiteSpace(MainEntry.Text))
-            {
-                AlertMassage("ห้ามว่าง");
-                MainEntry.Focus();
-            }
-            else if (string.IsNullOrWhiteSpace(SecondEntry.Text))
-            {
-                AlertMassage("สัสบอกว่าห้ามว่าง");
-                SecondEntry.Focus();
-            }
-            else if (string.IsNullOrWhiteSpace(ThirdEntry.Text))
-            {
-                AlertMassage("สัสบอกว่าห้ามว่างควย");
-                ThirdEntry.Focus();
-            }
-            else
-            {
-                await Navigation.PushAsync(new TestConcate());
-            }
-            
+            OneSignal.Current.IdsAvailable(IdsAvailable);
         }
-	}
+
+        private void IdsAvailable(string userID, string pushToken)
+        {
+            Player_ID.Text = userID;
+            Push_ID.Text = pushToken;
+        }
+
+
+    }
 }

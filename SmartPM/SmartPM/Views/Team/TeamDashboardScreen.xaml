@@ -22,6 +22,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -89,6 +90,9 @@
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
                         </Grid.GestureRecognizers>
 
+                    </StackLayout>
+                    <StackLayout Grid.Row="3" Grid.ColumnSpan="2">
+                        <Label VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30" Text="Tyche Company Limited" TextColor="#5faee3" FontSize="12" Margin="0,130,0,5"></Label>
                     </StackLayout>
                 </Grid>
 

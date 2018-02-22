@@ -124,8 +124,8 @@ namespace SmartPM.Views.Team
 
                     Children =
                     {
-                        new ApproveTimesheet(userId),                 
                         new GlobalTimesheet(objTimesheet),
+                        new ApproveTimesheet(userId),                                         
                         new GlobalTimesheetList(userId),
 
 
@@ -140,7 +140,8 @@ namespace SmartPM.Views.Team
                 
                     Children =
                     {
-                         new GlobalTimesheet(objTimesheet),
+                        new GlobalTimesheet(objTimesheet),
+                        new ApproveTimesheet(userId),
                         new GlobalTimesheetList(userId),
                        
 

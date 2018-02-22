@@ -24,46 +24,52 @@
                         <ViewCell>
                             <StackLayout 
                                 BackgroundColor="White"
-                                Margin="2">
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,5,0,0">
-                                    <Label
-                                        TextColor="#44687b"
-                                        Text="โปรเจค :"/>
-                                    <Label 
-                                        TextColor="#44687b"
-                                        Text="{Binding projectName}"/>
+                                Margin="2"
+                                Padding="15">
+                                <Grid RowSpacing="3">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="70"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+         
+                                    
+                                    <Label TextColor="#44687b" Text="โปรเจค :" Grid.Row="0"/>
+                                    <Label TextColor="#44687b"  Text="{Binding projectName}" Grid.Row="0" Grid.Column="1"/>
 
-                                </StackLayout>
+                                    <Label  FontSize="Micro" Text="เฟส : " Grid.Row="1" Grid.Column="0"/>
+                                    <Label  FontSize="Micro" Text="{Binding taskName}" Grid.Row="1" Grid.Column="1"/>
 
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,0">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="เฟส : "/>
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding taskName}"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,0">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="หัวข้องาน : "/>
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding functionName}"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="15,0,0,5">
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="วันที่บันทึก : "/>
-                                    <Label 
-                                        FontSize="Micro"
-                                        Text="{Binding timeSheetId, StringFormat='{0: dd-MM-yyyy}'}"/>
-                                </StackLayout>
-                               
+                                    <Label  FontSize="Micro" Text="หัวข้องาน : " Grid.Row="2" Grid.Column="0"/>
+                                    <Label  FontSize="Micro"  Text="{Binding functionName}" Grid.Row="2" Grid.Column="1"/>
+
+                                    <Label  FontSize="Micro"  Text="วันที่บันทึก : " Grid.Row="3" Grid.Column="0"/>
+                                    <Label  FontSize="Micro"  Text="{Binding timeSheetId, StringFormat='{0: dd-MM-yyyy}'}" Grid.Row="3" Grid.Column="1"/>
+
+                                    <Label  FontSize="Micro"  Text="Approve1 : " Grid.Row="4" Grid.Column="0" VerticalOptions="Center"/>
+                                    <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
+                                        <Frame CornerRadius="15" Margin="0,0,10,0" Padding="0" IsClippedToBounds="True">
+                                            <Image Source="https://i2.wp.com/beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg" Aspect="Fill" HeightRequest="30" WidthRequest="30" VerticalOptions="End"></Image>
+                                        </Frame>
+                                        <Label  FontSize="Micro"  Text="{Binding approve1}" VerticalOptions="Center"/>
+                                    </StackLayout>
+
+                                    <Label  FontSize="Micro"  Text="Approve2 : " Grid.Row="5" Grid.Column="0" VerticalOptions="Center"/>
+                                    <StackLayout Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
+                                        <Frame CornerRadius="15" Margin="0,0,10,0" Padding="0" IsClippedToBounds="True">
+                                            <Image Source="https://i2.wp.com/beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg" Aspect="Fill" HeightRequest="30" WidthRequest="30"></Image>
+                                        </Frame>
+                                        <Label  FontSize="Micro"  Text="{Binding approve2}" VerticalOptions="Center"/>
+                                    </StackLayout>
+                                </Grid>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

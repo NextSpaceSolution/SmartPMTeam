@@ -14,6 +14,7 @@ using SmartPM.Models.Timesheet;
 using Xamarin.Forms.Xaml;
 using System;
 using Plugin.Connectivity;
+using SmartPM.Services;
 
 namespace SmartPM.Views
 {
@@ -166,40 +167,47 @@ namespace SmartPM.Views
                     }
                     else
                     {
-                        var resultTotal = await DisplayAlert("Notice", "Total time "+total+" ชั่วโมง:นาที","Ok", "Cancle");
-                        if (resultTotal)
-                        { 
-                        string actId = await reqFindActionId(tempObj.actionName);
-                        JObject data2 = JObject.Parse(actId);
-                        string aid = (string)data2["actionId"];
-
-                        //await Navigation.PushAsync(new NextConcate(proId,uid,taskId,fid,tempObj.actionName,tempObj.Strdate, tempObj.StrStime, tempObj.StrEtime, tempObj.concateStime, tempObj.concateEtime));
-                        string result = await reqRecordTimesheet(timesheetData.ProjectNumber, aid,
-                                                              timesheetData.TaskId, timesheetData.FunctionId, timesheetData.UserId,
-                                                              timesheetData.TimeSheetStart, timesheetData.TimeSheetEnd);
-                        JObject data = JObject.Parse(result);
-                        string msg = (string)data["msg"];
-                        if (msg == "success")
+                        try
                         {
-                            var userAct = await DisplayAlert("Notice", "Record Successfully", "Ok", "Cancle");
-                            if (userAct)
+                            var resultTotal = await DisplayAlert("Notice", "Total time " + total + " ชั่วโมง:นาที", "Ok", "Cancle");
+                            if (resultTotal)
                             {
-                                await Navigation.PopToRootAsync();
-                            }
 
-                        }
-                        else
-                        {
-                            var userAct = await DisplayAlert("Notice", "Record False TryAgain", "Ok", "Cancle");
-                            if (userAct != true)
-                            {
-                                await Navigation.PopToRootAsync();
+                                string actId = await FilterTimesheetService.reqFindActionId(tempObj.actionName);
+                                JObject data2 = JObject.Parse(actId);
+                                string aid = (string)data2["actionId"];
+
+                                //await Navigation.PushAsync(new NextConcate(proId,uid,taskId,fid,tempObj.actionName,tempObj.Strdate, tempObj.StrStime, tempObj.StrEtime, tempObj.concateStime, tempObj.concateEtime));
+                                string result = await FilterTimesheetService.reqRecordTimesheet(timesheetData.ProjectNumber, aid,
+                                                                      timesheetData.TaskId, timesheetData.FunctionId, timesheetData.UserId,
+                                                                      timesheetData.TimeSheetStart, timesheetData.TimeSheetEnd);
+                                JObject data = JObject.Parse(result);
+                                string msg = (string)data["msg"];
+                                if (msg == "success")
+                                {
+                                    var userAct = await DisplayAlert("Notice", "Record Successfully", "Ok", "Cancle");
+                                    if (userAct)
+                                    {
+                                        await Navigation.PopToRootAsync();
+                                    }
+
+                                }
+                                else
+                                {
+                                    var userAct = await DisplayAlert("Notice", "Record False TryAgain", "Ok", "Cancle");
+                                    if (userAct != true)
+                                    {
+                                        await Navigation.PopToRootAsync();
+                                    }
+                                }
                             }
                         }
+                        catch {
+                            await DisplayAlert("Notice", "fail to load content","Cancle");
                         }
 
                     }
-            }
+                }
            
             }
 
@@ -208,211 +216,50 @@ namespace SmartPM.Views
 
         public async void RenderFindFunctionId(string pid,string tid, string fname)
         {
-            string result = await reqFindFunctionId(pid,tid, fname);
-            JObject temp = JObject.Parse(result);
-            timesheetData.FunctionId = (string)temp["functionId"];
+            try
+            {
+                string result = await FilterTimesheetService.reqFindFunctionId(pid, tid, fname);
+                JObject temp = JObject.Parse(result);
+                timesheetData.FunctionId = (string)temp["functionId"];
+            }
+            catch {
+                await DisplayAlert("Notice", "Fail to load content", "Cancle");
+            }
 
         }
-
-        public async void RenderFindActionId(string actName)
-        {
-            
-        }
-      
 
         public async void RenderGetActionName()
         {
-            var actResult = new List<ActionModel>();
-            var TempactResult = new List<ActionModel>();
-            string tempData = await reqGetAction();
-            actResult = JsonConvert.DeserializeObject<List<ActionModel>>(tempData);
-            foreach (var item in actResult)
-            {
-                TempactResult.Add(new ActionModel
-                {
-                    actionId = item.actionId,
-                    actionName = item.actionName
-                });
-            }
-
-            foreach (var item in TempactResult)
-            {
-                if (item != null)
-                    ActionNames.Items.Add(item.actionName);
-                else
-                    ActionNames.Items.Add("Non of above");
-
-
-            }
-        }
-
-        public async Task<string> reqRecordTimesheet(string projectId, string actId,string taskId, string funcId, string userId, string launchStart, string launchEnd)
-        {
             try
             {
-                // This is the postdata
-                var postData = new List<KeyValuePair<string, string>>(2);
-                postData.Add(new KeyValuePair<string, string>("proId", projectId));
-                postData.Add(new KeyValuePair<string, string>("actId", actId));
-                postData.Add(new KeyValuePair<string, string>("taskId", taskId));
-                postData.Add(new KeyValuePair<string, string>("funcId", funcId));
-                postData.Add(new KeyValuePair<string, string>("userId", userId));
-                postData.Add(new KeyValuePair<string, string>("thStart", launchStart));
-                postData.Add(new KeyValuePair<string, string>("thEnd", launchEnd));
-
-                HttpContent content = new FormUrlEncodedContent(postData);
-
-                using (var client = new HttpClient())
+                var actResult = new List<ActionModel>();
+                var TempactResult = new List<ActionModel>();
+                string tempData = await FilterTimesheetService.reqGetAction();
+                actResult = JsonConvert.DeserializeObject<List<ActionModel>>(tempData);
+                foreach (var item in actResult)
                 {
-                    //client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/RecordTimesheet", content))
+                    TempactResult.Add(new ActionModel
                     {
-                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
-                        {
-                            using (var responseContent = response.Content)
-                            {
-                                string result = await responseContent.ReadAsStringAsync();
-                                Console.WriteLine(result);
-                                return result;
-                            }
-                        }
-                        else
-                        {
-                            return "error " + Convert.ToString(response.StatusCode);
-                        }
-                    }
+                        actionId = item.actionId,
+                        actionName = item.actionName
+                    });
+                }
+
+                foreach (var item in TempactResult)
+                {
+                    if (item != null)
+                        ActionNames.Items.Add(item.actionName);
+                    else
+                        ActionNames.Items.Add("Non of above");
+
+
                 }
             }
-            catch (WebException ex)
-            {
-                return Convert.ToString(ex);
+            catch {
+                await DisplayAlert("Notice", "Fail to load content", "Cancle");
             }
-
-
-
         }
 
-        public async Task<string> reqGetAction()
-        {
-            try
-            {
-                // This is the postdata
-                var postData = new List<KeyValuePair<string, string>>(2);
-               
-                HttpContent content = new FormUrlEncodedContent(postData);
-
-                using (var client = new HttpClient())
-                {
-                    //client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/GetActionName", content))
-                    {
-                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
-                        {
-                            using (var responseContent = response.Content)
-                            {
-                                string result = await responseContent.ReadAsStringAsync();
-                                Console.WriteLine(result);
-                                return result;
-                            }
-                        }
-                        else
-                        {
-                            return "error " + Convert.ToString(response.StatusCode);
-                        }
-                    }
-                }
-            }
-            catch (WebException ex)
-            {
-                return Convert.ToString(ex);
-            }
-
-
-
-        }
-
-        public async Task<string> reqFindFunctionId(string pid, string tid, string funcName)
-        {
-            try
-            {
-                // This is the postdata
-                var postData = new List<KeyValuePair<string, string>>(2);
-                postData.Add(new KeyValuePair<string, string>("pid", pid));
-                postData.Add(new KeyValuePair<string, string>("tid", tid));
-                postData.Add(new KeyValuePair<string, string>("funcName", funcName));
-
-
-
-                HttpContent content = new FormUrlEncodedContent(postData);
-
-                using (var client = new HttpClient())
-                {
-                    //
-                    //client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/FindFunctionId", content))
-                    {
-                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
-                        {
-                            using (var responseContent = response.Content)
-                            {
-                                string result = await responseContent.ReadAsStringAsync();
-                                Console.WriteLine(result);
-                                return result;
-                            }
-                        }
-                        else
-                        {
-                            return "error " + Convert.ToString(response.StatusCode);
-                        }
-                    }
-                }
-            }
-            catch (WebException ex)
-            {
-                return Convert.ToString(ex);
-            }
-
-
-
-        }
-
-        public async Task<string> reqFindActionId(string actName)
-        {
-            try
-            {
-                // This is the postdata
-                var postData = new List<KeyValuePair<string, string>>(2);
-                postData.Add(new KeyValuePair<string, string>("actName", actName));
-                HttpContent content = new FormUrlEncodedContent(postData);
-
-                using (var client = new HttpClient())
-                {
-                    //client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/FindValueActionId", content))
-                    {
-                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
-                        {
-                            using (var responseContent = response.Content)
-                            {
-                                string result = await responseContent.ReadAsStringAsync();
-                                Console.WriteLine(result);
-                                return result;
-                            }
-                        }
-                        else
-                        {
-                            return "error " + Convert.ToString(response.StatusCode);
-                        }
-                    }
-                }
-            }
-            catch (WebException ex)
-            {
-                return Convert.ToString(ex);
-            }
-
-
-
-        }
+       
     }
 }

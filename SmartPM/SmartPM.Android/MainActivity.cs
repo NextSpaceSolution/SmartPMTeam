@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Com.OneSignal;
 
 namespace SmartPM.Droid
 {
@@ -21,6 +22,8 @@ namespace SmartPM.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
+            OneSignal.Current.StartInit("8e9e2a3a-dfdb-49f0-925c-c756cf54011a")
+                  .EndInit();
         }
     }
 }

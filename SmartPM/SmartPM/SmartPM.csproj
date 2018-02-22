@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Com.OneSignal" Version="3.0.1" />
     <PackageReference Include="MvvmLight" Version="5.3.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1-beta3" />
     <PackageReference Include="Prism.Core" Version="7.0.0.396" />

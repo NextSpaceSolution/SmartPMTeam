@@ -9,18 +9,20 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
 using SmartPM.Helpers;
 using SmartPM.Services;
+using Com.OneSignal;
 
 namespace SmartPM
 {
 	public partial class App : Application
 	{
 
-
-
         public App()
         {
             InitializeComponent();
-
+            OneSignal.Current.StartInit("8e9e2a3a-dfdb-49f0-925c-c756cf54011a")
+                  .EndInit();
+            MainPage = new TestValidationInput();
+            /*
             if (string.IsNullOrEmpty(Settings.UserName) || string.IsNullOrEmpty(Settings.PassWord))
                 MainPage = new LoginScreen();
             else
@@ -43,7 +45,7 @@ namespace SmartPM
                     App.Current.MainPage = new NavigationPage(page) { BarBackgroundColor = Color.FromHex("#354b60"), BarTextColor = Color.White };
 
                 }
-            }
+            }*/
         }
 
         protected override void OnStart()
