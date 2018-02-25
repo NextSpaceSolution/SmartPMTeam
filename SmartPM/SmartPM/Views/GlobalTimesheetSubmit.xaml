@@ -116,6 +116,7 @@
 
                         <Label x:Name="ActionName" Text="ActName :" TextColor="#5faee3" Grid.Row="0" Grid.Column="0" Margin="10,20,10,0"></Label>
                         <Picker x:Name="ActionNames" Title="Choose Action" SelectedIndexChanged="ActionNames_SelectedIndexChanged" Grid.Row="0" Grid.Column="1"  Grid.ColumnSpan="2" Margin="10,0,10,0"></Picker>
+                        <!-- <Picker x:Name="ActionNames"  Title="Choose Action" ItemDisplayBinding="{Binding actionName}" SelectedIndexChanged="OnActionSelectedIndexChanged" Grid.Row="0" Grid.Column="1"  Grid.ColumnSpan="2" Margin="10,0,10,0"></Picker>-->
 
                         <Label Text="Date"
                        Margin="10,20,10,0"

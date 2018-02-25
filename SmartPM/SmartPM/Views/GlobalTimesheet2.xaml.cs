@@ -110,6 +110,21 @@ namespace SmartPM.Views
             obj.TaskName = phase.Items[phase.SelectedIndex];
         }
 
+        /*
+        private void OnPhaseSelectedIndexChanged(object sender,SelectedItemChangedEventArgs e)
+        {
+            var modelPicker = (Picker)sender;
+            int selectedIndex = modelPicker.SelectedIndex;
+            if (selectedIndex != -1)
+            {
+                var model = (TimesheetOneModel)modelPicker.SelectedItem;
+                obj.taskId = model.taskId;
+            }
+
+          
+
+        }
+        */
         private async void Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();

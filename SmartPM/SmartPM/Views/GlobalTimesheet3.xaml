@@ -92,8 +92,20 @@
                             SelectedIndexChanged="job_SelectedIndexChanged"
                             />
 
+<!--
+                    <Picker x:Name="job" 
+                            Title="เลือกงานที่รับผิดชอบ"
+                ItemDisplayBinding="{Binding fucntionName}"
+                            TextColor="Black"
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="10,5,10,30"
+                            SelectedIndexChanged="OnFunctionSelectedIndexChanged"
+                            />
 
-                <Button Clicked="Button_Clicked"
+-->
+                    <Button Clicked="Button_Clicked"
                             Text="Back"
                             TextColor="White"
                             BackgroundColor="#fa9727"

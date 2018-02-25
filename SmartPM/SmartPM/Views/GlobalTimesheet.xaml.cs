@@ -28,24 +28,12 @@ namespace SmartPM.Views
         public GlobalTimesheet (TimesheetOneModel parsModel)
 		{
 			InitializeComponent ();
-            /*
-            _uid = uid
-            _job = job;
-          _gid = gid;*/
-            // objTimesheet.firstName = "ประหยัด";
-            //  objTimesheet.lastName = "ไม่มีตังกินข้าว";
-            //objTimesheet.fullName = objTimesheet.firstName + " " + objTimesheet.lastName;
-            //objTimesheet.jobResp = "ผู้บัญชาการต่ำสุด";
+      
             objTimesheet.userId = parsModel.userId;
             objTimesheet.groupId = parsModel.groupId;
 
 
 
-            /*
-            _ufname = "ประหยัด";
-            _ulname = "ไม่มีตังกินข้าว";
-            _fullname = _ufname + "  " + _ulname;
-            */
             if (checkConnect() == true) { 
                 RenderFilterPro(objTimesheet.userId, objTimesheet.groupId);
                 renderReqUserInfo(objTimesheet.userId);
@@ -54,13 +42,9 @@ namespace SmartPM.Views
                 Title = "Internet not connect";
 
             Labelfullname.Text = objTimesheet.fullName;
-            // Labellname.Text = _ulname;
+
             Labeljob.Text = objTimesheet.jobResp;
-            /*
-            project.Items.Add("Project001");
-            project.Items.Add("Project002");
-            project.Items.Add("dummyProject");    
-            */
+          
         }
 
         public bool checkConnect()
@@ -128,6 +112,20 @@ namespace SmartPM.Views
            
 
         }
+
+        /*
+        private void OnProjectSelectedIndexChanged(object sender, SelectedItemChangedEventArgs e)
+        {
+            var modelPicker = (Picker)sender;
+            int selectedIndex = modelPicker.SelectedIndex;
+            if (selectedIndex != -1)
+            {
+                var model = (TimesheetOneModel)modelPicker.SelectedItem;
+                objTimesheet.projectId = model.projectId;
+            }
+
+
+        }*/
 
    
 

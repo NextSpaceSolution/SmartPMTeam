@@ -57,23 +57,9 @@ namespace SmartPM.Views
                 Title = "Internet not connect";
 
 
-            //timesheetData.TimeSheetId
-            /*
             timesheetData.UserId = model.userId;
             timesheetData.ProjectNumber = model.projectId;
-            timesheetData.TaskId = model.taskId;
-            timesheetData.FunctionId = model.functionId;
-            */
-            /*
-            ActionNames.Items.Add("Gettering Requirement");
-            ActionNames.Items.Add("System Analysis");
-            ActionNames.Items.Add("Development");
-            ActionNames.Items.Add("Testing");
-            */
-            timesheetData.UserId = model.userId;
-            timesheetData.ProjectNumber = model.projectId;
-           // timesheetData.FunctionId = "100001";
-           // timesheetData.ActionId = "F";
+
 
         }
 
@@ -91,6 +77,18 @@ namespace SmartPM.Views
         {
             tempObj.actionName = ActionNames.Items[ActionNames.SelectedIndex];
         }
+
+        private void OnActionSelectedIndexChanged(object sender, SelectedItemChangedEventArgs e)
+        {
+            var modelPicker = (Picker)sender;
+            int selectedIndex = modelPicker.SelectedIndex;
+            if (selectedIndex != -1)
+            {
+                var model = (TimesheetOneModel)modelPicker.SelectedItem;
+                timesheetData.ActionId = model.actionId;
+            }
+        }
+
 
         private async void Button_Clicked(object sender, EventArgs e)
         {

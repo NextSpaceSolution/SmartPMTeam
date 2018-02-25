@@ -26,15 +26,7 @@ namespace SmartPM.Views
         public GlobalTimesheet3 (TimesheetOneModel model)
 		{
 			InitializeComponent ();
-            /*
-            this.uid = uid;
-            this.fname = fname;
-            this.lname = lname;
-            _job = jobr;
-            this.gid = gid;
-            this.pid = pid;
-            this.tname = tname;
-            */
+          
             Labelfullname.Text = model.fullName;
             Labeljob.Text = model.jobResp;
             LabelProname.Text = model.projectName;
@@ -52,13 +44,6 @@ namespace SmartPM.Views
                 RenderFindTid(obj.projectId,obj.TaskName);
             else
                 Title = "Internet not connect";
-
-            
-
-            
-           /* job.Items.Add("Job001");
-            /*job.Items.Add("Job003");
-            */
 
         }
 
@@ -130,6 +115,17 @@ namespace SmartPM.Views
             obj.functionName = job.Items[job.SelectedIndex];
         }
 
+        /*
+        private void OnFunctionSelectedIndexChanged(object sender, SelectedItemChangedEventArgs e)
+        {
+            var modelPicker = (Picker)sender;
+            int selectedIndex = modelPicker.SelectedIndex;
+            if (selectedIndex != -1)
+            {
+                var model = (TimesheetOneModel)modelPicker.SelectedItem;
+                obj.functionId = model.functionId;
+            }
+        }*/
         private async void Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
