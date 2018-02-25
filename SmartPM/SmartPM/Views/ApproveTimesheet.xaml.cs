@@ -124,7 +124,7 @@ namespace SmartPM.Views
                 }
             }
             catch {
-                await DisplayAlert("Notice","Fail","Cancle");
+                //await DisplayAlert("Notice","Fail","Cancle");
             }
             NewsList.ItemsSource = approve;
         }

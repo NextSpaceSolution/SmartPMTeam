@@ -9,10 +9,7 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using SmartPM.Models;
 using Plugin.Connectivity;
-using System.Linq;
-using System.Collections.ObjectModel;
-using System.Windows.Input;
-using SmartPM.Views;
+using SmartPM.Services;
 
 
 namespace SmartPM.Views.Admin
@@ -62,19 +59,22 @@ namespace SmartPM.Views.Admin
 
         public async void RenderAPIAccountEdit(string id)
         {
-            string jsonResult = await DetailsServices(id);
-            JObject dataemp = JObject.Parse(jsonResult);
-     
-                _DataContex.username = (string)dataemp["username"];
-                _DataContex.password = (string)dataemp["password"]; 
-                _DataContex.firstname = (string)dataemp["firstname"]; 
-                _DataContex.lastname = (string)dataemp["lastname"]; 
-                _DataContex.jobResponsible = (string)dataemp["jobResponsible"]; 
-                _DataContex.status = (string)dataemp["status"]; 
-                _DataContex.groupName = (string)dataemp["groupName"]; 
-            
-            BindingContext = _DataContex;
+            try
+            {
+                string jsonResult = await AccountsService.DetailsServices(id);
+                JObject dataemp = JObject.Parse(jsonResult);
 
+                _DataContex.username = (string)dataemp["username"];
+                _DataContex.password = (string)dataemp["password"];
+                _DataContex.firstname = (string)dataemp["firstname"];
+                _DataContex.lastname = (string)dataemp["lastname"];
+                _DataContex.jobResponsible = (string)dataemp["jobResponsible"];
+                _DataContex.status = (string)dataemp["status"];
+                _DataContex.groupName = (string)dataemp["groupName"];
+
+                BindingContext = _DataContex;
+            }
+            catch { }
         }
 
 
@@ -120,21 +120,24 @@ namespace SmartPM.Views.Admin
             _DataContex.status = ustat;
             _DataContex.groupId = ugroup;
 
-
-            string json2 = await EditService(uid, _DataContex.username, _DataContex.password, _DataContex.firstname, _DataContex.lastname, _DataContex.jobResponsible, _DataContex.userEditBy, _DataContex.status, _DataContex.groupId);
-            JObject obj2 = JObject.Parse(json2);
-            string msg = (string)obj2["msg"];
-            if (msg == "Success")
+            try
             {
-                this.IsBusy = false;
-                await DisplayAlert("Notification", "บันทึกข้อมูลเรียบร้อย", "OK");
-                await Navigation.PopAsync();
+                string json2 = await AccountsService.EditService(uid, _DataContex.username, _DataContex.password, _DataContex.firstname, _DataContex.lastname, _DataContex.jobResponsible, _DataContex.userEditBy, _DataContex.status, _DataContex.groupId);
+                JObject obj2 = JObject.Parse(json2);
+                string msg = (string)obj2["msg"];
+                if (msg == "Success")
+                {
+                    this.IsBusy = false;
+                    await DisplayAlert("Notification", "บันทึกข้อมูลเรียบร้อย", "OK");
+                    await Navigation.PopAsync();
+                }
+                else
+                {
+                    this.IsBusy = false;
+                    await DisplayAlert("Notification", "ไม่สามารถบันทึกข้อมูลได้", "Cancle");
+                }
             }
-            else
-            {
-                this.IsBusy = false;
-                await DisplayAlert("Notification", "ไม่สามารถบันทึกข้อมูลได้", "Cancle");
-            }
+            catch { }
 
         }
 
@@ -143,87 +146,6 @@ namespace SmartPM.Views.Admin
             await Navigation.PopToRootAsync();
         }
 
-        public async Task<string> EditService(string id, string Vusername, string Vpassword, string VFirstname, string VLastname, string Jobresp, string userLogged, string stat, string gid)
-        {
-            try
-            {
-                // This is the postdata
-                var postData = new List<KeyValuePair<string, string>>(2);
-                postData.Add(new KeyValuePair<string, string>("id", id));
-                postData.Add(new KeyValuePair<string, string>("Vusername", Vusername));
-                postData.Add(new KeyValuePair<string, string>("Vpassword", Vpassword));
-                postData.Add(new KeyValuePair<string, string>("VFirstname", VFirstname));
-                postData.Add(new KeyValuePair<string, string>("VLastname", VLastname));
-                postData.Add(new KeyValuePair<string, string>("Jobresp", Jobresp));
-                postData.Add(new KeyValuePair<string, string>("userLogged", userLogged));
-                postData.Add(new KeyValuePair<string, string>("stat", stat));
-                postData.Add(new KeyValuePair<string, string>("gid", gid));
-
-                HttpContent content = new FormUrlEncodedContent(postData);
-
-                using (var client = new HttpClient())
-                {
-                   // client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/UserManagement/EditService", content))
-                    {
-                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
-                        {
-                            using (var responseContent = response.Content)
-                            {
-                                string result = await responseContent.ReadAsStringAsync();
-                                Console.WriteLine(result);
-                                return result;
-                            }
-                        }
-                        else
-                        {
-                            return "error " + Convert.ToString(response.StatusCode);
-                        }
-                    }
-                }
-            }
-            catch (WebException ex)
-            {
-                return Convert.ToString(ex);
-            }
-
-        }
-
-        public async Task<string> DetailsServices(string id)
-        {
-            try
-            {
-                // This is the postdata
-                var postData = new List<KeyValuePair<string, string>>(2);
-                postData.Add(new KeyValuePair<string, string>("id", id));
-                HttpContent content = new FormUrlEncodedContent(postData);
-
-                using (var client = new HttpClient())
-                {
-                    client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/UserManagement/DetailsService", content))
-                    {
-                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
-                        {
-                            using (var responseContent = response.Content)
-                            {
-                                string result = await responseContent.ReadAsStringAsync();
-                                Console.WriteLine(result);
-                                return result;
-                            }
-                        }
-                        else
-                        {
-                            return "error " + Convert.ToString(response.StatusCode);
-                        }
-                    }
-                }
-            }
-            catch (WebException ex)
-            {
-                return Convert.ToString(ex);
-            }
-
-        }
+       
     }
 }

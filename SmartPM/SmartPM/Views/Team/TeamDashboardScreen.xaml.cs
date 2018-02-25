@@ -176,7 +176,7 @@ namespace SmartPM.Views.Team
                 using (var client = new HttpClient())
                 {
                     //client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest/GetUserInfo", content))
+                    using (var response = await client.PostAsync("http://192.168.2.95:56086/APIRest/GetUserInfo", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {
@@ -223,7 +223,7 @@ namespace SmartPM.Views.Team
                 using (var client = new HttpClient())
                 {
                     //client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest/GetUserInfo", content))
+                    using (var response = await client.PostAsync("http://192.168.2.95:56086/APIRest/GetUserInfo", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {

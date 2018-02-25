@@ -12,6 +12,7 @@ using System.Net;
 using SmartPM.Models;
 using SmartPM.Models.Timesheet;
 using Xamarin.Forms.Xaml;
+using System.Collections.ObjectModel;
 using System;
 using Plugin.Connectivity;
 using SmartPM.Services;
@@ -37,11 +38,12 @@ namespace SmartPM.Views
             obj.projectName = model.projectName;
             obj.TaskName = model.TaskName;
             obj.projectId = model.projectId;
+            obj.taskId = model.taskId;
             obj.userId = model.userId;
             obj.groupId = model.groupId;
 
             if (checkConnect() == true)
-                RenderFindTid(obj.projectId,obj.TaskName);
+                RenderFilterFunction(obj.userId,obj.groupId, obj.projectId, obj.taskId);
             else
                 Title = "Internet not connect";
 
@@ -57,52 +59,18 @@ namespace SmartPM.Views
             else
                 return false;
         }
-        public async void RenderFindTid(string pid, string tname)
+       
+        public async void RenderFilterFunction(string uid, string gid, string pid, string taid)
         {
-            try
-            {
-                string jsonResult = await FilterTimesheetService.FindTaskId(pid, tname);
-                JObject data = JObject.Parse(jsonResult);
-                obj.taskId = (string)data["taskId"];
-                RenderFilterFunction(obj.userId, obj.projectId, obj.taskId);
-            }
-            catch
-            {
-                await DisplayAlert("Notice", "Fail to load content", "Cancle");
-            }
-          
-        }
-
-        public async void RenderFilterFunction(string uid, string pid, string taid)
-        {
+            var ResultFunc = new ObservableCollection<TimesheetfunctionModel>();
             try
             {
 
-                var ResultFunc = new List<TimesheetfunctionModel>();
-                var tempResultFunc = new List<TimesheetfunctionModel>();
-                string filterFunc = await FilterTimesheetService.FilterFunction(uid, pid, taid);
-                ResultFunc = JsonConvert.DeserializeObject<List<TimesheetfunctionModel>>(filterFunc);
-
-                foreach (var item in ResultFunc)
-                {
-                    tempResultFunc.Add(new TimesheetfunctionModel
-                    {
-                        functionId = item.functionId,
-                        functionName = item.functionName
-
-                    });
-                }
-
-                foreach (var item in tempResultFunc)
-                {
-                    if (item != null)
-                        job.Items.Add(item.functionName);
-                    else
-                        job.Items.Add("Non of above");
-
-
-                }
-
+              
+                string filterFunc = await FilterTimesheetService.FilterFunction(uid, gid,pid, taid);
+                ResultFunc = JsonConvert.DeserializeObject<ObservableCollection<TimesheetfunctionModel>>(filterFunc);
+                PickerFunction.ItemsSource = ResultFunc;
+            
             }
             catch
             {
@@ -110,22 +78,22 @@ namespace SmartPM.Views
             }
         }
 
-        private void job_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            obj.functionName = job.Items[job.SelectedIndex];
-        }
 
-        /*
+
         private void OnFunctionSelectedIndexChanged(object sender, SelectedItemChangedEventArgs e)
         {
             var modelPicker = (Picker)sender;
             int selectedIndex = modelPicker.SelectedIndex;
             if (selectedIndex != -1)
             {
-                var model = (TimesheetOneModel)modelPicker.SelectedItem;
+                var model = (TimesheetfunctionModel)modelPicker.SelectedItem;
                 obj.functionId = model.functionId;
+                obj.functionName = model.functionName;
             }
-        }*/
+
+
+
+        }
         private async void Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();

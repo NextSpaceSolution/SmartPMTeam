@@ -11,7 +11,7 @@ namespace SmartPM.Models
             public string projectId { get; set; }
             public string projectName { get; set; }
             public string projectManager { get; set; }
-        public string projectStart { get; set; }
+         public string projectStart { get; set; }
         public string projectEnd { get; set; }
         //public DateTime projectStart { get; set; }
            // public DateTime projectEnd { get; set; }

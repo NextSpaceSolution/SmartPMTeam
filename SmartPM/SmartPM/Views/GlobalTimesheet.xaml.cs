@@ -12,6 +12,7 @@ using System.Net;
 using SmartPM.Models.Timesheet;
 using Xamarin.Forms.Xaml;
 using System;
+using System.Collections.ObjectModel;
 using SmartPM.Services;
 using SmartPM.Models;
 using Plugin.Connectivity;
@@ -59,30 +60,17 @@ namespace SmartPM.Views
         }
         private async void RenderFilterPro(string uid, string gid)
         {
-            var ResultProject = new List<AProjectList>();
-            var tempResultProject = new List<AProjectList>();
+            var ResultProject = new ObservableCollection<AProjectList>();
             try
             {
                 string filterProject = await FilterTimesheetService.FilterProject(uid, gid);
-                ResultProject = JsonConvert.DeserializeObject<List<AProjectList>>(filterProject);
+                ResultProject = JsonConvert.DeserializeObject<ObservableCollection<AProjectList>>(filterProject);
+                PickerProject.ItemsSource = ResultProject;
 
-                foreach (var item in ResultProject)
-                {
-                    tempResultProject.Add(new AProjectList
-                    {
-                        projectNumber = item.projectNumber,
-                        projectName = item.projectName
-                    });
-                }
-
-                foreach (var item in tempResultProject)
-                {
-                    project.Items.Add(item.projectName);
-                }
             }
             catch
             {
-
+                //await DisplayAlert("Notice", "Time Out", "Cancle");
             }
 
         }
@@ -101,31 +89,26 @@ namespace SmartPM.Views
             }
             catch
             {
-                await DisplayAlert("Notice", "Fail to load content" ,"Cancle");
+               // await DisplayAlert("Notice", "Fail to load content" ,"Cancle");
             }
 
         }
  
-        private void project_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           objTimesheet.projectName  = project.Items[project.SelectedIndex];
-           
-
-        }
-
-        /*
+     
+        
         private void OnProjectSelectedIndexChanged(object sender, SelectedItemChangedEventArgs e)
         {
             var modelPicker = (Picker)sender;
             int selectedIndex = modelPicker.SelectedIndex;
             if (selectedIndex != -1)
             {
-                var model = (TimesheetOneModel)modelPicker.SelectedItem;
-                objTimesheet.projectId = model.projectId;
+                var model = (AProjectList)modelPicker.SelectedItem;
+                objTimesheet.projectName = model.projectName;
+                objTimesheet.projectId = model.projectNumber;
             }
 
 
-        }*/
+        }
 
    
 
@@ -137,7 +120,8 @@ namespace SmartPM.Views
 
             }
             else
-                await Navigation.PushAsync(new GlobalTimesheet2(objTimesheet));
+                //await DisplayAlert("Notic", objTimesheet.projectId + objTimesheet.projectName, "Ok");
+             await Navigation.PushAsync(new GlobalTimesheet2(objTimesheet));
             //_uid, _ufname, _ulname, _job, _gid,_pname
         }
 
