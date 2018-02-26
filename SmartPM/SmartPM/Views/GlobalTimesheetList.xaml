@@ -16,7 +16,7 @@
                 x:Name="TimesheetlistItem"
                 SeparatorVisibility="None"
                 HasUnevenRows="True"  
-                ItemTapped="projectlist_ItemTapped"
+                
                 IsPullToRefreshEnabled="True"
                 IsRefreshing="False">
                 <ListView.ItemTemplate>

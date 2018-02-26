@@ -19,34 +19,40 @@ namespace SmartPM
         public App()
         {
             InitializeComponent();
-            OneSignal.Current.StartInit("8e9e2a3a-dfdb-49f0-925c-c756cf54011a")
-                  .EndInit();
-           // MainPage = new TestValidationInput();
-            
-            if (string.IsNullOrEmpty(Settings.UserName) || string.IsNullOrEmpty(Settings.PassWord))
-                MainPage = new LoginScreen();
-            else
+            try
             {
-                if (Settings.Group == "99")
-                {
-                    var page = new AdminDashboard();
-                    NavigationPage.SetHasBackButton(page, false);
-                    App.Current.MainPage = new NavigationPage(page);
-
-
-
-                }
-
-                else if (Settings.Group == "10" ||Settings.Group == "50")
-                {
-
-                    var page = new TeamDashboardScreen(Settings.UserId, Settings.Group);
-                    NavigationPage.SetHasBackButton(page, false);
-                    App.Current.MainPage = new NavigationPage(page) { BarBackgroundColor = Color.FromHex("#354b60"), BarTextColor = Color.White };
-
-                }
+                
+                OneSignal.Current.StartInit("8e9e2a3a-dfdb-49f0-925c-c756cf54011a")
+                      .EndInit();
+                MainPage = new LoginScreen();
             }
-        }
+            catch { }
+
+
+                    /* if (string.IsNullOrEmpty(Settings.UserName) || string.IsNullOrEmpty(Settings.PassWord))
+                         MainPage = new LoginScreen();
+                     else
+                     {
+                         if (Settings.Group == "99")
+                         {
+                             var page = new AdminDashboard();
+                             NavigationPage.SetHasBackButton(page, false);
+                             App.Current.MainPage = new NavigationPage(page);
+
+
+
+                         }
+
+                         else if (Settings.Group == "10" ||Settings.Group == "50")
+                         {
+
+                             var page = new TeamDashboardScreen(Settings.UserId, Settings.Group);
+                             NavigationPage.SetHasBackButton(page, false);
+                             App.Current.MainPage = new NavigationPage(page) { BarBackgroundColor = Color.FromHex("#354b60"), BarTextColor = Color.White };
+
+                         }
+                     }*/
+                }
 
         protected override void OnStart()
         {

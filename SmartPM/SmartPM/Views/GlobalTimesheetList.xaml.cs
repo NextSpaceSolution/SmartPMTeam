@@ -31,11 +31,7 @@ namespace SmartPM.Views
             
         }
 
-        protected virtual void OnAppearing()
-        {
-            base.OnAppearing();
-            RenderReqTimesheetList(uid);
-        }
+       
         private void MainSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
 

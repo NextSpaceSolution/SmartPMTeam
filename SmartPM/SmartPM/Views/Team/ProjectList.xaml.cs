@@ -79,12 +79,15 @@ namespace SmartPM.Views.Team
 
         public async void RenderProject(string uid , string gid)
         {
-            
-           
-            var jsonResult = await FilterProject(uid , gid);
-            list = JsonConvert.DeserializeObject<List<AProjectList>>(jsonResult);
-            projectlist.ItemsSource = list;
-            this.IsBusy = false;
+
+            try
+            {
+                var jsonResult = await FilterProject(uid, gid);
+                list = JsonConvert.DeserializeObject<List<AProjectList>>(jsonResult);
+                projectlist.ItemsSource = list;
+                this.IsBusy = false;
+            }
+            catch { }
 
 
 

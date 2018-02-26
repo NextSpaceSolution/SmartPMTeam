@@ -113,14 +113,14 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-
+<!--
                         <Label x:Name="ActionName" Text="ActName :" TextColor="#5faee3" Grid.Row="0" Grid.Column="0" Margin="10,20,10,0"></Label>
-                        <Picker x:Name="PickerActionNames"  Title="Choose Action" ItemDisplayBinding="{Binding actionName}" SelectedIndexChanged="OnActionSelectedIndexChanged" Grid.Row="0" Grid.Column="1"  Grid.ColumnSpan="2" Margin="10,0,10,0"></Picker>
+                        <Picker x:Name="PickerActionNames"  Title="Choose Action" ItemDisplayBinding="{Binding actionName}" SelectedIndexChanged="OnActionSelectedIndexChanged" Grid.Row="0" Grid.Column="1"  Grid.ColumnSpan="2" Margin="10,0,10,0"></Picker> -->
 
                         <Label Text="Date"
                        Margin="10,20,10,0"
                        TextColor="#5faee3"
-                       Grid.Row="1"
+                       Grid.Row="0"
                        Grid.Column="0">
                         </Label>
 
@@ -128,7 +128,7 @@
                                     Format="dd-MM-yyyy"
                                  Margin="10,0,10,0"
                                 VerticalOptions="Center"
-                            Grid.Row="1"
+                            Grid.Row="0"
                             Grid.Column="1"
                                     Grid.ColumnSpan="2">
                         </DatePicker>
@@ -137,7 +137,7 @@
                                VerticalOptions="Center"
                        Margin="10,0,10,0"
                       TextColor="#5faee3"
-                       Grid.Row="2"
+                       Grid.Row="1"
                                
                        Grid.Column="0">
 
@@ -147,7 +147,7 @@
                            Margin="10,0,10,0"
                                VerticalOptions="Center"
                        TextColor="#5faee3"
-                       Grid.Row="3"
+                       Grid.Row="2"
                        Grid.Column="0">
 
                         </Label>
@@ -156,7 +156,7 @@
                                     VerticalOptions="Center"
                                     Time="{Binding item.TimesheetStartPick, Mode=TwoWay}"
                              Margin="10,0,10,0"
-                            Grid.Row="2"
+                            Grid.Row="1"
                                      Grid.ColumnSpan="2"
                             Grid.Column="1">
                         </TimePicker>
@@ -165,7 +165,7 @@
                                  Margin="10,0,10,0"
                                      Time="{Binding item.TimesheetEndPick, Mode=TwoWay}"
                                     VerticalOptions="Center"
-                            Grid.Row="3"
+                            Grid.Row="2"
                                      Grid.ColumnSpan="2"
                             Grid.Column="1">
                         </TimePicker>
@@ -179,7 +179,7 @@
                             BorderColor="#3ABCC7"
                             BorderWidth="0.8"
                             BorderRadius="20"
-                            Grid.Row="5"
+                            Grid.Row="4"
                             Grid.Column="0"
                             StyleClass="Small"/>
 
@@ -190,7 +190,7 @@
                             BorderColor="#3ABCC7"
                             BorderWidth="0.8"
                             BorderRadius="20"
-                            Grid.Row="5"
+                            Grid.Row="4"
                             Grid.Column="1"
                                  Grid.ColumnSpan="2"
                             StyleClass="Small"/>

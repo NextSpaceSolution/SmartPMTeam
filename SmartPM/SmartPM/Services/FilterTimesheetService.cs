@@ -24,7 +24,7 @@ namespace SmartPM.Services
                 using (var client = new HttpClient())
                 {
                     client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.2.95:56086/APIRest2/FilterProject", content))
+                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/FilterProject", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {
@@ -63,7 +63,7 @@ namespace SmartPM.Services
                 using (var client = new HttpClient(handler))
                 {
                     client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.2.95:56086/APIRest/GetUserInfo", content))
+                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest/GetUserInfo", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {
@@ -105,7 +105,7 @@ namespace SmartPM.Services
                 using (var client = new HttpClient(handler))
                 {
                     client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.2.95:56086/APIRest2/FilterTask", content))
+                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/FilterTask", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {
@@ -147,7 +147,7 @@ namespace SmartPM.Services
                 using (var client = new HttpClient(handler))
                 {
                     client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.2.95:56086/APIRest2/FilterFunctionTimesheet", content))
+                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/FilterFunctionTimesheet", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {
@@ -191,7 +191,7 @@ namespace SmartPM.Services
                 using (var client = new HttpClient(handler))
                 {
                     client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.2.95:56086/APIRest2/RecordTimesheet", content))
+                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/RecordTimesheet", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {
@@ -230,7 +230,7 @@ namespace SmartPM.Services
                 using (var client = new HttpClient(handler))
                 {
                     client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.2.95:56086/APIRest2/GetActionName", content))
+                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest2/GetActionName", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {

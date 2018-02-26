@@ -67,8 +67,14 @@ namespace SmartPM.Views
              
                 string filterTask = await FilterTimesheetService.FilterTask(gid, uid, pid);
                 ResultTask = JsonConvert.DeserializeObject<ObservableCollection<TaskModel>>(filterTask);
-                PickerPhase.ItemsSource = ResultTask;
-        
+                if (ResultTask != null)
+                    PickerPhase.ItemsSource = ResultTask;
+                else
+                { 
+                    var act = await DisplayAlert("Notice","ไม่มีเฟสที่รับผิดชอบ หรือ เฟสเสร็จสิ้นแล้ว" ,"Ok", "Cancle");
+                    if (act)
+                        await Navigation.PopAsync();
+                }
             }
             catch
             {

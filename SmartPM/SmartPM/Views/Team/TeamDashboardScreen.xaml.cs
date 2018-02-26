@@ -64,38 +64,45 @@ namespace SmartPM.Views.Team
 
         public async void RenderAPI(string id)
         {
-            string resultInfo = await getUserInfo(id);
-            JObject data = JObject.Parse(resultInfo);
-            string uid = (string)data["userId"];
-            string gid = (string)data["groupId"];
-            string fname = (string)data["firstname"];
-            string lname = (string)data["lastname"];
-            string jobRes = (string)data["jobResponsible"];
-            objTimesheet.userId = uid;
-            objTimesheet.groupId = gid;
-            objTimesheet.fullName = fname + " " + lname;
-            objTimesheet.jobResp = jobRes;
+            try
+            {
+                string resultInfo = await getUserInfo(id);
+                JObject data = JObject.Parse(resultInfo);
+                string uid = (string)data["userId"];
+                string gid = (string)data["groupId"];
+                string fname = (string)data["firstname"];
+                string lname = (string)data["lastname"];
+                string jobRes = (string)data["jobResponsible"];
+                objTimesheet.userId = uid;
+                objTimesheet.groupId = gid;
+                objTimesheet.fullName = fname + " " + lname;
+                objTimesheet.jobResp = jobRes;
 
-            fullname.Text = objTimesheet.fullName;
-            job.Text = objTimesheet.jobResp;
-
+                fullname.Text = objTimesheet.fullName;
+                job.Text = objTimesheet.jobResp;
+            }
+            catch { }
 
         }
 
 
         public async void renderReqUserInfo(string id)
         {
-            string resultInfo = await ReqUserInfo(id);
-            JObject data = JObject.Parse(resultInfo);
-            string uid = (string)data["userId"];
-            string gid = (string)data["groupId"];
-            string fname = (string)data["firstname"];
-            string lname = (string)data["lastname"];
-            string jobRes = (string)data["jobResponsible"];
-            objTimesheet.userId = uid;
-            objTimesheet.groupId = gid;
-            objTimesheet.fullName = fname + " " + lname;
-            objTimesheet.jobResp = jobRes;
+            try
+            {
+                string resultInfo = await ReqUserInfo(id);
+                JObject data = JObject.Parse(resultInfo);
+                string uid = (string)data["userId"];
+                string gid = (string)data["groupId"];
+                string fname = (string)data["firstname"];
+                string lname = (string)data["lastname"];
+                string jobRes = (string)data["jobResponsible"];
+                objTimesheet.userId = uid;
+                objTimesheet.groupId = gid;
+                objTimesheet.fullName = fname + " " + lname;
+                objTimesheet.jobResp = jobRes;
+            }
+            catch { }
 
         }
 
@@ -176,7 +183,7 @@ namespace SmartPM.Views.Team
                 using (var client = new HttpClient())
                 {
                     //client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.2.95:56086/APIRest/GetUserInfo", content))
+                    using (var response = await client.PostAsync("http://192.168.88.200:56086/APIRest/GetUserInfo", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {

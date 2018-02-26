@@ -49,12 +49,11 @@ namespace SmartPM.Views
             
             SetDefaultTime();
 
-            if (checkConnect() == true)
-
+           /* if (checkConnect() == true)
                 RenderGetActionName();              
             else
                 Title = "Internet not connect";
-
+*/
 
             timesheetData.UserId = model.userId;         
             timesheetData.ProjectNumber = model.projectId;
@@ -75,7 +74,7 @@ namespace SmartPM.Views
                 return false;
         }
 
-        public async void RenderGetActionName()
+       /* public async void RenderGetActionName()
         {
             var actResult = new ObservableCollection<ActionModel>();
             try
@@ -89,7 +88,7 @@ namespace SmartPM.Views
             {
                 //await DisplayAlert("Notice", "Fail to load content", "Cancle");
             }
-        }
+        }*/
 
 
         private void OnActionSelectedIndexChanged(object sender, SelectedItemChangedEventArgs e)

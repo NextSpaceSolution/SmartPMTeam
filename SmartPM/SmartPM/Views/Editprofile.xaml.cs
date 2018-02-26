@@ -55,17 +55,20 @@ namespace SmartPM.Views
         }
         public async void RenderAPI(string id)
         {
-            string jsonResult = await Edit(id);
-            JObject dataemp = JObject.Parse(jsonResult);
+            try
+            {
+                string jsonResult = await Edit(id);
+                JObject dataemp = JObject.Parse(jsonResult);
 
-            acc.firstname = (string)dataemp["firstname"];
-            acc.lastname = (string)dataemp["lastname"];
-            acc.jobResponsible = (string)dataemp["jobResponsible"];
-            acc.userTel = (string)dataemp["userTel"];
-            acc.lineId = (string)dataemp["lineId"];
+                acc.firstname = (string)dataemp["firstname"];
+                acc.lastname = (string)dataemp["lastname"];
+                acc.jobResponsible = (string)dataemp["jobResponsible"];
+                acc.userTel = (string)dataemp["userTel"];
+                acc.lineId = (string)dataemp["lineId"];
 
-            BindingContext = acc;
-
+                BindingContext = acc;
+            }
+            catch { }
         }
 
         public async Task<string> Edit(string id)

@@ -23,12 +23,16 @@ namespace SmartPM.Views
     public partial class LoginScreen : ContentPage
     {
         private AuthenModel userAccount = new AuthenModel();
+        string token = "";
         public LoginScreen()
         {
 
             InitializeComponent();
-            MainUser.Text = Settings.UserName;
-            MainPassword.Text = Settings.PassWord;
+            if (!string.IsNullOrEmpty(Settings.UserName) && !string.IsNullOrEmpty(Settings.PassWord))
+            {
+                MainUser.Text = Settings.UserName;
+                MainPassword.Text = Settings.PassWord;
+            }
 
 
         }
@@ -60,6 +64,7 @@ namespace SmartPM.Views
                     Settings.PassWord = MainPassword.Text;
                     //App.Current.MainPage = new dummyParamether(MainUser.Text, MainPassword.Text);
                     RenderAPIauthen(userAccount.Username, userAccount.Password);
+                    Settings.AuthenToken = token;
                 }
                 else
                 {
@@ -67,9 +72,10 @@ namespace SmartPM.Views
                     Settings.PassWord = string.Empty;
                     Settings.Group = string.Empty;
                     Settings.UserId = string.Empty;
+                    RenderAPIauthen(userAccount.Username, userAccount.Password);
                     //App.Current.MainPage = new dummyParamether(MainUser.Text, MainPassword.Text);
-                   // App.Current.MainPage = new NavigationPage(new ApproveTimesheet(uid)) { BarBackgroundColor = Color.FromHex("#354b60"), BarTextColor = Color.White };
-                
+                    // App.Current.MainPage = new NavigationPage(new ApproveTimesheet(uid)) { BarBackgroundColor = Color.FromHex("#354b60"), BarTextColor = Color.White };
+
                 }
             }
 
@@ -85,6 +91,10 @@ namespace SmartPM.Views
                 string user = (string)obj["username"];
                 if (check == true)
                 {
+                  /*  string JwtToken = await Authentication.JWTAuthen(username, password);
+                    JObject jwt = JObject.Parse(JwtToken);
+                    token = (string)jwt["token"];     */             
+
                     string jsonid = await Authentication.GetId(user);
                     JObject obj2 = JObject.Parse(jsonid);
                     string userid = (string)obj2["userId"];
@@ -128,7 +138,7 @@ namespace SmartPM.Views
             }
             catch
             {
-                await DisplayAlert("Notification","Fail Connect to Server", "Cancle");
+                //await DisplayAlert("Notification","Fail Connect to Server", "Cancle");
             }
         }
        
