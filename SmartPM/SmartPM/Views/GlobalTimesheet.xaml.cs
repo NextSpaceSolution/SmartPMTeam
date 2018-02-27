@@ -12,6 +12,7 @@ using System.Net;
 using SmartPM.Models.Timesheet;
 using Xamarin.Forms.Xaml;
 using System;
+using System.Collections.ObjectModel;
 using SmartPM.Services;
 using SmartPM.Models;
 using Plugin.Connectivity;
@@ -28,24 +29,12 @@ namespace SmartPM.Views
         public GlobalTimesheet (TimesheetOneModel parsModel)
 		{
 			InitializeComponent ();
-            /*
-            _uid = uid
-            _job = job;
-          _gid = gid;*/
-            // objTimesheet.firstName = "ประหยัด";
-            //  objTimesheet.lastName = "ไม่มีตังกินข้าว";
-            //objTimesheet.fullName = objTimesheet.firstName + " " + objTimesheet.lastName;
-            //objTimesheet.jobResp = "ผู้บัญชาการต่ำสุด";
+      
             objTimesheet.userId = parsModel.userId;
             objTimesheet.groupId = parsModel.groupId;
 
 
 
-            /*
-            _ufname = "ประหยัด";
-            _ulname = "ไม่มีตังกินข้าว";
-            _fullname = _ufname + "  " + _ulname;
-            */
             if (checkConnect() == true) { 
                 RenderFilterPro(objTimesheet.userId, objTimesheet.groupId);
                 renderReqUserInfo(objTimesheet.userId);
@@ -54,13 +43,9 @@ namespace SmartPM.Views
                 Title = "Internet not connect";
 
             Labelfullname.Text = objTimesheet.fullName;
-            // Labellname.Text = _ulname;
+
             Labeljob.Text = objTimesheet.jobResp;
-            /*
-            project.Items.Add("Project001");
-            project.Items.Add("Project002");
-            project.Items.Add("dummyProject");    
-            */
+          
         }
 
         public bool checkConnect()
@@ -75,30 +60,17 @@ namespace SmartPM.Views
         }
         private async void RenderFilterPro(string uid, string gid)
         {
-            var ResultProject = new List<AProjectList>();
-            var tempResultProject = new List<AProjectList>();
+            var ResultProject = new ObservableCollection<AProjectList>();
             try
             {
                 string filterProject = await FilterTimesheetService.FilterProject(uid, gid);
-                ResultProject = JsonConvert.DeserializeObject<List<AProjectList>>(filterProject);
+                ResultProject = JsonConvert.DeserializeObject<ObservableCollection<AProjectList>>(filterProject);
+                PickerProject.ItemsSource = ResultProject;
 
-                foreach (var item in ResultProject)
-                {
-                    tempResultProject.Add(new AProjectList
-                    {
-                        projectNumber = item.projectNumber,
-                        projectName = item.projectName
-                    });
-                }
-
-                foreach (var item in tempResultProject)
-                {
-                    project.Items.Add(item.projectName);
-                }
             }
             catch
             {
-
+                //await DisplayAlert("Notice", "Time Out", "Cancle");
             }
 
         }
@@ -117,15 +89,24 @@ namespace SmartPM.Views
             }
             catch
             {
-                await DisplayAlert("Notice", "Fail to load content" ,"Cancle");
+               // await DisplayAlert("Notice", "Fail to load content" ,"Cancle");
             }
 
         }
  
-        private void project_SelectedIndexChanged(object sender, EventArgs e)
+     
+        
+        private void OnProjectSelectedIndexChanged(object sender, SelectedItemChangedEventArgs e)
         {
-           objTimesheet.projectName  = project.Items[project.SelectedIndex];
-           
+            var modelPicker = (Picker)sender;
+            int selectedIndex = modelPicker.SelectedIndex;
+            if (selectedIndex != -1)
+            {
+                var model = (AProjectList)modelPicker.SelectedItem;
+                objTimesheet.projectName = model.projectName;
+                objTimesheet.projectId = model.projectNumber;
+            }
+
 
         }
 
@@ -139,7 +120,8 @@ namespace SmartPM.Views
 
             }
             else
-                await Navigation.PushAsync(new GlobalTimesheet2(objTimesheet));
+                //await DisplayAlert("Notic", objTimesheet.projectId + objTimesheet.projectName, "Ok");
+             await Navigation.PushAsync(new GlobalTimesheet2(objTimesheet));
             //_uid, _ufname, _ulname, _job, _gid,_pname
         }
 

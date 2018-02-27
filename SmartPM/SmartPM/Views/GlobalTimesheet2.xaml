@@ -65,18 +65,21 @@
                            Grid.Column="1"
                            />
 
-                <Picker x:Name="phase" 
+            
+
+                    <Picker x:Name="PickerPhase" 
                             Title="เลือกเฟสที่รับผิดชอบ"
+                            ItemDisplayBinding="{Binding taskName}"
                             TextColor="Black"
                             Grid.Row="2"
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
                             Margin="10,5,10,30"
-                            SelectedIndexChanged="phase_SelectedIndexChanged"
+                            SelectedIndexChanged="OnPhaseSelectedIndexChanged"
                             />
 
 
-                <Button Clicked="Button_Clicked"
+                    <Button Clicked="Button_Clicked"
                             Text="Back"
                             TextColor="White"
                             BackgroundColor="#fa9727"

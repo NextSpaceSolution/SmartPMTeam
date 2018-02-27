@@ -26,17 +26,12 @@ namespace SmartPM.Views
 		public GlobalTimesheetList (string id)
 		{
             InitializeComponent();
-            //RenderReqTimesheetList();
             uid = id;
             RenderReqTimesheetList(uid);
             
         }
 
-        protected virtual void OnAppearing()
-        {
-            base.OnAppearing();
-            RenderReqTimesheetList(uid);
-        }
+       
         private void MainSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -50,17 +45,7 @@ namespace SmartPM.Views
             }
           
         }
-        private async void projectlist_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            /*
-            var Projectlists = e.Item as AProjectList;
-            string id = Projectlists.projectName;
-
-
-            var page = new dummyView();
-            //App.Current.MainPage = new NavigationPage(page);
-            await Navigation.PushAsync(page);*/
-        }
+    
         
         public async void RenderReqTimesheetList(string uid)
         {
@@ -73,7 +58,7 @@ namespace SmartPM.Views
             }
             catch
             {
-                await DisplayAlert("Notice", "Fail to load Content", "Cancle");
+                //await DisplayAlert("Notice", "Fail to load Content", "Cancle");
             }
 
         }

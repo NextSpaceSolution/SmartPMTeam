@@ -7,13 +7,9 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Net.Http;
-using System.Net;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using SmartPM.Services;
 namespace SmartPM.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
@@ -88,70 +84,30 @@ namespace SmartPM.Views
             }
             else
             {
-                string json = await AddRequest(newAccont.acUsername, newAccont.acPassword, newAccont.acFirstname, newAccont.acLastname, newAccont.acJobresp, newAccont.acUserLogged, newAccont.acGroup);
-                JObject obj = JObject.Parse(json);
-                string msg = (string)obj["msg"];
-                if (msg == "Success")
+                try
                 {
-                    await DisplayAlert("Notification", "บันทึกข้อมูลเรียบร้อย", "OK");
-                    await Navigation.PopAsync();
-                }
-                else
-                {
-
-                    await DisplayAlert("Notification", "ไม่สามารถบันทึกข้อมูลได้", "Cancle");
-                }
-
-
-            }
-
-
-        }
-
-        public async Task<string> AddRequest(string Vusername, string Vpassword, string VFirstname, string VLastname, string Jobresp, string userLogged, string gid)
-        {
-            try
-            {
-                // This is the postdata
-                var postData = new List<KeyValuePair<string, string>>(2);
-                postData.Add(new KeyValuePair<string, string>("Vusername", Vusername));
-                postData.Add(new KeyValuePair<string, string>("Vpassword", Vpassword));
-                postData.Add(new KeyValuePair<string, string>("VFirstname", VFirstname));
-                postData.Add(new KeyValuePair<string, string>("VLastname", VLastname));
-                postData.Add(new KeyValuePair<string, string>("Jobresp", Jobresp));
-                postData.Add(new KeyValuePair<string, string>("userLogged", userLogged));
-                postData.Add(new KeyValuePair<string, string>("gid", gid));
-
-                HttpContent content = new FormUrlEncodedContent(postData);
-
-                using (var client = new HttpClient())
-                {
-                   // client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/UserManagement/AddUserService", content))
+                    string json = await AccountsService.AddRequest(newAccont.acUsername, newAccont.acPassword, newAccont.acFirstname, newAccont.acLastname, newAccont.acJobresp, newAccont.acUserLogged, newAccont.acGroup);
+                    JObject obj = JObject.Parse(json);
+                    string msg = (string)obj["msg"];
+                    if (msg == "Success")
                     {
-                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
-                        {
-                            using (var responseContent = response.Content)
-                            {
-                                string result = await responseContent.ReadAsStringAsync();
-                                Console.WriteLine(result);
-                                return result;
-                            }
-                        }
-                        else
-                        {
-                            return "error " + Convert.ToString(response.StatusCode);
-                        }
+                        await DisplayAlert("Notification", "บันทึกข้อมูลเรียบร้อย", "OK");
+                        await Navigation.PopAsync();
+                    }
+                    else
+                    {
+
+                        await DisplayAlert("Notification", "ไม่สามารถบันทึกข้อมูลได้", "Cancle");
                     }
                 }
-            }
-            catch (WebException ex)
-            {
-                return Convert.ToString(ex);
-            }
+                catch { }
 
+
+            }
 
 
         }
+
+       
     }
 }

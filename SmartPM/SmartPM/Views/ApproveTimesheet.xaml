@@ -14,7 +14,9 @@
     <ContentPage.Content>
         <ListView x:Name="NewsList"
             RowHeight="100" HasUnevenRows="true"
-             ItemSelected="approve_Selected">
+            ItemSelected="approve_Selected"
+            IsPullToRefreshEnabled="True"
+            Refreshing="RefreshPage">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -52,19 +54,21 @@
 
                                 <Label Text="เฟส : " TextColor="#5faee3" FontSize="12" Grid.Column="0" Grid.Row="1"></Label>
                                 <Label Text="{Binding tackName}" FontSize="12" Grid.Column="1" Grid.Row="1"/>
-
+                                <!--
                                 <Label Text="หัวข้องาน :" TextColor="#5faee3" FontSize="12" Grid.Column="0" Grid.Row="2"></Label>
                                 <Label Text="{Binding functionName}" FontSize="12" Grid.Column="1" Grid.Row="2"/>
 
                                 <Label Text="Action : " TextColor="#5faee3" FontSize="12" Grid.Column="0" Grid.Row="3"></Label>
                                 <Label Text="{Binding actionName}" FontSize="12" Grid.Column="1" Grid.Row="3"/>
                            
-                           <!-- <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal">
                                 <Label Text="เริ่ม : " FontSize="12"></Label>
                                 <Label Text="{Binding timeStart}" FontSize="12" />
                                 <Label Text="  ถึง : " FontSize="12"></Label>
                                 <Label Text="{Binding timeEnd}" FontSize="12" /> 
                             </StackLayout> -->
+                                
+                                
 
 
                                 <Label Text="Duration : " TextColor="#77d065" FontSize="12" Grid.Column="0" Grid.Row="4"></Label>

@@ -42,7 +42,7 @@
 
                 <Entry 
                        x:Name="MainUser"
-                       Placeholder="Username" 
+                       Placeholder="Enter Your Username" 
                        PlaceholderColor="White"
                        Grid.Row="2" 
                        Grid.Column="0" 
@@ -54,7 +54,7 @@
                 <Entry 
                        x:Name="MainPassword"
                        IsPassword="true" 
-                       Placeholder="Password"
+                       Placeholder="Enter Your Password"
                        PlaceholderColor="#FFFFFF"
                        Grid.Row="3" 
                        Grid.Column="0" 

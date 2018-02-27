@@ -44,12 +44,19 @@ namespace SmartPM.Helpers
             set => AppSettings.AddOrUpdateValue(nameof(UserId), value);
         }
 
+        public static string AuthenToken
+        { 
+            get => AppSettings.GetValueOrDefault(nameof(AuthenToken), string.Empty);
+            set => AppSettings.AddOrUpdateValue(nameof(AuthenToken), value);
+        }
+
         public static void ClearAcctout()
         {
             Settings.UserName = string.Empty;
             Settings.PassWord = string.Empty;
             Settings.UserId = string.Empty;
             Settings.Group = string.Empty;
+            Settings.AuthenToken = string.Empty;
 
         }
 

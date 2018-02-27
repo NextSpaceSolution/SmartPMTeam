@@ -29,26 +29,37 @@ namespace SmartPM.Views
             
         }
 
+        protected void RefreshPage(object sender, EventArgs e)
+        {
+         
+                RenderApproveTimeesheet(userId);
+                NewsList.EndRefresh();
+         
+        }
         public async void OnMore(object sender, EventArgs e)
         {
-            var mi = ((MenuItem)sender);
-            var models = (ApproveTimesheetModels)mi.CommandParameter;
-            var temp = await DisplayAlert("Approve  Action", " Confirm to Approve this", "Ok", "Cancle");
-            if (temp)
+            try
             {
-                string result = await TimesheetService.actionApprove(models.projectId, models.taskId, models.functionId, models.actionId, userId);
-                JObject data = JObject.Parse(result);
-                string context = (string)data["msg"];
-                if (context == "Success")
+                var mi = ((MenuItem)sender);
+                var models = (ApproveTimesheetModels)mi.CommandParameter;
+                var temp = await DisplayAlert("Approve  Action", " Confirm to Approve this", "Ok", "Cancle");
+                if (temp)
                 {
-                    await DisplayAlert("Notice", "Approve Successfully", "Ok");
-                    approve.Remove(models);
-                }
-                else
-                {
-                    await DisplayAlert("Notice", "Approve Failer", "Ok");
+                    string result = await TimesheetService.actionApprove(models.projectId, models.taskId, models.functionId, models.actionId, userId);
+                    JObject data = JObject.Parse(result);
+                    string context = (string)data["msg"];
+                    if (context == "Success")
+                    {
+                        await DisplayAlert("Notice", "Approve Successfully", "Ok");
+                        approve.Remove(models);
+                    }
+                    else
+                    {
+                        await DisplayAlert("Notice", "Approve Failer", "Ok");
+                    }
                 }
             }
+            catch { }
 
         }
 
@@ -67,35 +78,40 @@ namespace SmartPM.Views
 
         private async void approve_Selected(object sender, SelectedItemChangedEventArgs e)
         {
-            
-            if (e.SelectedItem == null)
-            {
-                return;
-            }
-            var lister = e.SelectedItem as ApproveTimesheetModels;
-            approve2.projectId = lister.projectId;
-            approve2.taskId = lister.taskId;
-            approve2.functionId = lister.functionId;
-            approve2.actionId = lister.actionId;
-
-            var temp = await DisplayAlert("Approve  Action", " Confirm to Approve this", "Ok", "Cancle");
-            if (temp)
+            try
             {
 
-                string result = await TimesheetService.actionApprove(approve2.projectId, approve2.taskId, approve2.functionId, approve2.actionId, userId);
-                JObject data = JObject.Parse(result);
-                string context = (string)data["msg"];
-                if (context == "Success")
+
+
+                if (e.SelectedItem == null)
                 {
-                    await DisplayAlert("Notice", "Approve Successfully", "Ok");
-                    approve.Remove(lister);
+                    return;
                 }
-                else
+                var lister = e.SelectedItem as ApproveTimesheetModels;
+                approve2.projectId = lister.projectId;
+                approve2.taskId = lister.taskId;
+                approve2.functionId = lister.functionId;
+                approve2.actionId = lister.actionId;
+
+                var temp = await DisplayAlert("Approve  Action", " Confirm to Approve this", "Ok", "Cancle");
+                if (temp)
                 {
-                    await DisplayAlert("Notice", "Approve Failer", "Ok");
+
+                    string result = await TimesheetService.actionApprove(approve2.projectId, approve2.taskId, approve2.functionId, approve2.actionId, userId);
+                    JObject data = JObject.Parse(result);
+                    string context = (string)data["msg"];
+                    if (context == "Success")
+                    {
+                        await DisplayAlert("Notice", "Approve Successfully", "Ok");
+                        approve.Remove(lister);
+                    }
+                    else
+                    {
+                        await DisplayAlert("Notice", "Approve Failer", "Ok");
+                    }
                 }
             }
-
+            catch { }
 
            // DisplayAlert("Item Selected", "Confirm to Approve " + approve2.functionId.ToString(), "Ok", "Cancle");
            // DisplayAlert("Item Selected", e.SelectedItem.ToString(), "Ok");
@@ -124,18 +140,25 @@ namespace SmartPM.Views
                 }
             }
             catch {
-                await DisplayAlert("Notice","Fail","Cancle");
+                //await DisplayAlert("Notice","Fail","Cancle");
             }
             NewsList.ItemsSource = approve;
         }
         /*
-        public async void RenderApproveAction(string pid, string tid, string fid, string actid, string uid)
+        public async void RenderGetActionName()
         {
-            string result = await TimesheetService.actionApprove(pid, tid, fid, actid, uid);
-            JObject data = JObject.Parse(result);
-            string
+            var actResult = new ObservableCollection<ActionModel>();
+            try
+            {
+                string tempData = await FilterTimesheetService.reqGetAction();
+                actResult = JsonConvert.DeserializeObject<ObservableCollection<ActionModel>>(tempData);
+                PickerActionNames.ItemsSource = actResult;
 
-        }
-        */
+            }
+            catch
+            {
+                //await DisplayAlert("Notice", "Fail to load content", "Cancle");
+            }
+        }*/
     }
 }

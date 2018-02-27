@@ -15,6 +15,7 @@ using Xamarin.Forms.Xaml;
 using System;
 using Plugin.Connectivity;
 using SmartPM.Services;
+using System.Collections.ObjectModel;
 
 namespace SmartPM.Views
 {
@@ -45,35 +46,20 @@ namespace SmartPM.Views
             Taskname.Text = model.TaskName;
             LableFunction.Text = model.functionName;
 
-            timesheetData.TaskId = model.taskId;
+            
             SetDefaultTime();
 
-            if (checkConnect() == true)
-                {
-                RenderGetActionName();
-                RenderFindFunctionId(model.projectId,timesheetData.TaskId, model.functionName);
-                }
+           /* if (checkConnect() == true)
+                RenderGetActionName();              
             else
                 Title = "Internet not connect";
+*/
 
-
-            //timesheetData.TimeSheetId
-            /*
-            timesheetData.UserId = model.userId;
+            timesheetData.UserId = model.userId;         
             timesheetData.ProjectNumber = model.projectId;
             timesheetData.TaskId = model.taskId;
             timesheetData.FunctionId = model.functionId;
-            */
-            /*
-            ActionNames.Items.Add("Gettering Requirement");
-            ActionNames.Items.Add("System Analysis");
-            ActionNames.Items.Add("Development");
-            ActionNames.Items.Add("Testing");
-            */
-            timesheetData.UserId = model.userId;
-            timesheetData.ProjectNumber = model.projectId;
-           // timesheetData.FunctionId = "100001";
-           // timesheetData.ActionId = "F";
+
 
         }
 
@@ -87,10 +73,36 @@ namespace SmartPM.Views
             else
                 return false;
         }
-        private void ActionNames_SelectedIndexChanged(object sender, EventArgs e)
+
+       /* public async void RenderGetActionName()
         {
-            tempObj.actionName = ActionNames.Items[ActionNames.SelectedIndex];
+            var actResult = new ObservableCollection<ActionModel>();
+            try
+            {     
+                string tempData = await FilterTimesheetService.reqGetAction();
+                actResult = JsonConvert.DeserializeObject<ObservableCollection<ActionModel>>(tempData);
+                PickerActionNames.ItemsSource = actResult;
+
+            }
+            catch
+            {
+                //await DisplayAlert("Notice", "Fail to load content", "Cancle");
+            }
+        }*/
+
+
+        private void OnActionSelectedIndexChanged(object sender, SelectedItemChangedEventArgs e)
+        {
+            var modelPicker = (Picker)sender;
+            int selectedIndex = modelPicker.SelectedIndex;
+            if (selectedIndex != -1)
+            {
+                var model = (ActionModel)modelPicker.SelectedItem;
+                tempObj.actionName = model.actionName;
+                timesheetData.ActionId = model.actionId;
+            }
         }
+
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
@@ -173,12 +185,7 @@ namespace SmartPM.Views
                             if (resultTotal)
                             {
 
-                                string actId = await FilterTimesheetService.reqFindActionId(tempObj.actionName);
-                                JObject data2 = JObject.Parse(actId);
-                                string aid = (string)data2["actionId"];
-
-                                //await Navigation.PushAsync(new NextConcate(proId,uid,taskId,fid,tempObj.actionName,tempObj.Strdate, tempObj.StrStime, tempObj.StrEtime, tempObj.concateStime, tempObj.concateEtime));
-                                string result = await FilterTimesheetService.reqRecordTimesheet(timesheetData.ProjectNumber, aid,
+                                string result = await FilterTimesheetService.reqRecordTimesheet(timesheetData.ProjectNumber, timesheetData.ActionId,
                                                                       timesheetData.TaskId, timesheetData.FunctionId, timesheetData.UserId,
                                                                       timesheetData.TimeSheetStart, timesheetData.TimeSheetEnd);
                                 JObject data = JObject.Parse(result);
@@ -203,7 +210,7 @@ namespace SmartPM.Views
                             }
                         }
                         catch {
-                            await DisplayAlert("Notice", "fail to load content","Cancle");
+                            //await DisplayAlert("Notice", "fail to load content","Cancle");
                         }
 
                     }
@@ -213,53 +220,6 @@ namespace SmartPM.Views
 
 
         }
-
-        public async void RenderFindFunctionId(string pid,string tid, string fname)
-        {
-            try
-            {
-                string result = await FilterTimesheetService.reqFindFunctionId(pid, tid, fname);
-                JObject temp = JObject.Parse(result);
-                timesheetData.FunctionId = (string)temp["functionId"];
-            }
-            catch {
-                await DisplayAlert("Notice", "Fail to load content", "Cancle");
-            }
-
-        }
-
-        public async void RenderGetActionName()
-        {
-            try
-            {
-                var actResult = new List<ActionModel>();
-                var TempactResult = new List<ActionModel>();
-                string tempData = await FilterTimesheetService.reqGetAction();
-                actResult = JsonConvert.DeserializeObject<List<ActionModel>>(tempData);
-                foreach (var item in actResult)
-                {
-                    TempactResult.Add(new ActionModel
-                    {
-                        actionId = item.actionId,
-                        actionName = item.actionName
-                    });
-                }
-
-                foreach (var item in TempactResult)
-                {
-                    if (item != null)
-                        ActionNames.Items.Add(item.actionName);
-                    else
-                        ActionNames.Items.Add("Non of above");
-
-
-                }
-            }
-            catch {
-                await DisplayAlert("Notice", "Fail to load content", "Cancle");
-            }
-        }
-
        
     }
 }
