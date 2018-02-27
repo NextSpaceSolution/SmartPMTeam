@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartPM.Views.MoodBoardDetailScreen"
+             BackgroundColor="White">
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Edit" Activated="toolBarEdit"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <StackLayout HeightRequest="200" >
+                <StackLayout>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.ColumnSpan="2"  Margin="8,5,8,0">
+                            <Label x:Name="title" FontSize="20" Margin="10,5,0,5"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="10,0,10,5">
+                        <Label Text="สร้างเมื่อ : " FontSize="Micro"/>
+                        <Label x:Name="time"     FontSize="Micro"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="10,0,10,5">
+                        <Label Text="สร้างโดย : " FontSize="Micro"/>
+                        <Label x:Name="name"   FontSize="Micro"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.ColumnSpan="2" BackgroundColor="White" Margin="8,0,8,0"  >
+                            <Label x:Name="detail" Margin="10,5,10,5" FontSize="13"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+            </ScrollView>
+
+
+            <StackLayout>
+                <ListView x:Name="commentlist"           
+            RowHeight="140" HasUnevenRows="true"
+                          IsPullToRefreshEnabled="True"
+                          Refreshing="Refesh"
+                          >
+                    <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" >
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Column="0">
+                                            <Image Source="userTemp" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        </StackLayout>
+                                        <StackLayout  Grid.Column="1">
+                                                <Label Text="{Binding fullName}" FontSize="Micro"  Margin="8,5,0,0" TextColor="Blue"/>
+                                            <Label Text="{Binding commentDetail}" FontSize="Micro" Margin="10,0,0,0" TextColor="Black"/>
+                                            <Label Text="{Binding time}" HorizontalOptions="End" FontSize="Micro" TextColor="Black" Margin="0,0,5,5"/>
+
+                                        </StackLayout>
+                                    </Grid>
+
+                                </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+    
+            </ListView>
+
+        </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Editor x:Name="commentDetail" WidthRequest="300"  />
+                <Button Clicked="comment" Text="Comment" WidthRequest="55" HeightRequest="30"  FontSize="Micro"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
