@@ -10,6 +10,7 @@ namespace SmartPM.Models.Timesheet
         public string taskName { get; set; }
         public string projectName { get; set; }
         public string functionName { get; set; }
+        public string actionName { get; set; }
         public string approve1 { get; set; }
         public string approve2 { get; set; }
         // public DateTime recordDate { get; set; }

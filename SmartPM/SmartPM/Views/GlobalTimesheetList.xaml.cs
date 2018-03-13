@@ -31,7 +31,13 @@ namespace SmartPM.Views
             
         }
 
-       
+        protected void RefreshPage(object sender, EventArgs e)
+        {
+
+            RenderReqTimesheetList(uid);
+            TimesheetlistItem.EndRefresh();
+
+        }
         private void MainSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
 

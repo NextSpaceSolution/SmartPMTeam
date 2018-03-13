@@ -48,7 +48,7 @@ namespace SmartPM.Views
                     string result = await TimesheetService.actionApprove(models.projectId, models.taskId, models.functionId, models.actionId, userId);
                     JObject data = JObject.Parse(result);
                     string context = (string)data["msg"];
-                    if (context == "Success")
+                    if (context == "true")
                     {
                         await DisplayAlert("Notice", "Approve Successfully", "Ok");
                         approve.Remove(models);
@@ -99,8 +99,8 @@ namespace SmartPM.Views
 
                     string result = await TimesheetService.actionApprove(approve2.projectId, approve2.taskId, approve2.functionId, approve2.actionId, userId);
                     JObject data = JObject.Parse(result);
-                    string context = (string)data["msg"];
-                    if (context == "Success")
+                    string context = (string)data["IsComplete"];
+                    if (context == "true")
                     {
                         await DisplayAlert("Notice", "Approve Successfully", "Ok");
                         approve.Remove(lister);
