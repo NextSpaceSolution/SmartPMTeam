@@ -14,7 +14,6 @@ using Plugin.Settings;
 using SmartPM.Helpers;
 using System.Net.Http;
 using System.Net;
-using SmartPM.Helpers;
 using Com.OneSignal;
 
 namespace SmartPM.Views

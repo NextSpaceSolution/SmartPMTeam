@@ -21,8 +21,17 @@ namespace SmartPM
         {
             InitializeComponent();
 
+<<<<<<< HEAD
 
             MainPage = new NavigationPage(new LoginScreen());
+=======
+            //MainPage = new NavigationPage(new MoodBoardEditComment());
+            MainPage = new NavigationPage(new LoginScreen())
+            {
+                BarBackgroundColor = Color.FromHex("#2180C4"),
+                BarTextColor = Color.White,
+            };
+>>>>>>> d1d5af8920ad5ec4cb44fbaa3edd30bf5e0988cd
             /*OneSignal.Current.StartInit("8e9e2a3a-dfdb-49f0-925c-c756cf54011a")
                   .EndInit();
             MainPage = new TestValidationInput();*/
@@ -30,12 +39,16 @@ namespace SmartPM
             if (string.IsNullOrEmpty(Settings.UserName) || string.IsNullOrEmpty(Settings.PassWord))
                 MainPage = new LoginScreen();
             else
+<<<<<<< HEAD
 
 
             try
 
             try
 
+=======
+            try
+>>>>>>> d1d5af8920ad5ec4cb44fbaa3edd30bf5e0988cd
             {
                 
                 OneSignal.Current.StartInit("8e9e2a3a-dfdb-49f0-925c-c756cf54011a")
