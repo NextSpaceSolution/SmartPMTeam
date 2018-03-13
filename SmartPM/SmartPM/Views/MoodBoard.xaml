@@ -2,10 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartPM.Views.MoodBoard"
-             xmlns:converter="clr-namespace:SmartPM.Helpers">
+             xmlns:converter="clr-namespace:SmartPM.Helpers"
+             Title="News">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="Create" Activated="toolBarCreate" ></ToolbarItem>
+        <ToolbarItem Name="Create" Activated="toolBarCreate"></ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -14,15 +15,19 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ListView x:Name="NewsList"
+                  ItemTapped="newslist_ItemTapped"
             RowHeight="140" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="20">
-                            <Label HorizontalOptions="EndAndExpand"  Text="{Binding Date, Converter={StaticResource RelativeDateTimeConvertor}}" FontSize="12"/>
-                            <Label TextColor="Crimson"  FontSize="15" FontAttributes="Bold" Text="{Binding Title}"/>
-                            <Label Text="{Binding Detail}" FontSize="12" />
-                           <!-- <Label HorizontalOptions="EndAndExpand"  Text="{Binding fullname}}" FontSize="12"/>-->
+                            <Label HorizontalOptions="EndAndExpand"  Text="{Binding time, Converter={StaticResource RelativeDateTimeConvertor}}" FontSize="12"/>
+                            <Label TextColor="Crimson"  FontSize="15" FontAttributes="Bold" Text="{Binding subject}"/>
+                            <Label Text="{Binding note}" FontSize="12" />
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                <Label Text="Post by : " FontSize="12"/>
+                                <Label Text="{Binding name}}" FontSize="12"/>
+                            </StackLayout>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

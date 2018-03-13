@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>SmartPM.Droid</RootNamespace>
     <AssemblyName>SmartPM.Android</AssemblyName>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Com.OneSignal">
+      <Version>3.0.1</Version>
+    </PackageReference>
     <PackageReference Include="MvvmLight">
       <Version>5.3.0</Version>
     </PackageReference>
