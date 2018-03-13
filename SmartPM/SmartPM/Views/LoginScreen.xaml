@@ -9,7 +9,7 @@
                      HorizontalOptions="Center"
                      VerticalOptions="Center">
         <StackLayout>
-            <Label Text="LOGO EXTRA" FontSize="40" 
+            <Label Text="EXTRA LOGO" FontSize="40" 
                    TextColor="White" 
                    Style="{DynamicResource LabelStyle}" 
                    HeightRequest="70" 
@@ -86,7 +86,7 @@
                        HorizontalOptions="CenterAndExpand"/>
                 <Switch x:Name="rememberSwitch" IsEnabled="True" IsToggled="True" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Grid.Row="4" Grid.Column="1"></Switch>
 
-                <Label Text="Forget Password"
+                <Label Text="Forgot Password"
                        Grid.Row="7"
                        Grid.Column="1"
                        FontSize="Small"

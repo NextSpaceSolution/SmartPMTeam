@@ -11,6 +11,7 @@ using SmartPM.Helpers;
 using SmartPM.Services;
 using Com.OneSignal;
 
+
 namespace SmartPM
 {
 	public partial class App : Application
@@ -26,7 +27,10 @@ namespace SmartPM
                       .EndInit();
                 MainPage = new LoginScreen();
             }
-            catch { }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Exception : " + ex.Message);
+            }
 
 
                     /* if (string.IsNullOrEmpty(Settings.UserName) || string.IsNullOrEmpty(Settings.PassWord))

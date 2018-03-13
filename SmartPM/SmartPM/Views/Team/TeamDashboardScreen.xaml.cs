@@ -132,6 +132,7 @@ namespace SmartPM.Views.Team
                     Children =
                     {
                         new GlobalTimesheet(objTimesheet),
+                        new ConfirmTimesheet(userId),
                         new ApproveTimesheet(userId),                                         
                         new GlobalTimesheetList(userId),
 
@@ -140,7 +141,7 @@ namespace SmartPM.Views.Team
                 };
                 await Navigation.PushAsync(page);
             }
-            else
+            else if(groupId == "10")
             { 
                 var page = new TabbedPage
                 {
@@ -148,7 +149,7 @@ namespace SmartPM.Views.Team
                     Children =
                     {
                         new GlobalTimesheet(objTimesheet),
-                        new ApproveTimesheet(userId),
+                        new ConfirmTimesheet(userId),
                         new GlobalTimesheetList(userId),
                        
 

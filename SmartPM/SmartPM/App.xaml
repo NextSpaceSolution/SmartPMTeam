@@ -40,6 +40,18 @@
                     </Setter.Value>
                 </Setter>
             </Style>-->
+
+            <ResourceDictionary>
+                <Style x:Key="buttonStyle" TargetType="Button">
+                    <Setter Property="HorizontalOptions" Value="Center" />
+                    <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                    <Setter Property="BorderColor" Value="#333333" />
+                    <Setter Property="BorderRadius" Value="20" />
+                    <Setter Property="BorderWidth" Value="1" />
+                    <Setter Property="WidthRequest" Value="200" />
+                    <Setter Property="TextColor" Value="#333333" />
+                </Style>
+            </ResourceDictionary>
         </ResourceDictionary>
 
 	</Application.Resources>

@@ -15,10 +15,9 @@
             <ListView
                 x:Name="TimesheetlistItem"
                 SeparatorVisibility="None"
-                HasUnevenRows="True"  
-                
+                HasUnevenRows="True"                  
                 IsPullToRefreshEnabled="True"
-                IsRefreshing="False">
+                Refreshing="RefreshPage">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -39,6 +38,7 @@
                                             <RowDefinition Height="Auto"></RowDefinition>
                                             <RowDefinition Height="Auto"></RowDefinition>
                                             <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
                                     </Grid.RowDefinitions>
          
                                     
@@ -51,19 +51,23 @@
                                     <Label  FontSize="Micro" Text="หัวข้องาน : " Grid.Row="2" Grid.Column="0"/>
                                     <Label  FontSize="Micro"  Text="{Binding functionName}" Grid.Row="2" Grid.Column="1"/>
 
-                                    <Label  FontSize="Micro"  Text="วันที่บันทึก : " Grid.Row="3" Grid.Column="0"/>
-                                    <Label  FontSize="Micro"  Text="{Binding timeSheetId, StringFormat='{0: dd-MM-yyyy}'}" Grid.Row="3" Grid.Column="1"/>
 
-                                    <Label  FontSize="Micro"  Text="Approve1 : " Grid.Row="4" Grid.Column="0" VerticalOptions="Center"/>
-                                    <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
+                                    <Label  FontSize="Micro" Text="Action : " Grid.Row="3" Grid.Column="0"/>
+                                    <Label  FontSize="Micro"  Text="{Binding actionName}" Grid.Row="3" Grid.Column="1"/>
+
+                                    <Label  FontSize="Micro"  Text="วันที่บันทึก : " Grid.Row="4" Grid.Column="0"/>
+                                    <Label  FontSize="Micro"  Text="{Binding timeSheetId, StringFormat='{0: dd-MM-yyyy}'}" Grid.Row="4" Grid.Column="1"/>
+
+                                    <Label  FontSize="Micro"  Text="Approve1 : " Grid.Row="5" Grid.Column="0" VerticalOptions="Center"/>
+                                    <StackLayout Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
                                         <Frame CornerRadius="15" Margin="0,0,10,0" Padding="0" IsClippedToBounds="True">
                                             <Image Source="https://i2.wp.com/beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg" Aspect="Fill" HeightRequest="30" WidthRequest="30" VerticalOptions="End"></Image>
                                         </Frame>
                                         <Label  FontSize="Micro"  Text="{Binding approve1}" VerticalOptions="Center"/>
                                     </StackLayout>
 
-                                    <Label  FontSize="Micro"  Text="Approve2 : " Grid.Row="5" Grid.Column="0" VerticalOptions="Center"/>
-                                    <StackLayout Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
+                                    <Label  FontSize="Micro"  Text="Approve2 : " Grid.Row="6" Grid.Column="0" VerticalOptions="Center"/>
+                                    <StackLayout Orientation="Horizontal" Grid.Row="6" Grid.Column="1">
                                         <Frame CornerRadius="15" Margin="0,0,10,0" Padding="0" IsClippedToBounds="True">
                                             <Image Source="https://i2.wp.com/beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg" Aspect="Fill" HeightRequest="30" WidthRequest="30"></Image>
                                         </Frame>

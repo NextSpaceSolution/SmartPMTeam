@@ -172,13 +172,7 @@ namespace SmartPM.Views
                     //  string uid = "100019";
                     // string fid = "100008";
 
-                    if (string.IsNullOrEmpty(tempObj.actionName))
-                    {
-                        await DisplayAlert("Notice", "!!! กรุนาเลือก Action", "Ok");
-
-                    }
-                    else
-                    {
+                 
                         try
                         {
                             var resultTotal = await DisplayAlert("Notice", "Total time " + total + " ชั่วโมง:นาที", "Ok", "Cancle");
@@ -214,7 +208,7 @@ namespace SmartPM.Views
                         }
 
                     }
-                }
+                
            
             }
 
