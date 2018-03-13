@@ -146,7 +146,82 @@ namespace SmartPM.Services
                 using (var client = new HttpClient())
                 {
                     client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.200:56086/IdentityToken/Authen", content))
+                    using (var response = await client.PostAsync("http://192.168.88.107:56086/IdentityToken/Authen", content))
+                    {
+                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
+                        {
+                            using (var responseContent = response.Content)
+                            {
+                                string result = await responseContent.ReadAsStringAsync();
+                                Console.WriteLine(result);
+                                return result;
+                            }
+                        }
+                        else
+                        {
+                            return "error " + Convert.ToString(response.StatusCode);
+                        }
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                return Convert.ToString(ex);
+            }
+
+        }
+
+        public static async Task<string> ReqUserInfo(string id)
+        {
+            try
+            {
+                // This is the postdata
+                var postData = new List<KeyValuePair<string, string>>(2);
+                postData.Add(new KeyValuePair<string, string>("id", id));
+                HttpContent content = new FormUrlEncodedContent(postData);
+
+                using (var client = new HttpClient())
+                {
+                    //client.Timeout = new TimeSpan(0, 0, 15);
+                    using (var response = await client.PostAsync("http://192.168.2.95:56086/APIRest/GetUserInfo", content))
+                    {
+                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
+                        {
+                            using (var responseContent = response.Content)
+                            {
+                                string result = await responseContent.ReadAsStringAsync();
+                                Console.WriteLine(result);
+                                return result;
+                            }
+                        }
+                        else
+                        {
+                            return "error " + Convert.ToString(response.StatusCode);
+                        }
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                return Convert.ToString(ex);
+            }
+
+        }
+
+
+        public static async Task<string> getUserInfo(string id)
+        {
+            try
+            {
+                // This is the postdata
+                var postData = new List<KeyValuePair<string, string>>(2);
+                postData.Add(new KeyValuePair<string, string>("id", id));
+                HttpContent content = new FormUrlEncodedContent(postData);
+
+                using (var client = new HttpClient())
+                {
+                    //client.Timeout = new TimeSpan(0, 0, 15);
+                    using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest/GetUserInfo", content))
                     {
                         if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
                         {

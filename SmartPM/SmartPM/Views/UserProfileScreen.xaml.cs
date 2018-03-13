@@ -14,6 +14,7 @@ using System.Windows.Input;
 using SmartPM.Views.Admin;
 using Plugin.Connectivity;
 using SmartPM.Views;
+using SmartPM.Services;
 
 namespace SmartPM.Views
 {
@@ -24,136 +25,118 @@ namespace SmartPM.Views
         private AuthenModel userAccount = new AuthenModel();
         AccountModel acc = new AccountModel();
         List<AccountModel> lst = new List<AccountModel>();
-        public string user;
+        public string user = "";
         public UserProfileScreen(string id)
         {
             InitializeComponent();
-
             user = id;
-            RenderUser(id);
-            RenderGroup(id);
+            //labeluserID.Text = id;
 
-            /* AccountModel acc = new AccountModel();
-             acc.userId = "ABC123";
-             acc.username = "XYZ456";
-             acc.firstname = "Monkey";
-             acc.lastname = "D Luffy";
-             acc.jobResponsible = "Analisys and Develop and Testing";
-             acc.userTel = "085-555-5555";
-             acc.lineId = "line.me";
-             acc.status = "working";
-             BindingContext = acc;*/
-        }
+            try
+            {
+                RenderUser(user);
+            }
+             
 
+            catch (Exception e)
+            {
+                DisplayAlert("Error", e.Message, "OK");
+            }
+}
 
-        public async void RenderUser(string id)
+       public async void RenderUser(string id )
         {
-            string resultInfo = await getUserInfo(id);
-            JObject data = JObject.Parse(resultInfo);
-            string uid = (string)data["userId"];
-            string fname = (string)data["firstname"];
-            string lname = (string)data["lastname"];
-            string job = (string)data["jobResponsible"];
-            string tel = (string)data["userTel"];
-            string line = (string)data["lineId"];
-            string status = (string)data["status"];
-        }
 
-        public async void RenderGroup(string id)
-        {
-            string resultInfo = await GetGroupId(id); 
-             JObject data = JObject.Parse(resultInfo);
-            string gid = (string)data["groupId"];
+            try
+            {
+                string resultInfo = await AccountsService.DetailsM(id);
+                JObject data = JObject.Parse(resultInfo);
+                acc.userId = (string)data["userId"];
+                acc.username = (string)data["username"];
+                acc.firstname = (string)data["firstname"];
+                acc.lastname = (string)data["lastname"];
+                acc.jobResponsible = (string)data["jobResponsible"];
+                acc.userTel = (string)data["userTel"];
+                acc.lineId = (string)data["lineId"];
+                acc.status = (string)data["status"];
+
+                if (acc.userId == null)
+                {
+                    acc.userId = "No userID";
+                }
+                if (acc.username == null)
+                {
+                    acc.username = "No username";
+                }
+                if (acc.firstname == null)
+                {
+                    acc.firstname = "No firstname";
+                }
+                if (acc.lastname == null)
+                {
+                    acc.lastname = "No lastname";
+                }
+                if (acc.userTel == null)
+                {
+                    acc.userTel = "No Tel.";
+                }
+                if (acc.lineId == null)
+                {
+                    acc.lineId = "No lineID";
+                }
+                if (acc.jobResponsible == null)
+                {
+                    acc.jobResponsible = "No jobResponsible";
+                }
+                if (acc.status == null)
+                {
+                    acc.status = "No status";
+                }
+                else
+                {
+
+                }
+            }
+
+            catch (Exception e)
+            {
+                DisplayAlert("Error", e.Message, "OK");
+            }
+
+
+
+
+            labeluserID.Text = acc.userId;
+            userName.Text = acc.username;
+            firstName.Text = acc.firstname;
+            lastName.Text = acc.lastname;
+            tele.Text = acc.userTel;
+            Line.Text = acc.lineId;
+            jobres.Text = acc.jobResponsible;
+            Status.Text = acc.status;
+
+
+
         }
 
 
 
         public async void Button_click(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Editprofile(""));
+            await Navigation.PushAsync(new Editprofile(acc));
         }
 
-        private async void logout(object sender, EventArgs e)
+       private async void logout(object sender, EventArgs e)
         {
 
-            userAccount = null;
-            App.Current.MainPage = new LoginScreen();
+            /*userAccount = null;
+            App.Current.MainPage = new LoginScreen();*/
         }
-
-        public async Task<string> GetGroupId(string id)
-        {
-            try
-            {
-                // This is the postdata
-                var postData = new List<KeyValuePair<string, string>>(2);
-                postData.Add(new KeyValuePair<string, string>("id", id));
-                HttpContent content = new FormUrlEncodedContent(postData);
-
-                using (var client = new HttpClient())
-                {
-                    //client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest/GetGroupId", content))
-                    {
-                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
-                        {
-                            using (var responseContent = response.Content)
-                            {
-                                string result = await responseContent.ReadAsStringAsync();
-                                Console.WriteLine(result);
-                                return result;
-                            }
-                        }
-                        else
-                        {
-                            return "error " + Convert.ToString(response.StatusCode);
-                        }
-                    }
-                }
-            }
-            catch (WebException ex)
-            {
-                return Convert.ToString(ex);
-            }
-
-        }
+        
+       
 
 
-        public async Task<string> getUserInfo(string id)
-        {
-            try
-            {
-                // This is the postdata
-                var postData = new List<KeyValuePair<string, string>>(2);
-                postData.Add(new KeyValuePair<string, string>("id", id));
-                HttpContent content = new FormUrlEncodedContent(postData);
-
-                using (var client = new HttpClient())
-                {
-                    //client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest/GetUserInfo", content))
-                    {
-                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
-                        {
-                            using (var responseContent = response.Content)
-                            {
-                                string result = await responseContent.ReadAsStringAsync();
-                                Console.WriteLine(result);
-                                return result;
-                            }
-                        }
-                        else
-                        {
-                            return "error " + Convert.ToString(response.StatusCode);
-                        }
-                    }
-                }
-            }
-            catch (WebException ex)
-            {
-                return Convert.ToString(ex);
-            }
-
-        }
+        
 
     }
 }

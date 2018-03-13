@@ -18,6 +18,7 @@ using SmartPM.Views.Team;
 using SmartPM.Views;
 using System.Collections.ObjectModel;
 using SmartPM.Helpers;
+using SmartPM.Services;
 
 namespace SmartPM.Views.Team
 {
@@ -66,7 +67,7 @@ namespace SmartPM.Views.Team
         {
             try
             {
-                string resultInfo = await getUserInfo(id);
+                string resultInfo = await Authentication.getUserInfo(id);
                 JObject data = JObject.Parse(resultInfo);
                 string uid = (string)data["userId"];
                 string gid = (string)data["groupId"];
@@ -90,7 +91,7 @@ namespace SmartPM.Views.Team
         {
             try
             {
-                string resultInfo = await ReqUserInfo(id);
+                string resultInfo = await Authentication.ReqUserInfo(id);
                 JObject data = JObject.Parse(resultInfo);
                 string uid = (string)data["userId"];
                 string gid = (string)data["groupId"];
@@ -160,8 +161,9 @@ namespace SmartPM.Views.Team
             //UserId,Firstname,Lastname,JobResponsible,GroupId
         }
 
-        private async void TapGestureRecognizer_Tapped_2(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped_2(object sender, ItemTappedEventArgs e)
         {
+           
             await Navigation.PushAsync(new UserProfileScreen(userId));
         }
 
@@ -171,43 +173,7 @@ namespace SmartPM.Views.Team
             await Navigation.PushAsync(new MoodBoard(userId));
         }
 
-        public async Task<string> getUserInfo(string id)
-        {
-            try
-            {
-                // This is the postdata
-                var postData = new List<KeyValuePair<string, string>>(2);
-                postData.Add(new KeyValuePair<string, string>("id", id));
-                HttpContent content = new FormUrlEncodedContent(postData);
-
-                using (var client = new HttpClient())
-                {
-                    //client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest/GetUserInfo", content))
-                    {
-                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
-                        {
-                            using (var responseContent = response.Content)
-                            {
-                                string result = await responseContent.ReadAsStringAsync();
-                                Console.WriteLine(result);
-                                return result;
-                            }
-                        }
-                        else
-                        {
-                            return "error " + Convert.ToString(response.StatusCode);
-                        }
-                    }
-                }
-            }
-            catch (WebException ex)
-            {
-                return Convert.ToString(ex);
-            }
-
-        }
-
+        
 
         private async void logout(object sender, EventArgs e)
         {
@@ -218,41 +184,6 @@ namespace SmartPM.Views.Team
             App.Current.MainPage = new LoginScreen();
         }
 
-        public async Task<string> ReqUserInfo(string id)
-        {
-            try
-            {
-                // This is the postdata
-                var postData = new List<KeyValuePair<string, string>>(2);
-                postData.Add(new KeyValuePair<string, string>("id", id));
-                HttpContent content = new FormUrlEncodedContent(postData);
-
-                using (var client = new HttpClient())
-                {
-                    //client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.2.95:56086/APIRest/GetUserInfo", content))
-                    {
-                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
-                        {
-                            using (var responseContent = response.Content)
-                            {
-                                string result = await responseContent.ReadAsStringAsync();
-                                Console.WriteLine(result);
-                                return result;
-                            }
-                        }
-                        else
-                        {
-                            return "error " + Convert.ToString(response.StatusCode);
-                        }
-                    }
-                }
-            }
-            catch (WebException ex)
-            {
-                return Convert.ToString(ex);
-            }
-
-        }
+       
     }
 }
