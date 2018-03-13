@@ -41,7 +41,7 @@ namespace SmartPM.Views
 
         protected async void toolBarCreate(object sender, EventArgs e)
         {
-            string id = "10";
+            
             if (userID == "100017" || userID == "50")
             {
                 var nav = new NavigationPage(new TopicMoodBoard(userID)) { BarBackgroundColor = Color.FromHex("#354b60"), BarTextColor = Color.White };
@@ -51,11 +51,16 @@ namespace SmartPM.Views
             else
             {
 
+<<<<<<< HEAD
                 await DisplayAlert("Alert", "คุณไม่สามารถสร้างโพสได้", "OK");
+=======
+                DisplayAlert("Alert", "คุณไม่สามารถสร้างโพสได้", "OK");
+>>>>>>> ce2ac5fd00f847396d3f0b2134e178ac3ded7224
             }
         }
 
         public async void RenderAPI()
+<<<<<<< HEAD
         {/*
             var jsonResult = await  getTopic();
             News = JsonConvert.DeserializeObject<ObservableCollection<NewsModels>>(jsonResult);
@@ -68,6 +73,11 @@ namespace SmartPM.Views
                 {new News(){Title="ขึ้นเงินเดือน +30000k Baht", Date= DateTime.Now.AddDays(-90), Detail="มอคค่าสันทนาการออสซี่โนติส รีไทร์ฟีเวอร์ออทิสติกวาทกรรม สังโฆไคลแมกซ์ห่วยท็อปบู๊ท แอคทีฟ จิ๊กซอว์ควิกปิโตรเคมีโมเดลสตรอเบอรี พาสต้าเซี้ยวอัลบัมซูชิ ไฮไลต์รีสอร์ตซัพพลายบร็อคโคลี แบล็ค คาปูชิโนตนเองซ้อเรซิน โอเค พรีเมียร์ซาร์แบรนด์ควีน ฮากกาว่ะพาสเจอร์ไรส์ เมี่ยงคำซิงไกด์ เซอร์ไพรส์คำสาปโรแมนติคเธค ฟรุตแรงผลักพาสตาง่าวโพสต์ ป๋า "} },
             };
 
+=======
+        {
+            var jsonResult = await MoodBoardService.getTopic();
+            News = JsonConvert.DeserializeObject<ObservableCollection<NewsModels>>(jsonResult);
+>>>>>>> ce2ac5fd00f847396d3f0b2134e178ac3ded7224
             NewsList.ItemsSource = News;
             this.IsBusy = false;
             */
@@ -94,42 +104,14 @@ namespace SmartPM.Views
         }
 
 
-
-        public async Task<string> getTopic()
+        protected void Refesh(object sender, EventArgs e)
         {
-            try
-            {
-                // This is the postdata
-                var postData = new List<KeyValuePair<string, string>>(2);
-                HttpContent content = new FormUrlEncodedContent(postData);
-
-                using (var client = new HttpClient())
-                {
-                    // client.Timeout = new TimeSpan(0, 0, 15);
-                    using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest2/getTopic", content))
-                    {
-                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
-                        {
-                            using (var responseContent = response.Content)
-                            {
-                                string result = await responseContent.ReadAsStringAsync();
-                                Console.WriteLine(result);
-                                return result;
-                            }
-                        }
-                        else
-                        {
-                            return "error " + Convert.ToString(response.StatusCode);
-                        }
-                    }
-                }
-            }
-            catch (WebException ex)
-            {
-                return Convert.ToString(ex);
-            }
-
+            RenderAPI();
+            NewsList.EndRefresh();
         }
+
+
+      
 
 
     }

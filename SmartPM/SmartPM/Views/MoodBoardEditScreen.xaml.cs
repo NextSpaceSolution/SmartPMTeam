@@ -42,5 +42,21 @@ namespace SmartPM.Views
             }
         }
 
+        protected async void Save(object sender, EventArgs e)
+        {
+
+            RenderAPI();
+            var nav = new NavigationPage(new MoodBoard(userId)) { BarBackgroundColor = Color.FromHex("#354b60"), BarTextColor = Color.White };
+            await App.Current.MainPage.Navigation.PushModalAsync(nav);
+        }
+
+        protected async void Cancle(object sender, EventArgs e)
+        {
+
+            
+            var nav = new NavigationPage(new MoodBoard(userId)) { BarBackgroundColor = Color.FromHex("#354b60"), BarTextColor = Color.White };
+            await App.Current.MainPage.Navigation.PushModalAsync(nav);
+        }
+
     }
 }

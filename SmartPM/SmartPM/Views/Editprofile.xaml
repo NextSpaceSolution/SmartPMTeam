@@ -48,30 +48,30 @@
 
                     <StackLayout Grid.Row="4" Grid.ColumnSpan="2" Padding="8">
                         <Label Text="FirstName"/>
-                        <Entry x:Name="firstname" Text="{Binding firstname}" FontSize="Micro" />
+                        <Entry x:Name="firstname"  FontSize="Micro" />
                     </StackLayout>
 
                     <StackLayout Grid.Row="5" Grid.ColumnSpan="2" Padding="8">
                         <Label Text="LastName"/>
-                        <Entry x:Name="lastname" Text="{Binding lastname}"  FontSize="Micro"/>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="5" Grid.ColumnSpan="2" Padding="8">
-                        <Label Text="jobResponsible"/>
-                        <Entry x:Name="jobResponsible" Text="{Binding jobResponsible}"  FontSize="Micro"/>
+                        <Entry x:Name="lastname"   FontSize="Micro"/>
                     </StackLayout>
 
                     <StackLayout Grid.Row="6" Grid.ColumnSpan="2" Padding="8">
-                        <Label Text="Telephone"/>
-                        <Entry x:Name="userTel" Text="{Binding userTel}" FontSize="Micro" />
+                        <Label Text="jobResponsible"/>
+                        <Entry x:Name="jobResponsible"   FontSize="Micro"/>
                     </StackLayout>
 
                     <StackLayout Grid.Row="7" Grid.ColumnSpan="2" Padding="8">
-                        <Label Text="Email"/>
-                        <Entry x:Name="lineId" Text="{Binding lineId}" FontSize="Micro" />
+                        <Label Text="Telephone"/>
+                        <Entry x:Name="userTel"  FontSize="Micro" />
                     </StackLayout>
 
                     <StackLayout Grid.Row="8" Grid.ColumnSpan="2" Padding="8">
+                        <Label Text="LineID"/>
+                        <Entry x:Name="lineId"  FontSize="Micro" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="9" Grid.ColumnSpan="2" Padding="8">
                         <Button Clicked="submit" Text="Submit" BackgroundColor="#F4F4F4"/>
                     </StackLayout>
 
