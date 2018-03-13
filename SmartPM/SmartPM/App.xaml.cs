@@ -20,7 +20,6 @@ namespace SmartPM
         public App()
         {
             InitializeComponent();
-<<<<<<< HEAD
 
             MainPage = new NavigationPage(new LoginScreen());
             /*OneSignal.Current.StartInit("8e9e2a3a-dfdb-49f0-925c-c756cf54011a")
@@ -30,9 +29,7 @@ namespace SmartPM
             if (string.IsNullOrEmpty(Settings.UserName) || string.IsNullOrEmpty(Settings.PassWord))
                 MainPage = new LoginScreen();
             else
-=======
-            try
->>>>>>> 468af34503abc73c972140c6abd083be31cff01e
+
             {
                 
                 OneSignal.Current.StartInit("8e9e2a3a-dfdb-49f0-925c-c756cf54011a")
