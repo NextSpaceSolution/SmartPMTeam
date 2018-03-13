@@ -10,7 +10,6 @@ using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Net;
 using SmartPM.Models;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System;
 using SmartPM.Services;

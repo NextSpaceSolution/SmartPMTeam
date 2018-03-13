@@ -11,7 +11,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Net;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 

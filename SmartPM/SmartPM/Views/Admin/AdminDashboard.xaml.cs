@@ -12,7 +12,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Net;
-using SmartPM.Models;
 using SmartPM.Views;
 using SmartPM.Views.Admin;
 using SmartPM.ViewModels;

@@ -51,16 +51,14 @@ namespace SmartPM.Views
             else
             {
 
-<<<<<<< HEAD
+
                 await DisplayAlert("Alert", "คุณไม่สามารถสร้างโพสได้", "OK");
-=======
-                DisplayAlert("Alert", "คุณไม่สามารถสร้างโพสได้", "OK");
->>>>>>> ce2ac5fd00f847396d3f0b2134e178ac3ded7224
+
             }
         }
 
         public async void RenderAPI()
-<<<<<<< HEAD
+
         {/*
             var jsonResult = await  getTopic();
             News = JsonConvert.DeserializeObject<ObservableCollection<NewsModels>>(jsonResult);
@@ -73,11 +71,11 @@ namespace SmartPM.Views
                 {new News(){Title="ขึ้นเงินเดือน +30000k Baht", Date= DateTime.Now.AddDays(-90), Detail="มอคค่าสันทนาการออสซี่โนติส รีไทร์ฟีเวอร์ออทิสติกวาทกรรม สังโฆไคลแมกซ์ห่วยท็อปบู๊ท แอคทีฟ จิ๊กซอว์ควิกปิโตรเคมีโมเดลสตรอเบอรี พาสต้าเซี้ยวอัลบัมซูชิ ไฮไลต์รีสอร์ตซัพพลายบร็อคโคลี แบล็ค คาปูชิโนตนเองซ้อเรซิน โอเค พรีเมียร์ซาร์แบรนด์ควีน ฮากกาว่ะพาสเจอร์ไรส์ เมี่ยงคำซิงไกด์ เซอร์ไพรส์คำสาปโรแมนติคเธค ฟรุตแรงผลักพาสตาง่าวโพสต์ ป๋า "} },
             };
 
-=======
+
         {
             var jsonResult = await MoodBoardService.getTopic();
             News = JsonConvert.DeserializeObject<ObservableCollection<NewsModels>>(jsonResult);
->>>>>>> ce2ac5fd00f847396d3f0b2134e178ac3ded7224
+
             NewsList.ItemsSource = News;
             this.IsBusy = false;
             */
