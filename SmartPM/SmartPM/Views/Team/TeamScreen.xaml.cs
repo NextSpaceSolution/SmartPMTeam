@@ -15,7 +15,7 @@ using SmartPM.Views.Admin;
 using Plugin.Connectivity;
 using SmartPM.Views;
 using SmartPM.Views.PM;
-using SmartPM.Services;
+
 
 namespace SmartPM.Views.Team
 {
@@ -74,7 +74,7 @@ namespace SmartPM.Views.Team
 
         public async void RenderHead(string pid)
         {
-            var jsonResult = await ProjectService.GetProInfo(pid);
+            var jsonResult = await GetProInfo(pid);
             list = JsonConvert.DeserializeObject<List<ProjectInfo>>(jsonResult);
             if (list == null)
             {
@@ -110,7 +110,7 @@ namespace SmartPM.Views.Team
             {
 
 
-                var jsonResult = await ProjectService.getTeamforProject(pid);
+                var jsonResult = await getTeamforProject(pid);
                 tlist = JsonConvert.DeserializeObject<List<TeamInfo>>(jsonResult);
             Teamlist.ItemsSource = tlist;
                 this.IsBusy = false;
@@ -119,9 +119,81 @@ namespace SmartPM.Views.Team
 
             }
 
-            
+            public async Task<string> GetProInfo(string pid)
+            {
+                try
+                {
+                    // This is the postdata
+                    var postData = new List<KeyValuePair<string, string>>(2);
+                    postData.Add(new KeyValuePair<string, string>("pid", pid));
 
-           
+                    HttpContent content = new FormUrlEncodedContent(postData);
+
+                    using (var client = new HttpClient())
+                    {
+                        //client.Timeout = new TimeSpan(0, 0, 15);
+                        using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest2/getProjectInfo", content))
+                        {
+                            if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
+                            {
+                                using (var responseContent = response.Content)
+                                {
+                                    string result = await responseContent.ReadAsStringAsync();
+                                    Console.WriteLine(result);
+                                    return result;
+                                }
+                            }
+                            else
+                            {
+                                return "error " + Convert.ToString(response.StatusCode);
+                            }
+                        }
+                    }
+                }
+                catch (WebException ex)
+                {
+                    return Convert.ToString(ex);
+                }
+
+            }
+
+            public async Task<string> getTeamforProject(string pid)
+            {
+                try
+                {
+                    // This is the postdata
+                    var postData = new List<KeyValuePair<string, string>>(2);
+                    postData.Add(new KeyValuePair<string, string>("pid", pid));
+
+                    HttpContent content = new FormUrlEncodedContent(postData);
+
+                    using (var client = new HttpClient())
+                    {
+                        //client.Timeout = new TimeSpan(0, 0, 15);
+                        using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest2/getTeamforProject", content))
+                        {
+                            if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
+                            {
+                                using (var responseContent = response.Content)
+                                {
+                                    string result = await responseContent.ReadAsStringAsync();
+                                    Console.WriteLine(result);
+                                    return result;
+                                }
+                            }
+                            else
+                            {
+                                return "error " + Convert.ToString(response.StatusCode);
+                            }
+                        }
+                    }
+                }
+                catch (WebException ex)
+                {
+                    return Convert.ToString(ex);
+                }
+
+            }
 
         }
     }

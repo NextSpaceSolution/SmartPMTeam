@@ -69,14 +69,7 @@
                     <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                                <ViewCell.ContextActions>
-                                    <MenuItem Clicked="OnMore" CommandParameter="{Binding .}"
-                                Text="edit" />
-                                    <MenuItem Clicked="OnDelete"  CommandParameter="{Binding .}"
-                                Text="delete" IsDestructive="True" />
-                                </ViewCell.ContextActions>
-
-                                <StackLayout Padding="10" >
+                            <StackLayout Padding="10" >
 
                                     <Grid>
                                         <Grid.RowDefinitions>

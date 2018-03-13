@@ -29,8 +29,6 @@
                     <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -38,72 +36,72 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <StackLayout Margin="10,10,10,10"  Orientation="Horizontal" Grid.Row="0"
-             Grid.ColumnSpan="2">
-                        <Label Text="USER ID :" HorizontalOptions="Start" />
-                        <Label x:Name="labeluserID" HorizontalOptions="End"/>
-                    </StackLayout>
 
-
-                    <BoxView WidthRequest="300"  Grid.ColumnSpan="2" Margin="10,0,10,0" Grid.Row="1" HeightRequest="0.2" BackgroundColor="Black"/>
-
-                    <StackLayout Margin="10,10,10,10" Orientation="Horizontal" Grid.Row="2"
+                    <StackLayout Padding=" 10" Orientation="Horizontal" Grid.Row="0"
                                      Grid.ColumnSpan="2">
-                        <Label Text="USER NAME :" HorizontalOptions="Start" />
-                        <Label x:Name="userName" HorizontalOptions="End"  />
+                        <Label Text="USER ID"/>
+                        <Label Text="{Binding userId}"/>
                     </StackLayout>
 
-                    <BoxView WidthRequest="300"   Grid.ColumnSpan="2" Margin="10,0,10,0" Grid.Row="3" HeightRequest="0.2" BackgroundColor="Black"/>
-
-                    <StackLayout Margin="10,10,10,10" Orientation="Horizontal" Grid.Row="4"
+                    <StackLayout Padding=" 10" Orientation="Horizontal" Grid.Row="1"
                                      Grid.ColumnSpan="2">
-                        <Label Text="FirstName :" HorizontalOptions="Start"/>
-                        <Label x:Name="firstName" HorizontalOptions="End"  />
-                    </StackLayout>
-                    <BoxView WidthRequest="300"  Grid.ColumnSpan="2"  Margin="10,0,10,0" Grid.Row="5" HeightRequest="0.2" BackgroundColor="Black"/>
-
-                    <StackLayout Margin="10,10,10,10"  Orientation="Horizontal" Grid.Row="6"
-             Grid.ColumnSpan="2">
-                        <Label Text="LastName :" HorizontalOptions="Start" />
-                        <Label x:Name="lastName" HorizontalOptions="End"/>
+                        <Label Text="USER NAME :"/>
+                        <Label Text="{Binding username}"/>
                     </StackLayout>
 
-                    <BoxView WidthRequest="300"  Grid.ColumnSpan="2" Margin="10,0,10,0" Grid.Row="7" HeightRequest="0.2" BackgroundColor="Black"/>
 
-                    <StackLayout Margin="10,10,10,10" Orientation="Horizontal" Grid.Row="8"
+                    <StackLayout Padding=" 10" Orientation="Horizontal" Grid.Row="2"
+                                     Grid.ColumnSpan="2">
+                        <Label Text="FirstName :"/>
+                        <Label Text="{Binding firstname} "/>
+                    </StackLayout>
+
+                    <StackLayout Padding=" 10" Orientation="Horizontal" Grid.Row="3"
              Grid.ColumnSpan="2">
-                        <Label Text="Telephone :" HorizontalOptions="Start" />
-                        <Label x:Name="tele" HorizontalOptions="End"  />
+                        <Label Text="LastName :"/>
+                        <Label Text="{Binding lastname}"/>
+                    </StackLayout>
+
+                <StackLayout Padding=" 10" Orientation="Horizontal" Grid.Row="4"
+             Grid.ColumnSpan="2">
+                    <Label Text="Telephone :"/>
+                    <Label Text="{Binding tel}"/>
                 </StackLayout>
 
-                    <BoxView WidthRequest="300"  Grid.ColumnSpan="2" Margin="10,0,10,0" Grid.Row="9" HeightRequest="0.2" BackgroundColor="Black"/>
-
-                    <StackLayout Margin="10,10,10,10" Orientation="Horizontal" Grid.Row="10"
+                <StackLayout Padding=" 10" Orientation="Horizontal" Grid.Row="5"
              Grid.ColumnSpan="2">
-                        <Label Text="Line ID :" HorizontalOptions="Start" />
-                        <Label x:Name="Line" HorizontalOptions="End"  />
+                    <Label Text="Email :"/>
+                    <Label Text="{Binding email}"/>
                 </StackLayout>
+                    
 
-                    <BoxView WidthRequest="300"  Grid.ColumnSpan="2" Margin="10,0,10,0" Grid.Row="11" HeightRequest="0.2" BackgroundColor="Black"/>
-
-                    <StackLayout Margin="10,10,10,10" Orientation="Horizontal" Grid.Row="12"
+                <StackLayout Padding=" 10" Orientation="Horizontal" Grid.Row="6"
                                      Grid.ColumnSpan="2">
-                        <Label Text="Job Responsible :" HorizontalOptions="Start" />
-                        <Label x:Name="jobres" HorizontalOptions="End"  />
+                        <Label Text="Job Responsible :"/>
+                        <Label Text="{Binding jobResponsible}"/>
                     </StackLayout>
 
-                    <BoxView WidthRequest="300"  Grid.ColumnSpan="2" Margin="10,0,10,0" Grid.Row="13" HeightRequest="0.2" BackgroundColor="Black"/>
-
-                    <StackLayout Margin="10,10,10,10" Orientation="Horizontal" Grid.Row="14"
+                    <StackLayout Padding=" 10" Orientation="Horizontal" Grid.Row="7"
                                      Grid.ColumnSpan="2">
-                        <Label Text="Status  :" HorizontalOptions="Start" />
-                        <Label x:Name="Status" HorizontalOptions="End"  />
+                        <Label Text="Group ID :"/>
+                        <Label Text="{Binding groupId}"/>
                     </StackLayout>
-                    <BoxView WidthRequest="300"  Grid.ColumnSpan="2" Margin="10,0,10,10" Grid.Row="15" HeightRequest="0.2" BackgroundColor="Black"/>
 
-                    <!--<Image Source="{Binding picture}" Grid.Row="10" Grid.ColumnSpan="2" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center"/>-->
+                    <StackLayout Padding=" 10" Orientation="Horizontal" Grid.Row="8"
+                                    Grid.ColumnSpan="2">
+                        <Label Text="Group Name :"/>
+                        <Label Text="{Binding groupName}"/>
+                    </StackLayout>
 
-                    <Button Clicked="Button_click" Text="Edit Profile" BackgroundColor="#F4F4F4" Grid.Row="16" Grid.ColumnSpan="2"/>
+                    <StackLayout Padding=" 10" Orientation="Horizontal" Grid.Row="9"
+                                     Grid.ColumnSpan="2">
+                        <Label Text="Status  :"/>
+                        <Label Text="{Binding status}"/>
+                    </StackLayout>
+
+                    <Image Source="{Binding picture}" Grid.Row="10" Grid.ColumnSpan="2" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center"/>
+
+                    <Button Clicked="Button_click" Text="Edit Profile" BackgroundColor="#F4F4F4" Grid.Row="11" Grid.ColumnSpan="2"/>
 
                 </Grid>
 

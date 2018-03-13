@@ -16,9 +16,7 @@
     <ContentPage.Content>
         <ListView x:Name="NewsList"
                   ItemTapped="newslist_ItemTapped"
-            RowHeight="140" HasUnevenRows="true"
-                  IsPullToRefreshEnabled="True"
-                          Refreshing="Refesh">
+            RowHeight="140" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

@@ -16,7 +16,7 @@ namespace SmartPM.Models
         public long projectCost { get; set; }
         public string projectCreateBy { get; set; }
         public DateTime? projectCreateDate { get; set; }
-        public string projectEditBy { get; set; }
+        public object projectEditBy { get; set; }
         public object projectEditDate { get; set; }
         public string customerName { get; set; }
         public string customerTel { get; set; }

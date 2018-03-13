@@ -15,7 +15,7 @@ using SmartPM.Views.Admin;
 using Plugin.Connectivity;
 using SmartPM.Views;
 using SmartPM.Views.Team;
-using SmartPM.Services;
+
 namespace SmartPM.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
@@ -145,7 +145,7 @@ namespace SmartPM.Views
         public async void RenderAPI(string gid, string uid, string pid)
         {
             var list = new List<TaskModel2>();
-            var jsonResult = await TaskService.FilterTask(gid , uid , pid);
+            var jsonResult = await FilterTask(gid , uid , pid);
             list = JsonConvert.DeserializeObject<List<TaskModel2>>(jsonResult);
             Tasklist.ItemsSource = list;
             this.IsBusy = false;
@@ -153,7 +153,44 @@ namespace SmartPM.Views
         }
         
 
-        
+        public async Task<string> FilterTask(string gid, string uid, string pid)
+        {
+            try
+            {
+                // This is the Postdata
+                var postData = new List<KeyValuePair<string, string>>(2);
+                postData.Add(new KeyValuePair<string , string>("gid", gid));
+                postData.Add(new KeyValuePair<string, string>("uid", uid));
+                postData.Add(new KeyValuePair<string, string>("pid", pid));
+
+                HttpContent content = new FormUrlEncodedContent(postData);
+
+                using (var client = new HttpClient())
+                {
+                   // client.Timeout = new TimeSpan(0, 0, 15);
+                    using (var response = await client.PostAsync("http://192.168.88.107:56086/APIRest2/FilterTask", content))
+                    {
+                        if (((int)response.StatusCode >= 200) && ((int)response.StatusCode <= 299))
+                        {
+                            using (var responseContent = response.Content)
+                            {
+                                string result = await responseContent.ReadAsStringAsync();
+                                Console.WriteLine(result);
+                                return result;
+                            }
+                        }
+                        else
+                        {
+                            return "error" + Convert.ToString(response.StatusCode);
+                        }
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                return Convert.ToString(ex);
+            }
+        }
 
      
 

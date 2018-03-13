@@ -10,7 +10,6 @@ using SmartPM.Models;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 using SmartPM.Services;
-using Newtonsoft.Json.Linq;
 
 namespace SmartPM.Views
 {
@@ -98,46 +97,6 @@ namespace SmartPM.Views
         {
             RenderAPI();
             commentlist.EndRefresh();
-        }
-
-
-        public async void OnMore(object sender, EventArgs e)
-        {
-            try
-            {
-                var mi = ((MenuItem)sender);
-                var models = (CommentModel)mi.CommandParameter;
-                await Navigation.PushAsync(new MoodBoardEditComment(models));
-                /*
-                var temp = await DisplayAlert("Approve  Action", " Confirm to Approve this", "Ok", "Cancle");
-                if (temp)
-                {
-                    string result = await MoodBoardService.EditComment(userId,models.commentDetail,models.bNumber,models.cid);
-                    JObject data = JObject.Parse(result);
-                    string context = (string)data["msg"];
-                    if (context == "Success")
-                    {
-                        await DisplayAlert("Notice", "Approve Successfully", "Ok");
-                        com.Remove(models);
-                    }
-                    else
-                    {
-                        await DisplayAlert("Notice", "Approve Failer", "Ok");
-                    }
-                }*/
-            }
-            catch { }
-
-        }
-
-        public async void OnDelete(object sender, EventArgs e)
-        {
-            var mi = ((MenuItem)sender);
-            var models = (CommentModel)mi.CommandParameter;
-            var temp = await DisplayAlert("Reject Action", " Confirm to Reject this", "Ok", "Cancle");
-            if (temp)
-                com.Remove(models);
-
         }
 
     }
